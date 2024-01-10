@@ -5,6 +5,7 @@ a Mod for BO4, that Improves Zombies Experience.
 - ### [Download](https://github.com/NotNierPea/T8Zombies-Enachment-Mod/releases)
 - ### Client Needed to Run This Mod: [Shield Client Launcher](https://github.com/bodnjenie14/Project_-bo4_Launcher)
 - ### To Load The Mod, Use Shield Client and Put The Mod in ``Call of Duty Black Ops 4\project-bo4`` (Extract The Mod First!)
+- ### The Mod Config Files are in ``C:\Program Files (x86)\Call of Duty Black Ops 4\project-bo4\saved\client or server``
 
 # Features
 - ### Improved Bank Mod
