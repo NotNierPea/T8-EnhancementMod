@@ -15,6 +15,7 @@ a Mod for BO4, that Improves Zombies Experience.
 - ### All Special and Wonder Weapons in Box
 - ### Box Patches (Currently Only Supports 3 Maps)
 - ### Fast Restarting From Game Over Screen
+- ### Always Joinable Lobby and Pause Mods
 - ### Config File to Enable Some Mods or Edit Mods Settings, and more
 
 # Credits
