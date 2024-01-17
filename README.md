@@ -6,7 +6,7 @@ a Mod for BO4, that Improves Zombies Experience.
 - ### Client Needed to Run This Mod: [Shield Client Launcher](https://github.com/bodnjenie14/Project_-bo4_Launcher)
 - ### To Load The Mod, Use Shield Client and Put The Mod in ``Call of Duty Black Ops 4\project-bo4`` (Extract The Mod First!)
   #### (If in-game, you can type ``reload_mods`` in Console to Load it without Restarting!)
-- ### The Mod Config Files are in ``C:\Program Files (x86)\Call of Duty Black Ops 4\project-bo4\saved\client or server``
+- ### The Mod Config Files are in ``Call of Duty Black Ops 4\project-bo4\saved\client or server``
 
 # Features
 - ### Improved Bank Mod
