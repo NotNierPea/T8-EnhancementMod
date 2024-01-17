@@ -14,7 +14,7 @@ a Mod for BO4, that Improves Zombies Experience.
 - ### Weapon Drop System
 - ### Super Realistic (1HP Mode)
 - ### All Special and Wonder Weapons in Box
-- ### Box Patches (Currently Only Supports 3 Maps)
+- ### Box Patches (~~Currently Only Supports 3 Maps~~ - Now Supports all Maps!)
 - ### Fast Restarting From Game Over Screen
 - ### Always Joinable Lobby and Pause Mods
 - ### Config File to Enable Some Mods or Edit Mods Settings, and more
