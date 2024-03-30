@@ -9,7 +9,7 @@ a Mod for BO4, that Improves Zombies Experience.
 - ### The Mod Config Files are in ``Call of Duty Black Ops 4\project-bo4\saved\client or server``
 
 # Features
-- ### Custom Gamesettings and Adding Bots in Public/Private Matches
+- ### Custom Gamesettings and Adding Bots in Public/Private/Rush/Gauntlets Matches
 - ### Improved Bank Mod
 - ### Improved and Customizable Zombie Counter
 - ### Weapon Drop System
