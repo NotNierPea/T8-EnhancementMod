@@ -9,8 +9,9 @@ a Mod for BO4, that Improves Zombies Experience.
 - ### The Mod Config Files are in ``Call of Duty Black Ops 4\project-bo4\saved\client or server``
 
 # Features
+- ### Custom Gamesettings and Adding Bots in Public/Private Matches
 - ### Improved Bank Mod
-- ### Improved Zombie Counter
+- ### Improved and Customizable Zombie Counter
 - ### Weapon Drop System
 - ### Super Realistic (1HP Mode)
 - ### All Special and Wonder Weapons in Box
