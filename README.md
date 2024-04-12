@@ -15,7 +15,7 @@ a Mod for BO4, that Improves BO4 Experience.
 - ### ChatBox Better Font Changes, and Style
 - ### Also Changes Other Stuff..
 - ---
-- ### Multiplayer Features: (Not Released yet)
+- ### Multiplayer Features: (Not Released yet!)
 - ### Public Games with Custom Map Settings, and Rules, Adding Bots, etc
 - ---
 - ### Zombies Features:
