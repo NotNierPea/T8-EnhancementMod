@@ -10,12 +10,12 @@ a Mod for BO4, that Improves BO4 Experience.
 
 # Features
 - ---
-- ### Frontend Features:
+- ### Frontend Features: (Not Released yet!)
 - ### Changes Style of Alert Messages
 - ### ChatBox Better Font Changes, and Style
 - ### Also Changes Other Stuff..
 - ---
-- ### Multiplayer Features:
+- ### Multiplayer Features: (Not Released yet)
 - ### Public Games with Custom Map Settings, and Rules, Adding Bots, etc
 - ---
 - ### Zombies Features:
