@@ -1,5 +1,5 @@
-# T8 Zombies Enachment Mod
-a Mod for BO4, that Improves Zombies Experience.
+# T8 Enachment Mod
+a Mod for BO4, that Improves BO4 Experience.
 
 # Installation
 - ### [Download](https://github.com/NotNierPea/T8Zombies-Enachment-Mod/releases)
@@ -9,6 +9,16 @@ a Mod for BO4, that Improves Zombies Experience.
 - ### The Mod Config Files are in ``Call of Duty Black Ops 4\project-bo4\saved\client or server``
 
 # Features
+- ---
+- ### Frontend Features:
+- ### Changes Style of Alert Messages
+- ### ChatBox Better Font Changes, and Style
+- ### Also Changes Other Stuff..
+- ---
+- ### Multiplayer Features:
+- ### Public Games with Custom Map Settings, and Rules, Adding Bots, etc
+- ---
+- ### Zombies Features:
 - ### Custom Gamesettings and Adding Bots in Public/Private/Rush/Gauntlets Matches
 - ### Improved Bank Mod
 - ### Improved and Customizable Zombie Counter
