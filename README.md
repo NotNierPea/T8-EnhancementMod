@@ -19,7 +19,7 @@ a Mod for BO4, that Improves BO4 Experience.
 - ### Public Games with Custom Map Settings, and Rules, Adding Bots, etc
 - ---
 - ### Zombies Features:
-- ### Custom Gamesettings and Adding Bots in Public/Private/Rush/Gauntlets Matches
+- ### Custom Gamesettings and Adding Bots, Changing Map in Public/Private/Rush/Gauntlets Matches
 - ### Improved Bank Mod
 - ### Improved and Customizable Zombie Counter
 - ### Weapon Drop System
