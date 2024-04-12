@@ -17,6 +17,7 @@ a Mod for BO4, that Improves BO4 Experience.
 - ---
 - ### Multiplayer Features: (Not Released yet!)
 - ### Public Games with Custom Map Settings, and Rules, Adding Bots, etc
+- ### Some Progression Fixes for Shield Client
 - ---
 - ### Zombies Features:
 - ### Custom Gamesettings and Adding Bots, Changing Map in Public/Private/Rush/Gauntlets Matches
