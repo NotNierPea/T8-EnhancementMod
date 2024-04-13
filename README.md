@@ -10,16 +10,16 @@ a Mod for BO4, that Improves BO4 Experience.
 
 # Features
 - ---
-- ### Frontend Features: (Not Released yet!)
+- ### Frontend Features: (Installed on Default with Shield Client)
 - ### Changes Style of Alert Messages
 - ### ChatBox Better Font Changes, and Style
 - ### Also Changes Other Stuff..
 - ---
-- ### Multiplayer Features: (Not Released yet!)
+- ### Multiplayer Features: (Installed on Default with Shield Client)
 - ### Public Games with Custom Map Settings, and Rules, Adding Bots, etc
 - ### Some Progression Fixes for Shield Client
 - ---
-- ### Zombies Features:
+- ### Zombies Features: (Downloadable)
 - ### Custom Gamesettings and Adding Bots, Changing Map in Public/Private/Rush/Gauntlets Matches
 - ### Improved Bank Mod
 - ### Improved and Customizable Zombie Counter
