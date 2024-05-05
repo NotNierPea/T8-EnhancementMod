@@ -20,7 +20,7 @@ a Mod for BO4, that Improves BO4 Experience.
 - ### Some Progression Fixes for Shield Client
 - ---
 - ### Zombies Features: (Downloadable)
-- ### Custom Gamesettings and Adding Bots, Changing Map in Public/Private/Rush/Gauntlets Matches
+- ### Custom Gamesettings and Adding Bots, Changing Map in Public/Private/Rush/Gauntlets Matches (Installed on Default with Shield Client)
 - ### Improved Bank Mod
 - ### Improved and Customizable Zombie Counter
 - ### Weapon Drop System
