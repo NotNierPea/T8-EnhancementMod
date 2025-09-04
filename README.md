@@ -40,4 +40,4 @@ a Mod for BO4, that Improves BO4 Experience.
 - #### Alien (@johnbrick) - for making the ideas of classic mode and some icons/textures for it.
 - #### [SoaringKira](https://www.deviantart.com/soaringkira/art/COD-Zombies-Elemental-Pop-BO4-style-Perk-Icon-907851731) - for some icons/texutres used in classic mode
 - #### [Robit](https://forum.modme.co/wiki/threads/2423.html) - for some icons/texutres used in classic mode
-- #### [Undertale Yellow](https://gamejolt.com/games/UndertaleYellow/136925) - for musics in hardcore boss fights lol
+- #### [Undertale Yellow](https://gamejolt.com/games/UndertaleYellow/136925) - for some musics in hardcore boss fights lol
