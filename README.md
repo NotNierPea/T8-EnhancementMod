@@ -38,5 +38,5 @@ a Mod for BO4, that Improves BO4 Experience.
 - #### [Jek47](https://github.com/Jek47) - For Box Patches
 - #### [bodnjenie14](https://github.com/bodnjenie14) - For Testing The Mod in Shield Client and other stuff
 - #### Alien (@johnbrick) - for making the ideas of classic mode and some icons/textures for it.
-- #### [SoaringKira](www.deviantart.com/soaringkira/art/COD-Zombies-Elemental-Pop-BO4-style-Perk-Icon-907851731) - for some icons/texutres used in classic mode
+- #### [SoaringKira](https://www.deviantart.com/soaringkira/art/COD-Zombies-Elemental-Pop-BO4-style-Perk-Icon-907851731) - for some icons/texutres used in classic mode
 - #### [Robit](https://forum.modme.co/wiki/threads/2423.html) - for some icons/texutres used in classic mode
