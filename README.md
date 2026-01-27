@@ -1,5 +1,5 @@
 # T8 Enachment Mod
-a Mod for BO4, that Improves BO4 Experience.
+- #### a Mod for BO4, that Improves BO4 Zombies Experience.
 
 # Installation
 - ### [Download](https://github.com/NotNierPea/shield-MM-mods/releases/download/release/EnhancementModT8.zip)
