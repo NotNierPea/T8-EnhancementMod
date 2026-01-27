@@ -2,11 +2,10 @@
 a Mod for BO4, that Improves BO4 Experience.
 
 # Installation
-- ### [Download](https://github.com/NotNierPea/T8Zombies-Enachment-Mod/releases)
+- ### [Download](https://github.com/NotNierPea/shield-MM-mods/releases/download/release/EnhancementModT8.zip)
 - ### Client Needed to Run This Mod: [Shield Client Launcher](https://github.com/bodnjenie14/Project_-bo4_Launcher)
-- ### To Load The Mod, Use Shield Client and Put The Mod in ``Call of Duty Black Ops 4\project-bo4`` (Extract The Mod First!)
-  #### (If in-game, you can type ``reload_mods`` in Console to Load it without Restarting!)
-- ### The Mod Config Files are in ``Call of Duty Black Ops 4\project-bo4\saved\client or server``
+- ### To Load The Mod, Use Shield Client and Put The Mod in ``Call of Duty Black Ops 4\project-bo4`` (Extract The Mod First) or You can use the Mod Manager in the Client!
+  #### (If its your first time installing the mod, you need to restart the game, otherwise click reload shield mods button in shield options)
 
 # Features
 - ---
@@ -20,16 +19,18 @@ a Mod for BO4, that Improves BO4 Experience.
 - ### Some Progression Fixes for Shield Client
 - ---
 - ### Zombies Features: (Downloadable)
-- ### Custom Gamesettings and Adding Bots, Changing Map in Public/Private/Rush/Gauntlets Matches (Installed on Default with Shield Client)
-- ### Improved Bank Mod
-- ### Improved and Customizable Zombie Counter
-- ### Weapon Drop System
-- ### Super Realistic (1HP Mode)
-- ### All Special and Wonder Weapons in Box
-- ### Box Patches (~~Currently Only Supports 3 Maps~~ - Now Supports all Maps!)
-- ### Fast Restarting From Game Over Screen
-- ### Always Joinable Lobby and Pause Mods
-- ### Config File to Enable Some Mods or Edit Mods Settings, and more
+- ### Classic Mode featuring bo3/2/1's gameplay style.
+- ### ALT HUD that improves a lot of bo4's HUD (Classic & Without).
+- ### Practice Bosses/Hardcore Bosses for main quests of each map.
+- ### Round/Gameover Music and Announcer sets.
+- ### Damage Numbers & Zombie Healthbars.
+- ### Pinging System/Gesture System/etc.
+- ### Saving System, Rampage Inducer, etc.
+- ### Commands to Save Game/Switch Camos/Rampage/etc.
+- ### Team Cranked/Other Challenging gamemodes.
+- ### Switch Characters/Elixirs/Specialists/Save Game in Pause Menu.
+- ### Classic Elixir Machine that gives you random Elixirs (similar to bo3's gum)
+- ### and a lot more Features in the Mod!
 
 # Credits
 - #### [peawhatever/NotNierPea](https://github.com/NotNierPea) - Main Mod
