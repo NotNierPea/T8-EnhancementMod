@@ -9,16 +9,6 @@ a Mod for BO4, that Improves BO4 Experience.
 
 # Features
 - ---
-- ### Frontend Features: (Installed on Default with Shield Client)
-- ### Changes Style of Alert Messages
-- ### ChatBox Better Font Changes, and Style
-- ### Also Changes Other Stuff..
-- ---
-- ### Multiplayer Features: (Installed on Default with Shield Client)
-- ### Public Games with Custom Map Settings, and Rules, Adding Bots, etc
-- ### Some Progression Fixes for Shield Client
-- ---
-- ### Zombies Features: (Downloadable)
 - ### Classic Mode featuring bo3/2/1's gameplay style.
 - ### ALT HUD that improves a lot of bo4's HUD (Classic & Without).
 - ### Practice Bosses/Hardcore Bosses for main quests of each map.
