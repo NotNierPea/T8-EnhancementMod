@@ -8,9 +8,15 @@
   #### (If its your first time installing the mod, you need to restart the game, otherwise click reload shield mods button in shield options)
 - ### You can customize almost everything in the Enhancement Mod Settings menu.
 
-# How to Compile:
-- ### Download the latest Enhancement Mod OR use the ``T8-EnhancementMod/ShieldConfig/project-bo4/mods/EnhancementModT8`` to copy it to bo4 directory: ``project-bo4/mods``
+# How to Compile (Scripts):
+- ### Download the latest Enhancement Mod OR use the ``T8-EnhancementMod/ShieldConfig/project-bo4/mods/EnhancementModT8`` to copy it to bo4 directory: ``project-bo4``
 - ### Then you can modify anything in this project, run ``compile_and_copy_lua.bat`` for lua, or ``compile_and_copy_scripts.bat`` for gsc/csc.
+
+# How to Compile (Fast File):
+- ### Download the latest Enhancement Mod OR use the ``T8-EnhancementMod/ShieldConfig/project-bo4/mods/EnhancementModT8`` to copy it to bo4 directory: ``project-bo4``
+- ### Download the latest [Acts Cod Tools](https://github.com/ate47/atian-cod-tools)
+- ### Run the command in ``ShieldConfig/project-bo4/fastfile/enh_ff/enh_ff.zone`` (first line)
+- ### Should be done. (the fast file is only used for images, ttfs, objectives, etc)
 
 # Features
 - ---
