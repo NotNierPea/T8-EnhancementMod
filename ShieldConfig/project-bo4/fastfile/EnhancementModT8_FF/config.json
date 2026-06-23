@@ -1,0 +1,9 @@
+{
+    "modid": "enh_ff_main",
+    "fastfiles" : {
+        "enh": {
+            "hook": "core_common",
+            "type": "common"
+        }
+    }
+}

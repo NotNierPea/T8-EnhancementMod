@@ -1,0 +1,2418 @@
+{
+    "name": "T8EnhancementMods",
+    "enabled": true,
+    "data": [
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/Utils",
+            "path": "Lua\\Frontend\\Utils.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/SavedGameMenu",
+            "path": "Lua\\Frontend\\SavedGameMenu.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/Attachments",
+            "path": "Lua\\Frontend\\Attachments.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/Achievements",
+            "path": "Lua\\Frontend\\Achievements.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/ModSettingsData",
+            "path": "Lua\\Frontend\\ModSettingsData.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/SettingsSubMenu",
+            "path": "Lua\\Frontend\\SettingsSubMenu.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/SearchBox",
+            "path": "Lua\\Frontend\\SearchBox.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/ModSettings",
+            "path": "Lua\\Frontend\\ModSettings.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/Slider",
+            "path": "Lua\\Frontend\\Slider.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/PreGameButtons",
+            "path": "Lua\\Frontend\\PreGameButtons.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/AllWeapons",
+            "path": "Lua\\Frontend\\AllWeapons.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/AllSpecialWeapons",
+            "path": "Lua\\Frontend\\AllSpecialWeapons.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/front/ClassicMode",
+            "path": "Lua\\Frontend\\ClassicMode.luac",
+            "hooks_post": [
+                "x64:4ed0bcba9d999e0f"
+            ]
+        },
+        
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/Utils",
+            "path": "Lua\\Game\\Utils.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/ClassicGum",
+            "path": "Lua\\Game\\ClassicGum.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/Cranked",
+            "path": "Lua\\Game\\Cranked.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/ZombieCounter",
+            "path": "Lua\\Game\\ZombieCounter.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/DebugLUI",
+            "path": "Lua\\Game\\DebugLUI.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/LoadingScreen",
+            "path": "Lua\\Game\\LoadingScreen.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/MusicSoundPlayer",
+            "path": "Lua\\Game\\MusicSoundPlayer.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/Objectives3D",
+            "path": "Lua\\Game\\Objectives3D.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/ClassicPerks",
+            "path": "Lua\\Game\\ClassicPerks.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/DirectedMode",
+            "path": "Lua\\Game\\DirectedMode.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/Achievements",
+            "path": "Lua\\Game\\Achievements.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/HotkeyManager",
+            "path": "Lua\\Game\\HotkeyManager.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/PostMainQuestContinue",
+            "path": "Lua\\Game\\PostMainQuestContinue.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/WhosWhoMeter",
+            "path": "Lua\\Game\\WhosWhoMeter.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/MorePerks",
+            "path": "Lua\\Game\\MorePerks.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/SuperPerks",
+            "path": "Lua\\Game\\SuperPerks.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/SecondEquipments",
+            "path": "Lua\\Game\\SecondEquipments.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/HardcoreBossesUI",
+            "path": "Lua\\Game\\HardcoreBossesUI.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/BossHealthBar",
+            "path": "Lua\\Game\\BossHealthBar.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/Callouts",
+            "path": "Lua\\Game\\Callouts.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/LoadoutMenu",
+            "path": "Lua\\Game\\LoadoutMenu.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/GameOver",
+            "path": "Lua\\Game\\GameOver.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/BGBSelect",
+            "path": "Lua\\Game\\BGBSelect.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/CamoSelect",
+            "path": "Lua\\Game\\CamoSelect.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/BoxPatchSelect",
+            "path": "Lua\\Game\\BoxPatchSelect.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/WeaponSelectionStyle",
+            "path": "Lua\\Game\\WeaponSelectionStyle.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/CharacterSelect",
+            "path": "Lua\\Game\\CharacterSelect.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/SpecialWeaponSelect",
+            "path": "Lua\\Game\\SpecialWeaponSelect.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/Objectives",
+            "path": "Lua\\Game\\Objectives.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/RemoveErrorBoxes",
+            "path": "Lua\\Game\\RemoveErrorBoxes.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/IXCrowdMeterFix",
+            "path": "Lua\\Game\\IXCrowdMeterFix.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/MorePlayerFixes",
+            "path": "Lua\\Game\\MorePlayerFixes.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/StartMenu",
+            "path": "Lua\\Game\\StartMenu.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/RoundContainer",
+            "path": "Lua\\Game\\RoundContainer.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/ZMInventory",
+            "path": "Lua\\Game\\ZMInventory.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/PowerUpsTimer",
+            "path": "Lua\\Game\\PowerUpsTimer.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/ChatCommands",
+            "path": "Lua\\Game\\ChatCommands.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/AltHud",
+            "path": "Lua\\Game\\AltHud.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/ReloadOverrides",
+            "path": "Lua\\Game\\ReloadOverrides.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/StartingMovie",
+            "path": "Lua\\Game\\StartingMovie.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+        {
+            "type": "luafile",
+            "name": "ui/enh/game/T8HudMain",
+            "path": "Lua\\Game\\T8HudMain.luac",
+            "hooks_post": [
+                "x64:27cac000f20ef647"
+            ]
+        },
+
+        {
+            "type": "scriptparsetree",
+            "name": "scripts/zm_common/Enhancement.gsc",
+            "path": "Scripts\\Enhancement.gsic",
+            "hooks": [
+                "scripts/zm_common/load.gsc"
+            ]
+        },
+        {
+            "type": "scriptparsetree",
+            "name": "scripts/zm_common/Enhancement.csc",
+            "path": "Scripts\\Enhancement.csic",
+            "hooks": [
+                "scripts/zm_common/load.csc"
+            ]
+        },
+        {
+            "type": "stringtable",
+            "name": "gamedata/enh/custom_errors.csv",
+            "path": "Data\\EnhancementErrors.tsv",
+            "separator": "\t"
+        },
+        {
+            "type": "hashes",
+            "path": "Data\\EnhancementHashes.txt",
+            "format": "serious_compiler",
+            "ignore_error": true
+        },
+        {
+            "type": "hashes",
+            "path": "Data\\EnhancementStrings.txt",
+            "format": "string",
+            "ignore_error": true
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_setting",
+            "value": "^2Enhancement Mod Settings"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_tab",
+            "value": "Enhancement Mod"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zombie_mods",
+            "value": "Zombie Mods"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zombie_mods_desc",
+            "value": "Enables enhancements zombie mods"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/counter_zombie",
+            "value": "Zombie Counter"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/counter_zombie_desc",
+            "value": "Enables zombie counter"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/counter_textcolor",
+            "value": "Zombie Counter: Text Color"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/counter_numbercolor",
+            "value": "Zombie Counter: Number Color"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/counter_font",
+            "value": "Zombie Counter: Font Style"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/counter_position",
+            "value": "Zombie Counter: Position"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/counter_position_desc",
+            "value": "Five Selectable Positions For Zombie Counter"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/counter_onlyzmb",
+            "value": "Zombie Counter: Show only remaining zombies"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/directed_mode",
+            "value": "Directed Mode"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/directed_mode_desc",
+            "value": "Guides you through the main quest step by step, with on-screen instructions and markers (Similar to BO6/7's, Only supports VOD/IX/BOTD)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/directed_mode_roundcap",
+            "value": "Directed Mode: Round Cap"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/directed_mode_roundcap_desc",
+            "value": "Enables Round Cap in Directed Mode, that will increase as you progress through the main quest."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/ee_alwaysenabled",
+            "value": "Main Quest Always Enabled"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/ee_alwaysenabled_desc",
+            "value": "Always enable's Main Quest, even with custom mutations and other gamemodes"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/gameover_options",
+            "value": "Gameover Options"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/gameover_options_desc",
+            "value": "Enables fast festart button in gameover screen"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/bankmoney",
+            "value": "Bank Mod"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/bankmoney_desc",
+            "value": "Enables Bank Mod, at random locations for every map, same as BO2's tranzit"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/remove_blackscreen",
+            "value": "Remove Blackscreen"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/remove_blackscreen_desc",
+            "value": "Removes starting in-game blackscreen"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/dropweapons",
+            "value": "Weapon Dropping System"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/dropweapons_desc",
+            "value": "Enables dropping weapons for Co-op, by holding ([{+activate}]) and (Aim)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/lobbyalwaysjoinable",
+            "value": "Lobby Always Joinable"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/lobbyalwaysjoinable_desc",
+            "value": "Makes lobby is always joinable in-game, anyone can join"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/superrealistic",
+            "value": "Super Realistic Mode"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/superrealistic_desc",
+            "value": "Enables super realistic, 1HP mode, no armor allowed, and super sprint zombies on round 1"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_slide",
+            "value": "Classic Sliding"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_slide_desc",
+            "value": "Adds classic sliding from BO3, you can slide infinitely."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/allweapons_in_box",
+            "value": "All Weapons in Box"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/allweapons_in_box_desc",
+            "value": "Makes every weapon in box, such as wonder weapons, grenades and some unused weapons"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/boxpatch",
+            "value": "Box Patch"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/boxpatch_desc",
+            "value": "Allows you to change the box weapons you get in Pause Menu."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/shield_publicpause",
+            "value": "Shield Public Pause"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/shield_publicpause_desc",
+            "value": "Makes you able to pause the game in public lobbies, by holding (Melee) and (Aim)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/damagepoints",
+            "value": "Damage Points"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/damagepoints_desc",
+            "value": "Makes your health points instead of normal health, If you get damaged, you lose points"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/althud",
+            "value": "Alternative HUD (BETA)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/objective",
+            "value": "Objective"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/althud_desc",
+            "value": "an Alternative HUDs for zombies"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/RoundColor",
+            "value": "Alternative HUD: Round Color"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/RoundColor_desc",
+            "value": "Changes round color for Alternative HUD"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/ShowTimer",
+            "value": "Show Timer"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/ShowTimer_desc",
+            "value": "Shows a Timer that will be displayed in top right"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Red",
+            "value": "^1Color Red"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Yellow",
+            "value": "^3Color Yellow"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Black",
+            "value": "^0Color Black"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/White",
+            "value": "^7Color White"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Green",
+            "value": "^2Color Green"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Cyan",
+            "value": "^5Color Cyan"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Pink",
+            "value": "^6Color Pink"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Blue",
+            "value": "^4Color Blue"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Grey",
+            "value": "^9Color Grey"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/Default",
+            "value": "Color Default"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/font1",
+            "value": "NotoSans Bold"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/font2",
+            "value": "NotoSans Light"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/font3",
+            "value": "TT Mussels Regular"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/font4",
+            "value": "NotoSans Regular"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/font5",
+            "value": "Skorzhen"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/font6",
+            "value": "Dinnext Regular"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/font7",
+            "value": "TT Mussels DemiBold"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/font8",
+            "value": "Titanical Mutant"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/pos1",
+            "value": "Middle Left"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/pos2",
+            "value": "Top Middle"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/pos3",
+            "value": "Middle Right"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/pos4",
+            "value": "Top Right"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/pos5",
+            "value": "Top Left"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/rampage",
+            "value": "Rampage Mode"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/rampage_desc",
+            "value": "Same as BO6's, it will disable zombie spawn delays so they spawn instantly and no round delays at all"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/perka",
+            "value": "Remove Perks Limit"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/perka_desc",
+            "value": "This will remove the extra perks limit (will be 17 with all) instead of it normally being 6 (or 10 with all)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/superperk",
+            "value": "Super Perks Mode"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/superperk_desc",
+            "value": "It will make all active perks modifiers (4th slot mod) always ON, but you need to have them first!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/variators",
+            "value": "Variators"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/variators_desc",
+            "value": "a Set of Challenges will be selected at the start of the game, (Note: will bug if you use fast_restart!!!)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classicmode",
+            "value": "Classic Mode (BETA)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classicmode_desc",
+            "value": "Will change HUDs and gameplay a lot to make it style like bo1/2/3"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore",
+            "value": "Too much to ask for"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_desc",
+            "value": "Complete a hardcore version of a boss fight (any map)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_blood",
+            "value": "Brutus Everywhere"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/attachmentslimit",
+            "value": "Remove Attachment Limit"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/attachmentslimit_desc",
+            "value": "Removes the attachment limit for all weapons (early and might not really work, maybe future update will improve it)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_blood_desc",
+            "value": "Complete the hardcore version of Blood of the Dead's boss fight"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_cranked_ee",
+            "value": "pizza time"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_cranked_ee_desc",
+            "value": "Complete any map's main quest with Team Cranked on"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_classic_round50",
+            "value": "High rounding fan #1"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_classic_round50_desc",
+            "value": "Reach round 50 with Classic Mode on"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/custom_vos",
+            "value": "Custom Power Announcers"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/custom_vos_desc",
+            "value": "Changes the Powerups voice Announcer, can turn on mutliple ones and its going to be random."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/custom_vos_crank",
+            "value": "Cranked Announcer"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/custom_vos_crank_desc",
+            "value": "Team Cranked's Announcer"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/custom_vos_bo6",
+            "value": "BO6 Announcer"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/custom_vos_bo6_desc",
+            "value": "BO6's version of Announcer"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/custom_vos_normal",
+            "value": "Normal Announcer"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/custom_vos_normal_desc",
+            "value": "BO4's version of Announcer"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_normal",
+            "value": "Normal Round Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_normal_desc",
+            "value": "BO4 Map's Round Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_normal_gameover",
+            "value": "Normal Game Over Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_normal_gameover_desc",
+            "value": "BO4 Map's Game Over Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_many_players",
+            "value": "there is too many of them"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_many_players_desc",
+            "value": "Reach round 20 with 5 or more players in the game"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_classic_round100",
+            "value": "High rounding fan #2"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_classic_round100_desc",
+            "value": "Reach round 100 with Classic Mode on"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_all_hardcore",
+            "value": "i should go outside"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_all_hardcore_desc",
+            "value": "Complete EVERY hardcore version of a boss fight (ALL CURRENTLY SUPPORTED MAPS)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_eye",
+            "value": "Retribution"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_eye_desc",
+            "value": "Defeat Eye of Dispair (Hardcore version of voyage of despair boss fight)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_ae",
+            "value": "Pegasus's Nightmare"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_ae_desc",
+            "value": "Complete the hardcore version of Ancient Evil's boss fight"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_classic_ee",
+            "value": "Back to the old days"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_classic_ee_desc",
+            "value": "Complete any map's main quest with Classic Mode on"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_eleph",
+            "value": "Elephants are bad"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_eleph_desc",
+            "value": "Complete the hardcore version of IX's boss fight"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classicmode_gums",
+            "value": "Classic Elixirs"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classicmode_gums_desc",
+            "value": "Similar to BO3's, Enables an Elixir machine that gives you random Elixir for 500 Points"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/bankdep",
+            "value": "^3 Press ^1[{+activate}] ^3to ^4Deposit [&&2] ^6(Current Bank Money: &&1)\n^5(Hold Aim or Fire to Switch Points) (Hold Melee to Switch Modes)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/bankwid",
+            "value": "^3 Press ^1[{+activate}] ^3to ^2Withdraw [&&2] ^6(Current Bank Money: &&1)\n^5(Hold Aim or Fire to Switch Points) (Hold Melee to Switch Modes)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/bankerror",
+            "value": "^1 Error!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/banknotenough",
+            "value": "^3 Not Enough Money! [&&1] (Bank)\n^2(Hold Melee to Switch Modes)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/client_num",
+            "value": "Set Players Engine/Party Limit"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/playernotenough",
+            "value": "^3 Not Enough Money! [&&1] (Player)\n^2(Hold Melee to Switch Modes)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/bank",
+            "value": "^3 Press ^1[{+activate}] ^5????"
+        },
+        {
+            "type": "localizeentry",
+            "name": "hash_760c75822f0d08c0",
+            "value": "^3Press ^1&&1^2 to pick up ^5$(hudItems.cursorHintWeapon)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "hash_148e5fc10a26a69d",
+            "value": "Fast Restart?"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/saveloaded",
+            "value": "^3Loading Saved Game..."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/saved_rules_custom",
+            "value": "^3Saved Custom Mutations Settings!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/loaded_rules_custom",
+            "value": "^3Loaded Custom Mutations Settings!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/saved",
+            "value": "^3Saved Game! (Note: Continue the game for at least 3 seconds to save)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/thirdperson",
+            "value": "^2Third Person Toggled!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/varsagain",
+            "value": "^2Resent Variators Info!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/rampage_message",
+            "value": ""
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/wrong_camo_message",
+            "value": "^1Invalid Camo ID!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/camo_message",
+            "value": "^2Camo Applied!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/movie_disable",
+            "value": "Disable Starting Movie"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/movie_disable_desc",
+            "value": "Disables the starting movie cutscene in solo play only"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/gum_machine",
+            "value": "Press [{+activate}] to Buy a Random Elixir [Cost: &&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/gum_get",
+            "value": "Press [{+activate}] For &&1, and hold [{+switchseat}] to Activate it!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/jugg_buy",
+            "value": "Press [{+activate}] to Buy Juggernog [Cost: &&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/speed_buy",
+            "value": "Press [{+activate}] to Buy Speed Cola [Cost: &&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/double_buy",
+            "value": "Press [{+activate}] to Buy Double Tap [Cost: &&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/whos_who_buy",
+            "value": "Press [{+activate}] to Buy Who's Who [Cost: &&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/elemental_buy",
+            "value": "Press [{+activate}] to Buy Elemental Pop [Cost: &&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/wonderfizz_buy",
+            "value": "Press [{+activate}] to Buy a Random Perk [Cost: &&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/wonderfizz_get",
+            "value": "Press [{+activate}] to for [&&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/refund_get",
+            "value": "^5[&&1] Perk Refunded!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/vulture_buy",
+            "value": "Press [{+activate}] to Buy Vulture Aid [Cost: &&1]"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/power_need",
+            "value": "You need to turn on the Power first!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/perk_limit",
+            "value": "You have exceeded the Perk limit!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/lui_debug",
+            "value": "Debug UI"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/lui_debug_desc",
+            "value": "Enables Debug Stuff for UI (only host - press F9 for small mod menu)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbbars",
+            "value": "Health Bars"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbbars_desc",
+            "value": "Enables zombies health bars displayed on top of them."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/unnamed_camo",
+            "value": "Unnamed Camo"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/hardcore_bosses",
+            "value": "Hardcore Bosses"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/print_debug",
+            "value": "Print Info to Console"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/info_debug",
+            "value": "Toggle UI Info"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/hitbox_debug",
+            "value": "Toggle Hitbox Drag Button"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_x",
+            "value": "Toggle Sliders for Left/Right"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_y",
+            "value": "Toggle Sliders for Top/Bottom"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_scale",
+            "value": "Toggle Sliders for Scale X/Y"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_rotation",
+            "value": "Toggle Slider for Z Rotation"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_left",
+            "value": "Left"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_right",
+            "value": "Right"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_top",
+            "value": "Top"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_bottom",
+            "value": "Bottom"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_scale_x",
+            "value": "Scale X"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_scale_y",
+            "value": "Scale Y"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_z_rotation",
+            "value": "Z Rotation"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_alpha",
+            "value": "Toggle Slider for Alpha"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/slider_alpha_value",
+            "value": "Alpha"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/dpad_toggle",
+            "value": "Toggle D-pad"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/hardcore_bosses_desc",
+            "value": "Makes the main quest's boss fights a lot harder"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/practice_bosses",
+            "value": "Practice Bosses"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/practice_bosses_desc",
+            "value": "Enables practice mode for boss fights, with the ability to choose weapons you want and perks"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/second_grenade",
+            "value": "Secondary Equipment Slot"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/second_grenade_desc",
+            "value": "Allows having a Secondary Equipment slot (Example: Having monkey bombs with frag grenades at the same time)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_tag",
+            "value": "Frozen Burned"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_tag_desc",
+            "value": "Defeat The Agarthan Device (Hardcore version of tag der toten boss fight)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_ao",
+            "value": "Electrocution"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_ao_desc",
+            "value": "Complete the hardcore version of Alpha Omega's boss fight"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_dotn",
+            "value": "Wolfs don't bite"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_achv_hardcore_dotn_desc",
+            "value": "Complete the hardcore version of Dead of the Night's boss fight"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_start_boss",
+            "value": "^3 Press ^1[{+activate}] ^3to start the boss fight."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/enh_choose_menu",
+            "value": "^3 Press ^1[{+activate}] ^3to choose your loadout."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/team_cranked",
+            "value": "Team Cranked"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/team_cranked_desc",
+            "value": "Kill a Zombie to start your Cranked Timer and keep it ticking with each Zombie elimination. Fail to get a kill before the timer expires and BOOM - you're fucking dead (self revives will not work at all). Timer duration decreases as the rounds progress."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/team_cranked_desc_ingame",
+            "value": "Start your Cranked Timer and keep it ticking with each Zombie elimination. Timer duration decreases as the rounds progress."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/directed_mode_ingame",
+            "value": "Directed Mode!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/directed_mode_desc_ingame",
+            "value": "Follow the Directed Mode instructions and markers to finish the Main Quest."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/five_early_ee",
+            "value": "Classified Round 60 Main Quest"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/five_early_ee_desc",
+            "value": "Changes the requirement to finish Classified's main quest to round 60 instead of round 150."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbdamage",
+            "value": "Damage Numbers"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/tips_chat",
+            "value": "Tips in Chat"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/tips_chat_desc",
+            "value": "Shows tips in chat when you start a new game. (only host can toggle it)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/powerups_timer",
+            "value": "Power Ups Timer"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/powerups_timer_desc",
+            "value": "Shows a timer for the duration of power ups."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/tips_chat_desc",
+            "value": "Shows tips in chat when you start a new game. (only host can toggle it)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbdamage_desc",
+            "value": "Displays the damage you deal to zombies."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbdamage_font",
+            "value": "Damage Numbers: Font Style"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbdamage_font_desc",
+            "value": "Changes the damage numbers font style."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbdamage_font1",
+            "value": "Undertale/Deltarune"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbdamage_font2",
+            "value": "Titanical Mutant"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/zmbdamage_font3",
+            "value": "NotoSans Bold"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/althud_interaction_font",
+            "value": "Alternative HUD: Interaction Font Style"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/althud_interaction_font_desc",
+            "value": "Changes the Interaction's color."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/althud_interaction_font1",
+            "value": "Titanical Mutant"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/althud_interaction_font2",
+            "value": "NotoSans Bold"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/subtitles_color",
+            "value": "Alternative HUD: Subtitles Color"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/subtitles_color_desc",
+            "value": "Changes the Subtitle's color."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/subtitles_font",
+            "value": "Alternative HUD: Subtitles Font"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/subtitles_font_desc",
+            "value": "Changes the Subtitle's font."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/loading_custom_screen",
+            "value": "Funny Loading Screen"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/loading_custom_screen_desc",
+            "value": "Changes the Loading Screen to something."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/double_tab_toggle",
+            "value": "Use Double Tap 2.0"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/double_tab_toggle_desc",
+            "value": "Changes Double Tap perk to be 2.0 instead of 1.0. (faster fire rate and double damage)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_loadouts",
+            "value": "Classic Loadouts"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_loadouts_desc",
+            "value": "Removes Weapon, Equipment, Specialists, Elixir and Perk selection. (if disabled, Specialists are still not affected..)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_modifier",
+            "value": "No modifier is available yet."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/jugg_string",
+            "value": "Juggernog"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/jugg_string_desc",
+            "value": "Take 6 hits before going down instead of it normally being 3."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/vulture_string",
+            "value": "Vulture Aid"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/vulture_string_desc",
+            "value": "Lets you see perk/weapons/pap/etc behind walls, with also having a chance to drop bonus points and ammo on zombie kills, and a chance for a mist that heals you overtime"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/elemental_string",
+            "value": "Elemental Pop"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/elemental_string_desc",
+            "value": "Random chance to trigger a random aat on every bullet that hits any zombie."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/fastreload_string",
+            "value": "Speed Cola"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/fastreload_string_desc",
+            "value": "Makes your weapon reload faster."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/doubletab_string",
+            "value": "Double Tap"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/doubletab_string1",
+            "value": "Double Tap 1.0"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/doubletab_string2",
+            "value": "Double Tap 2.0"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_preview",
+            "value": "Preview Perks in Maps"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/doubletab_string_desc",
+            "value": "Doubles your bullets and gives a faster fire rate speed, Depending on your classic settings, its either 1.0 or 2.0 version."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/doubletab_string_desc1",
+            "value": "Gives a faster fire rate."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/doubletab_string_desc2",
+            "value": "Doubles your bullets and gives a faster fire rate speed."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/whoswho_string",
+            "value": "Who's Who"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/whoswho_string_desc",
+            "value": "When you go down, instead of dying, you will be teleported to the spawn room with a weapon depending on current round with a limited time to revive yourself and if you do, you will get your weapons/self revive back, if not, then you will die instantly but still keep your weapons only"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/main_perks",
+            "value": "Main Perks"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/rampage_inducer",
+            "value": "Rampage Inducer Enabled!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/rampage_inducer_desc",
+            "value": "Zombies are faster and more aggressive!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/rampage_inducer_disabled",
+            "value": "Rampage Inducer Disabled!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/rampage_inducer_disabled_desc",
+            "value": "Zombies are back to normal!"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_perks",
+            "value": "Classic Perks"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music",
+            "value": "Round/Gameover Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_desc",
+            "value": "Randomizes the round ending/starting music or gameover to custom music."
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_shadows",
+            "value": "Shadows Of Evil Round Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_shadows_desc",
+            "value": "Shadows Of Evil's round starting/ending music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_shadows_gameover",
+            "value": "Shadows Of Evil's Gameover Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_shadows_gameover_desc",
+            "value": "Shadows Of Evil's Game Over music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_og",
+            "value": "Nacht der untoten Round Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_og_desc",
+            "value": "Nacht der untoten's round starting/ending music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_og_gameover",
+            "value": "Nacht der untoten's Gameover Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_og_gameover_desc",
+            "value": "Nacht der untoten's Game Over music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_zet",
+            "value": "Zetsubou No Shima Round Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_zet_desc",
+            "value": "Zetsubou No Shima's round starting/ending music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_zet_gameover",
+            "value": "Zetsubou No Shima's Gameover Music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/round_music_zet_gameover_desc",
+            "value": "Zetsubou No Shima's Game Over music"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/stake_knife",
+            "value": "Stake Knife"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/mainquest_continue",
+            "value": "Continue game after Main Quest Completion"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/mainquest_continue_desc",
+            "value": "Gives you an option to continue the game after completing the main quest or just end the game. (only supports VOD/IX/BOTD for now)"
+        }
+    ],
+    "cache": [
+        {
+            "type": "eventstring",
+            "name": "enhancement_objective_visibility",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_rampage_mode",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_custom_visibility",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_directed_objective",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_directed_round_cap",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enh_team_cranked",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_custom_weapon",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_weapon_name_color",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_custom_portrait",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_equipment",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_damage_visibility",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_mainquest_visibility",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_vulture_visibility",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_whoswho_visibility",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_objective_health",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_debug_info",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_zombie_counter",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enhancement_variators",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_jugg_image",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_speed_image",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_double_image",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_whos_who_image",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_boss_health_meter",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_boss_ui",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_boss_name",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_whos_who_meter",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_elem_image",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "notify_vulture_image",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enh_music_manager",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_zombie_bgb_pack",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "enh_achv_manager",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "extraperks_icon",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "menu",
+            "name": "shield_enh_menu",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "menu",
+            "name": "shield_enh_class_changes",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "menu",
+            "name": "shield_enh_loadout",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "menu",
+            "name": "shield_enh_boxpatch",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "menu",
+            "name": "shield_enh_mainquest_continue",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "menu",
+            "name": "shield_enh_hotkey_mgr",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "menu",
+            "name": "shield_enh_gesture",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_loadout_request",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_gameover_directed",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_powerup_timer",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_saved_bgbs",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_saved_weapons",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_saved_weapons_camos",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_saved_special",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_camo",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "blah",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_character_choose",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "shield_enh_saved_character",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "boxpatch_1_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "boxpatch_2_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "boxpatch_3_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "weapon_1_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "weapon_2_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "weapon_3_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "bgb_1_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "bgb_2_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "bgb_3_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "eventstring",
+            "name": "bgb_4_enh",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/bankdep",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/bankwid",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/bankerror",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/banknotenough",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/playernotenough",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/enh_start_boss",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/enh_choose_menu",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/bank",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/saved",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/gum_machine",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/gum_get",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/jugg_buy",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/speed_buy",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/vulture_buy",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/double_buy",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/whos_who_buy",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/elemental_buy",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/wonderfizz_buy",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/refund_get",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/wonderfizz_get",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/power_need",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/perk_limit",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/whoswho_string",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/doubletab_string",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/fastreload_string",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/elemental_string",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/vulture_string",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/jugg_string",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "objective",
+            "name": "enh_objective",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "objective",
+            "name": "enh_objective_health",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "objective",
+            "name": "enh_objective_health_y",
+            "mode": [
+                "zm"
+            ]
+        }
+    ]
+}

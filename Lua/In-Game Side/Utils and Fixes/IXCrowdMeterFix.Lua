@@ -1,0 +1,1075 @@
+--[[
+      .\hksc.exe '.\Scripts\IXCrowdMeterFix.Lua' -o 'c:\Program Files (x86)\Call of Duty Black Ops 4\project-bo4\mods\EnhancementModT8\Lua\IXCrowdMeterFix.luac'
+]]
+
+------------------------
+
+if CoD.isFrontend or CoD.isMultiplayer or CoD.isWarzone then
+	return
+end
+
+CoD.InitEnhLuaFile()
+
+------------------------
+
+-- move the meter
+CoD.IXCrowdMeterFixReload = function()
+      CoD.zm_towers_crowd_meter = InheritFrom( CoD.Menu )
+
+      CoD.zm_towers_crowd_meter.__stateMap = {
+            "DefaultState",
+            "crowd_server_paused",
+            "crowd_loathes",
+            "crowd_hates",
+            "crowd_no_love",
+            "crowd_warm_up",
+            "crowd_likes",
+            "crowd_loves",
+            "crowd_power_up_available_good",
+            "crowd_power_up_available_bad",
+            "crowd_power_up_available_good_partial",
+            "crowd_power_up_available_bad_partial"
+      }
+
+      LUI.createMenu.zm_towers_crowd_meter = function ( f1_arg0, f1_arg1 )
+            local self = CoD.Menu.NewForUIEditor( "zm_towers_crowd_meter", f1_arg0 )
+            local f1_local1 = self
+            self:setClass( CoD.zm_towers_crowd_meter )
+            self.soundSet = "none"
+            self:setOwner( f1_arg0 )
+            self:setLeftRight( 0, 1, 0, 0 )
+            self:setTopBottom( 0, 1, 0, 0 )
+            self:playSound( "menu_open", f1_arg0 )
+            self.ignoreCursor = true
+            f1_local1:addElementToPendingUpdateStateList( self )
+
+            -- 0.00, 0.00, 280.00, 380.00, 1.00, 1.00, -50.00, 30.00
+            
+            local smokewidget = CoD.smokewidget.new( f1_local1, f1_arg0, 0, 0, 235 - 40, 508 - 40, 1, 1, -338 + 110 - 150, 19 + 110 - 150 )
+            smokewidget:setRGB( 1, 0, 0 )
+            smokewidget:setAlpha( 0 )
+            smokewidget:setScale( 0.3, 0.6 )
+            smokewidget:setRFTMaterial( LUI.UIImage.GetCachedMaterial( @"ui_add" ) )
+            self:addElement( smokewidget )
+            self.smokewidget = smokewidget
+
+            --CoD.ScorePCNonGlobal:addElement(smokewidget)
+            
+            local smokewidget2 = CoD.smokewidget.new( f1_local1, f1_arg0, 0, 0, 235 - 40, 508 - 40, 1, 1, -338 + 110 - 150, 19 + 110 - 150 )
+            smokewidget2:setRGB( 1, 0, 0 )
+            smokewidget2:setAlpha( 0 )
+            smokewidget2:setScale( 0.3, 0.6 )
+            smokewidget2:setRFTMaterial( LUI.UIImage.GetCachedMaterial( @"ui_add" ) )
+            self:addElement( smokewidget2 )
+            self.smokewidget2 = smokewidget2
+
+            --CoD.ScorePCNonGlobal:addElement(smokewidget2)
+
+            local Image00 = LUI.UIImage.new( 0.50, 0.50, 177.00, 307.00, 1.00, 1.00, -135.00 - 150 , -6.00 - 150  )
+            Image00:setRGB( 0, 1, 0.17 )
+            Image00:setAlpha( 0 )
+            Image00:setImage( RegisterImage( @"uie_t7_zm_hud_rnd_spkseq1" ) )
+            Image00:setMaterial( LUI.UIImage.GetCachedMaterial( @"uie_flipbook_add" ) )
+            Image00:setShaderVector( 0, 10, 2, 0, 0 )
+            Image00:setShaderVector( 1, 30, 0, 0, 0 )
+            self:addElement( Image00 )
+            self.Image00 = Image00
+
+            --CoD.ScorePCNonGlobal:addElement(Image00)
+
+            local ZmAmmoParticleFX3right = CoD.ZmAmmo_ParticleFX.new( f1_local1, f1_arg0, 0, 0, 259 - 40, 474 - 40, 1, 1, -234.5 + 110 - 150, -122.5 + 110 - 150 )
+            ZmAmmoParticleFX3right:setRGB( 0, 1, 0.17 )
+            ZmAmmoParticleFX3right:setAlpha( 0 )
+            ZmAmmoParticleFX3right:setZRot( 270 )
+            ZmAmmoParticleFX3right:setScale( 0.7, 0.7 )
+            ZmAmmoParticleFX3right:setRFTMaterial( LUI.UIImage.GetCachedMaterial( @"ui_add" ) )
+            ZmAmmoParticleFX3right.p1:setAlpha( 0 )
+            ZmAmmoParticleFX3right.p2:setAlpha( 0 )
+            self:addElement( ZmAmmoParticleFX3right )
+            self.ZmAmmoParticleFX3right = ZmAmmoParticleFX3right
+
+            --CoD.ScorePCNonGlobal:addElement(ZmAmmoParticleFX3right)
+
+            local ZmAmmoParticleFX2right = CoD.ZmAmmo_ParticleFX.new( f1_local1, f1_arg0, 0, 0, 264 - 40, 479 - 40, 1, 1, -258.5 + 110 - 150, -146.5 + 110 - 150 )
+            ZmAmmoParticleFX2right:setRGB( 0, 1, 0.17 )
+            ZmAmmoParticleFX2right:setAlpha( 0 )
+            ZmAmmoParticleFX2right:setZRot( 270 )
+            ZmAmmoParticleFX2right:setScale( 0.7, 0.7 )
+            ZmAmmoParticleFX2right:setRFTMaterial( LUI.UIImage.GetCachedMaterial( @"ui_add" ) )
+            ZmAmmoParticleFX2right.p1:setAlpha( 0 )
+            ZmAmmoParticleFX2right.p3:setAlpha( 0 )
+            self:addElement( ZmAmmoParticleFX2right )
+            self.ZmAmmoParticleFX2right = ZmAmmoParticleFX2right
+
+            --CoD.ScorePCNonGlobal:addElement(ZmAmmoParticleFX2right)
+
+            local CrowdImageGlow = LUI.UIImage.new( 0, 0, 320 - 40, 404 - 40, 1, 1, -188.5 + 110 - 150, -104.5 + 110 - 150 )
+            CrowdImageGlow:setAlpha( 0 )
+            CrowdImageGlow:setScale( 0.7, 0.7 )
+            CrowdImageGlow:setImage( RegisterImage( @"hash_1FD351064E08479" ) )
+            self:addElement( CrowdImageGlow )
+            self.CrowdImageGlow = CrowdImageGlow
+
+            --CoD.ScorePCNonGlobal:addElement(CrowdImageGlow)
+            
+            local CrowdImage = LUI.UIImage.new( 0, 0, 320 - 40, 404 - 40, 1, 1, -188.5 + 110 - 150, -104.5 + 110 - 150 )
+            CrowdImage:setScale( 0.7, 0.7 )
+            CrowdImage:setImage( RegisterImage( @"hash_1BA8B5F65C257C37" ) )
+            self:addElement( CrowdImage )
+            self.CrowdImage = CrowdImage
+
+            --CoD.ScorePCNonGlobal:addElement(CrowdImage)
+
+            local CrowdItem = LUI.UIText.new( 0, 0, 405 - 40, 1111 - 40, 1, 1, -143.5 + 110 - 150, -119.5 + 110 - 150 )
+            CrowdItem:setAlpha( 0 )
+            CrowdItem:setText( Engine[@"hash_4F9F1239CFD921FE"]( @"hash_363C7C5ACA8BCAFB" ) )
+            CrowdItem:setTTF( "skorzhen" )
+            CrowdItem:setMaterial( LUI.UIImage.GetCachedMaterial( @"hash_90D57B1E92D39D7" ) )
+            CrowdItem:setShaderVector( 0, 0.5, 0, 0, 0 )
+            CrowdItem:setShaderVector( 1, 0.5, 0, 0, 0 )
+            CrowdItem:setShaderVector( 2, 0, 0, 0, 1 )
+            CrowdItem:setAlignment( Enum[@"luialignment"][@"lui_alignment_left"] )
+            CrowdItem:setAlignment( Enum[@"luialignment"][@"lui_alignment_top"] )
+            self:addElement( CrowdItem )
+            self.CrowdItem = CrowdItem
+
+            --CoD.ScorePCNonGlobal:addElement(CrowdItem)
+
+            local CrowdTitle = LUI.UIText.new( 0, 0, 405 - 40, 1111 - 40, 1, 1, -168.5 + 110 - 150, -144.5 + 110 - 150 )
+            CrowdTitle:setAlpha( 0 )
+            CrowdTitle:setText( LocalizeToUpperString( @"hash_7A0AD5A1910EF712" ) )
+            CrowdTitle:setTTF( "skorzhen" )
+            CrowdTitle:setMaterial( LUI.UIImage.GetCachedMaterial( @"hash_90D57B1E92D39D7" ) )
+            CrowdTitle:setShaderVector( 0, 0.5, 0, 0, 0 )
+            CrowdTitle:setShaderVector( 1, 0.5, 0, 0, 0 )
+            CrowdTitle:setShaderVector( 2, 0, 0, 0, 1 )
+            CrowdTitle:setAlignment( Enum[@"luialignment"][@"lui_alignment_left"] )
+            CrowdTitle:setAlignment( Enum[@"luialignment"][@"lui_alignment_top"] )
+            self:addElement( CrowdTitle )
+            self.CrowdTitle = CrowdTitle
+
+            --CoD.ScorePCNonGlobal:addElement(CrowdTitle)
+            
+            LUI.OverrideFunction_CallOriginalFirst( self, "setState", function ( element, controller, f2_arg2, f2_arg3, f2_arg4 )
+                  if not IsSelfInState( self, "crowd_server_paused" ) then
+                        SetProperty( self, "_restoreState", f2_arg2 )
+                  end
+            end )
+            self:subscribeToGlobalModel( f1_arg0, "GlobalModel", nil, function ( model )
+                  local f3_local0 = self
+                  CoD.ZMInventoryUtility.SetupHideIfVisBit( self, f1_arg0, Enum[@"uivisibilitybit"][@"bit_scoreboard_open"] )
+            end )
+            self:subscribeToGlobalModel( f1_arg0, "PerController", "hudItems.serverPaused", function ( model )
+                  local f4_local0 = self
+                  CoD.HUDUtility.UpdateZMTowersCrowdMeterState( self, model, f1_arg0 )
+            end )
+            self:processEvent( {
+                  name = "menu_loaded",
+                  controller = f1_arg0
+            } )
+            LUI.OverrideFunction_CallOriginalSecond( self, "close", self.__onClose )
+            
+            if PostLoadFunc then
+                  PostLoadFunc( self, f1_arg0 )
+            end
+            
+            local f1_local11 = self
+            SizeToSafeArea( self, f1_arg0 )
+
+            return self
+      end
+
+      CoD.zm_towers_crowd_meter.__resetProperties = function ( f5_arg0 )
+            f5_arg0.CrowdImage:completeAnimation()
+            f5_arg0.CrowdTitle:completeAnimation()
+            f5_arg0.CrowdItem:completeAnimation()
+            f5_arg0.CrowdImageGlow:completeAnimation()
+            f5_arg0.ZmAmmoParticleFX2right:completeAnimation()
+            f5_arg0.Image00:completeAnimation()
+            f5_arg0.smokewidget2:completeAnimation()
+            f5_arg0.smokewidget:completeAnimation()
+            f5_arg0.ZmAmmoParticleFX3right:completeAnimation()
+            f5_arg0.CrowdImage:setRGB( 1, 1, 1 )
+            f5_arg0.CrowdImage:setAlpha( 1 )
+            f5_arg0.CrowdImage:setZRot( 0 )
+            f5_arg0.CrowdTitle:setRGB( 1, 1, 1 )
+            f5_arg0.CrowdTitle:setAlpha( 0 )
+            f5_arg0.CrowdTitle:setZRot( 0 )
+            f5_arg0.CrowdItem:setRGB( 1, 1, 1 )
+            f5_arg0.CrowdItem:setAlpha( 0 )
+            f5_arg0.CrowdImageGlow:setRGB( 1, 1, 1 )
+            f5_arg0.CrowdImageGlow:setAlpha( 0 )
+            f5_arg0.CrowdImageGlow:setZRot( 0 )
+            f5_arg0.CrowdImageGlow:setScale( 0.7, 0.7 )
+            f5_arg0.ZmAmmoParticleFX2right:setLeftRight( 0, 0, 264 - 40, 479 - 40 )
+            f5_arg0.ZmAmmoParticleFX2right:setTopBottom( 1, 1, -258.5 + 110 - 150, -146.5 + 110 - 150 )
+            f5_arg0.ZmAmmoParticleFX2right:setAlpha( 0 )
+            f5_arg0.Image00:setAlpha( 0 )
+            f5_arg0.smokewidget2:setAlpha( 0 )
+            f5_arg0.smokewidget:setAlpha( 0 )
+            f5_arg0.ZmAmmoParticleFX3right:setLeftRight( 0, 0, 259 - 40, 474 - 40 )
+            f5_arg0.ZmAmmoParticleFX3right:setTopBottom( 1, 1, -234.5 + 110 - 150, -122.5 + 110 - 150 )
+            f5_arg0.ZmAmmoParticleFX3right:setAlpha( 0 )
+      end
+
+      CoD.zm_towers_crowd_meter.__clipsPerState = {
+            DefaultState = {
+                  DefaultClip = function ( f6_arg0, f6_arg1 )
+                        f6_arg0:__resetProperties()
+                        f6_arg0:setupElementClipCounter( 0 )
+                  end,
+                  Intro = function ( f7_arg0, f7_arg1 )
+                        f7_arg0:__resetProperties()
+                        f7_arg0:setupElementClipCounter( 2 )
+                        local f7_local0 = function ( f8_arg0 )
+                              f7_arg0.CrowdImage:beginAnimation( 990 )
+                              f7_arg0.CrowdImage:setAlpha( 1 )
+                              f7_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f7_arg0.clipInterrupted )
+                              f7_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f7_arg0.clipFinished )
+                        end
+                        
+                        f7_arg0.CrowdImage:completeAnimation()
+                        f7_arg0.CrowdImage:setAlpha( 0 )
+                        f7_local0( f7_arg0.CrowdImage )
+                        local f7_local1 = function ( f9_arg0 )
+                              local f9_local0 = function ( f10_arg0 )
+                                    local f10_local0 = function ( f11_arg0 )
+                                          local f11_local0 = function ( f12_arg0 )
+                                                local f12_local0 = function ( f13_arg0 )
+                                                      local f13_local0 = function ( f14_arg0 )
+                                                            f14_arg0:beginAnimation( 600 )
+                                                            f14_arg0:setAlpha( 1 )
+                                                            f14_arg0:registerEventHandler( "transition_complete_keyframe", f7_arg0.clipFinished )
+                                                      end
+                                                      
+                                                      f13_arg0:beginAnimation( 189 )
+                                                      f13_arg0:setAlpha( 0 )
+                                                      f13_arg0:registerEventHandler( "transition_complete_keyframe", f13_local0 )
+                                                end
+                                                
+                                                f12_arg0:beginAnimation( 210 )
+                                                f12_arg0:setAlpha( 1 )
+                                                f12_arg0:registerEventHandler( "transition_complete_keyframe", f12_local0 )
+                                          end
+                                          
+                                          f11_arg0:beginAnimation( 199 )
+                                          f11_arg0:setAlpha( 0 )
+                                          f11_arg0:registerEventHandler( "transition_complete_keyframe", f11_local0 )
+                                    end
+                                    
+                                    f10_arg0:beginAnimation( 210 )
+                                    f10_arg0:setAlpha( 1 )
+                                    f10_arg0:registerEventHandler( "transition_complete_keyframe", f10_local0 )
+                              end
+                              
+                              f7_arg0.CrowdTitle:beginAnimation( 990 )
+                              f7_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f7_arg0.clipInterrupted )
+                              f7_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f9_local0 )
+                        end
+                        
+                        f7_arg0.CrowdTitle:completeAnimation()
+                        f7_arg0.CrowdTitle:setAlpha( 0 )
+                        f7_local1( f7_arg0.CrowdTitle )
+                  end,
+                  crowd_warm_up = function ( f15_arg0, f15_arg1 )
+                        f15_arg0:__resetProperties()
+                        f15_arg0:setupElementClipCounter( 2 )
+                        local f15_local0 = function ( f16_arg0 )
+                              f15_arg0.CrowdImage:beginAnimation( 1000 )
+                              f15_arg0.CrowdImage:setRGB( 0.75, 0.91, 0.8 )
+                              f15_arg0.CrowdImage:setZRot( 33 )
+                              f15_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f15_arg0.clipInterrupted )
+                              f15_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f15_arg0.clipFinished )
+                        end
+                        
+                        f15_arg0.CrowdImage:completeAnimation()
+                        f15_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f15_arg0.CrowdImage:setZRot( 0 )
+                        f15_local0( f15_arg0.CrowdImage )
+                        local f15_local1 = function ( f17_arg0 )
+                              f15_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f15_arg0.CrowdTitle:setRGB( 0.75, 0.91, 0.8 )
+                              f15_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f15_arg0.clipInterrupted )
+                              f15_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f15_arg0.clipFinished )
+                        end
+                        
+                        f15_arg0.CrowdTitle:completeAnimation()
+                        f15_arg0.CrowdTitle:setRGB( 1, 1, 1 )
+                        f15_local1( f15_arg0.CrowdTitle )
+                  end,
+                  crowd_hates = function ( f18_arg0, f18_arg1 )
+                        f18_arg0:__resetProperties()
+                        f18_arg0:setupElementClipCounter( 2 )
+                        local f18_local0 = function ( f19_arg0 )
+                              f18_arg0.CrowdImage:beginAnimation( 1000 )
+                              f18_arg0.CrowdImage:setRGB( 0.97, 0.64, 0.64 )
+                              f18_arg0.CrowdImage:setZRot( -45 )
+                              f18_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f18_arg0.clipInterrupted )
+                              f18_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f18_arg0.clipFinished )
+                        end
+                        
+                        f18_arg0.CrowdImage:completeAnimation()
+                        f18_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f18_arg0.CrowdImage:setZRot( 0 )
+                        f18_local0( f18_arg0.CrowdImage )
+                        local f18_local1 = function ( f20_arg0 )
+                              f18_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f18_arg0.CrowdTitle:setRGB( 1, 0.58, 0.58 )
+                              f18_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f18_arg0.clipInterrupted )
+                              f18_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f18_arg0.clipFinished )
+                        end
+                        
+                        f18_arg0.CrowdTitle:completeAnimation()
+                        f18_arg0.CrowdTitle:setRGB( 1, 1, 1 )
+                        f18_arg0.CrowdTitle:setZRot( 0 )
+                        f18_local1( f18_arg0.CrowdTitle )
+                  end
+            },
+            crowd_server_paused = {
+                  DefaultClip = function ( f21_arg0, f21_arg1 )
+                        f21_arg0:__resetProperties()
+                        f21_arg0:setupElementClipCounter( 8 )
+                        f21_arg0.smokewidget:completeAnimation()
+                        f21_arg0.smokewidget:setAlpha( 0 )
+                        f21_arg0.clipFinished( f21_arg0.smokewidget )
+                        f21_arg0.smokewidget2:completeAnimation()
+                        f21_arg0.smokewidget2:setAlpha( 0 )
+                        f21_arg0.clipFinished( f21_arg0.smokewidget2 )
+                        f21_arg0.Image00:completeAnimation()
+                        f21_arg0.Image00:setAlpha( 0 )
+                        f21_arg0.clipFinished( f21_arg0.Image00 )
+                        f21_arg0.ZmAmmoParticleFX2right:completeAnimation()
+                        f21_arg0.ZmAmmoParticleFX2right:setAlpha( 0 )
+                        f21_arg0.clipFinished( f21_arg0.ZmAmmoParticleFX2right )
+                        f21_arg0.CrowdImageGlow:completeAnimation()
+                        f21_arg0.CrowdImageGlow:setAlpha( 0 )
+                        f21_arg0.clipFinished( f21_arg0.CrowdImageGlow )
+                        f21_arg0.CrowdImage:completeAnimation()
+                        f21_arg0.CrowdImage:setAlpha( 0 )
+                        f21_arg0.clipFinished( f21_arg0.CrowdImage )
+                        f21_arg0.CrowdItem:completeAnimation()
+                        f21_arg0.CrowdItem:setAlpha( 0 )
+                        f21_arg0.clipFinished( f21_arg0.CrowdItem )
+                        f21_arg0.CrowdTitle:completeAnimation()
+                        f21_arg0.CrowdTitle:setAlpha( 0 )
+                        f21_arg0.clipFinished( f21_arg0.CrowdTitle )
+                  end
+            },
+            crowd_loathes = {
+                  DefaultClip = function ( f22_arg0, f22_arg1 )
+                        f22_arg0:__resetProperties()
+                        f22_arg0:setupElementClipCounter( 5 )
+                        f22_arg0.smokewidget:completeAnimation()
+                        f22_arg0.smokewidget:setAlpha( 1 )
+                        f22_arg0.clipFinished( f22_arg0.smokewidget )
+                        f22_arg0.smokewidget2:completeAnimation()
+                        f22_arg0.smokewidget2:setAlpha( 1 )
+                        f22_arg0.clipFinished( f22_arg0.smokewidget2 )
+                        f22_arg0.CrowdImageGlow:completeAnimation()
+                        f22_arg0.CrowdImageGlow:setRGB( 1, 0, 0 )
+                        f22_arg0.CrowdImageGlow:setAlpha( 1 )
+                        f22_arg0.CrowdImageGlow:setZRot( 90 )
+                        f22_arg0.clipFinished( f22_arg0.CrowdImageGlow )
+                        f22_arg0.CrowdImage:completeAnimation()
+                        f22_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f22_arg0.CrowdImage:setZRot( 90 )
+                        f22_arg0.clipFinished( f22_arg0.CrowdImage )
+                        f22_arg0.CrowdTitle:completeAnimation()
+                        f22_arg0.CrowdTitle:setRGB( 0.88, 0.04, 0.04 )
+                        f22_arg0.clipFinished( f22_arg0.CrowdTitle )
+                  end,
+                  crowd_hates = function ( f23_arg0, f23_arg1 )
+                        f23_arg0:__resetProperties()
+                        f23_arg0:setupElementClipCounter( 3 )
+                        local f23_local0 = function ( f24_arg0 )
+                              f23_arg0.CrowdImageGlow:beginAnimation( 1000 )
+                              f23_arg0.CrowdImageGlow:setAlpha( 0.4 )
+                              f23_arg0.CrowdImageGlow:setZRot( 40 )
+                              f23_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f23_arg0.clipInterrupted )
+                              f23_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f23_arg0.clipFinished )
+                        end
+                        
+                        f23_arg0.CrowdImageGlow:completeAnimation()
+                        f23_arg0.CrowdImageGlow:setRGB( 1, 0, 0 )
+                        f23_arg0.CrowdImageGlow:setAlpha( 1 )
+                        f23_arg0.CrowdImageGlow:setZRot( 90 )
+                        f23_local0( f23_arg0.CrowdImageGlow )
+                        local f23_local1 = function ( f25_arg0 )
+                              f23_arg0.CrowdImage:beginAnimation( 1000 )
+                              f23_arg0.CrowdImage:setZRot( 40 )
+                              f23_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f23_arg0.clipInterrupted )
+                              f23_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f23_arg0.clipFinished )
+                        end
+                        
+                        f23_arg0.CrowdImage:completeAnimation()
+                        f23_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f23_arg0.CrowdImage:setAlpha( 1 )
+                        f23_arg0.CrowdImage:setZRot( 90 )
+                        f23_local1( f23_arg0.CrowdImage )
+                        local f23_local2 = function ( f26_arg0 )
+                              f23_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f23_arg0.CrowdTitle:setRGB( 1, 0.58, 0.58 )
+                              f23_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f23_arg0.clipInterrupted )
+                              f23_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f23_arg0.clipFinished )
+                        end
+                        
+                        f23_arg0.CrowdTitle:completeAnimation()
+                        f23_arg0.CrowdTitle:setRGB( 0.88, 0.04, 0.04 )
+                        f23_arg0.CrowdTitle:setZRot( 0 )
+                        f23_local2( f23_arg0.CrowdTitle )
+                  end
+            },
+            crowd_hates = {
+                  DefaultClip = function ( f27_arg0, f27_arg1 )
+                        f27_arg0:__resetProperties()
+                        f27_arg0:setupElementClipCounter( 3 )
+                        f27_arg0.CrowdImageGlow:completeAnimation()
+                        f27_arg0.CrowdImageGlow:setRGB( 1, 0, 0 )
+                        f27_arg0.CrowdImageGlow:setAlpha( 0.4 )
+                        f27_arg0.CrowdImageGlow:setZRot( 40 )
+                        f27_arg0.clipFinished( f27_arg0.CrowdImageGlow )
+                        f27_arg0.CrowdImage:completeAnimation()
+                        f27_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f27_arg0.CrowdImage:setZRot( 40 )
+                        f27_arg0.clipFinished( f27_arg0.CrowdImage )
+                        f27_arg0.CrowdTitle:completeAnimation()
+                        f27_arg0.CrowdTitle:setRGB( 1, 0.58, 0.58 )
+                        f27_arg0.CrowdTitle:setZRot( 0 )
+                        f27_arg0.clipFinished( f27_arg0.CrowdTitle )
+                  end,
+                  crowd_no_love = function ( f28_arg0, f28_arg1 )
+                        f28_arg0:__resetProperties()
+                        f28_arg0:setupElementClipCounter( 3 )
+                        local f28_local0 = function ( f29_arg0 )
+                              f28_arg0.CrowdImageGlow:beginAnimation( 1000 )
+                              f28_arg0.CrowdImageGlow:setAlpha( 0 )
+                              f28_arg0.CrowdImageGlow:setZRot( 0 )
+                              f28_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f28_arg0.clipInterrupted )
+                              f28_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f28_arg0.clipFinished )
+                        end
+                        
+                        f28_arg0.CrowdImageGlow:completeAnimation()
+                        f28_arg0.CrowdImageGlow:setRGB( 1, 0, 0 )
+                        f28_arg0.CrowdImageGlow:setAlpha( 0.4 )
+                        f28_arg0.CrowdImageGlow:setZRot( 40 )
+                        f28_local0( f28_arg0.CrowdImageGlow )
+                        local f28_local1 = function ( f30_arg0 )
+                              f28_arg0.CrowdImage:beginAnimation( 1000 )
+                              f28_arg0.CrowdImage:setZRot( 0 )
+                              f28_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f28_arg0.clipInterrupted )
+                              f28_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f28_arg0.clipFinished )
+                        end
+                        
+                        f28_arg0.CrowdImage:completeAnimation()
+                        f28_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f28_arg0.CrowdImage:setZRot( 40 )
+                        f28_local1( f28_arg0.CrowdImage )
+                        local f28_local2 = function ( f31_arg0 )
+                              f28_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f28_arg0.CrowdTitle:setRGB( 1, 1, 1 )
+                              f28_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f28_arg0.clipInterrupted )
+                              f28_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f28_arg0.clipFinished )
+                        end
+                        
+                        f28_arg0.CrowdTitle:completeAnimation()
+                        f28_arg0.CrowdTitle:setRGB( 1, 0.58, 0.58 )
+                        f28_arg0.CrowdTitle:setZRot( 0 )
+                        f28_local2( f28_arg0.CrowdTitle )
+                  end,
+                  crowd_loathes = function ( f32_arg0, f32_arg1 )
+                        f32_arg0:__resetProperties()
+                        f32_arg0:setupElementClipCounter( 3 )
+                        local f32_local0 = function ( f33_arg0 )
+                              f32_arg0.CrowdImageGlow:beginAnimation( 1000 )
+                              f32_arg0.CrowdImageGlow:setAlpha( 1 )
+                              f32_arg0.CrowdImageGlow:setZRot( 90 )
+                              f32_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f32_arg0.clipInterrupted )
+                              f32_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f32_arg0.clipFinished )
+                        end
+                        
+                        f32_arg0.CrowdImageGlow:completeAnimation()
+                        f32_arg0.CrowdImageGlow:setRGB( 1, 0, 0 )
+                        f32_arg0.CrowdImageGlow:setAlpha( 0.4 )
+                        f32_arg0.CrowdImageGlow:setZRot( 40 )
+                        f32_local0( f32_arg0.CrowdImageGlow )
+                        local f32_local1 = function ( f34_arg0 )
+                              f32_arg0.CrowdImage:beginAnimation( 1000 )
+                              f32_arg0.CrowdImage:setZRot( 90 )
+                              f32_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f32_arg0.clipInterrupted )
+                              f32_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f32_arg0.clipFinished )
+                        end
+                        
+                        f32_arg0.CrowdImage:completeAnimation()
+                        f32_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f32_arg0.CrowdImage:setZRot( 40 )
+                        f32_local1( f32_arg0.CrowdImage )
+                        local f32_local2 = function ( f35_arg0 )
+                              f32_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f32_arg0.CrowdTitle:setRGB( 0.88, 0.04, 0.04 )
+                              f32_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f32_arg0.clipInterrupted )
+                              f32_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f32_arg0.clipFinished )
+                        end
+                        
+                        f32_arg0.CrowdTitle:completeAnimation()
+                        f32_arg0.CrowdTitle:setRGB( 1, 0.58, 0.58 )
+                        f32_arg0.CrowdTitle:setZRot( 0 )
+                        f32_local2( f32_arg0.CrowdTitle )
+                  end
+            },
+            crowd_no_love = {
+                  DefaultClip = function ( f36_arg0, f36_arg1 )
+                        f36_arg0:__resetProperties()
+                        f36_arg0:setupElementClipCounter( 0 )
+                  end,
+                  crowd_warm_up = function ( f37_arg0, f37_arg1 )
+                        f37_arg0:__resetProperties()
+                        f37_arg0:setupElementClipCounter( 3 )
+                        local f37_local0 = function ( f38_arg0 )
+                              f37_arg0.CrowdImageGlow:beginAnimation( 1000 )
+                              f37_arg0.CrowdImageGlow:setAlpha( 0.33 )
+                              f37_arg0.CrowdImageGlow:setZRot( -33 )
+                              f37_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f37_arg0.clipInterrupted )
+                              f37_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f37_arg0.clipFinished )
+                        end
+                        
+                        f37_arg0.CrowdImageGlow:completeAnimation()
+                        f37_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f37_arg0.CrowdImageGlow:setAlpha( 0 )
+                        f37_arg0.CrowdImageGlow:setZRot( 0 )
+                        f37_local0( f37_arg0.CrowdImageGlow )
+                        local f37_local1 = function ( f39_arg0 )
+                              f37_arg0.CrowdImage:beginAnimation( 1000 )
+                              f37_arg0.CrowdImage:setZRot( -33 )
+                              f37_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f37_arg0.clipInterrupted )
+                              f37_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f37_arg0.clipFinished )
+                        end
+                        
+                        f37_arg0.CrowdImage:completeAnimation()
+                        f37_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f37_arg0.CrowdImage:setZRot( 0 )
+                        f37_local1( f37_arg0.CrowdImage )
+                        local f37_local2 = function ( f40_arg0 )
+                              f37_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f37_arg0.CrowdTitle:setRGB( 0.75, 0.91, 0.8 )
+                              f37_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f37_arg0.clipInterrupted )
+                              f37_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f37_arg0.clipFinished )
+                        end
+                        
+                        f37_arg0.CrowdTitle:completeAnimation()
+                        f37_arg0.CrowdTitle:setRGB( 1, 1, 1 )
+                        f37_local2( f37_arg0.CrowdTitle )
+                  end,
+                  crowd_hates = function ( f41_arg0, f41_arg1 )
+                        f41_arg0:__resetProperties()
+                        f41_arg0:setupElementClipCounter( 3 )
+                        local f41_local0 = function ( f42_arg0 )
+                              f41_arg0.CrowdImageGlow:beginAnimation( 1000 )
+                              f41_arg0.CrowdImageGlow:setAlpha( 0.4 )
+                              f41_arg0.CrowdImageGlow:setZRot( 40 )
+                              f41_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f41_arg0.clipInterrupted )
+                              f41_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f41_arg0.clipFinished )
+                        end
+                        
+                        f41_arg0.CrowdImageGlow:completeAnimation()
+                        f41_arg0.CrowdImageGlow:setRGB( 1, 0, 0 )
+                        f41_arg0.CrowdImageGlow:setAlpha( 0 )
+                        f41_arg0.CrowdImageGlow:setZRot( 0 )
+                        f41_local0( f41_arg0.CrowdImageGlow )
+                        local f41_local1 = function ( f43_arg0 )
+                              f41_arg0.CrowdImage:beginAnimation( 1000 )
+                              f41_arg0.CrowdImage:setZRot( 40 )
+                              f41_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f41_arg0.clipInterrupted )
+                              f41_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f41_arg0.clipFinished )
+                        end
+                        
+                        f41_arg0.CrowdImage:completeAnimation()
+                        f41_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f41_arg0.CrowdImage:setZRot( 0 )
+                        f41_local1( f41_arg0.CrowdImage )
+                        local f41_local2 = function ( f44_arg0 )
+                              f41_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f41_arg0.CrowdTitle:setRGB( 1, 0.58, 0.58 )
+                              f41_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f41_arg0.clipInterrupted )
+                              f41_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f41_arg0.clipFinished )
+                        end
+                        
+                        f41_arg0.CrowdTitle:completeAnimation()
+                        f41_arg0.CrowdTitle:setRGB( 1, 1, 1 )
+                        f41_arg0.CrowdTitle:setZRot( 0 )
+                        f41_local2( f41_arg0.CrowdTitle )
+                  end
+            },
+            crowd_warm_up = {
+                  DefaultClip = function ( f45_arg0, f45_arg1 )
+                        f45_arg0:__resetProperties()
+                        f45_arg0:setupElementClipCounter( 3 )
+                        f45_arg0.CrowdImageGlow:completeAnimation()
+                        f45_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f45_arg0.CrowdImageGlow:setAlpha( 0.33 )
+                        f45_arg0.CrowdImageGlow:setZRot( -33 )
+                        f45_arg0.clipFinished( f45_arg0.CrowdImageGlow )
+                        f45_arg0.CrowdImage:completeAnimation()
+                        f45_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f45_arg0.CrowdImage:setZRot( -33 )
+                        f45_arg0.clipFinished( f45_arg0.CrowdImage )
+                        f45_arg0.CrowdTitle:completeAnimation()
+                        f45_arg0.CrowdTitle:setRGB( 0.75, 0.91, 0.8 )
+                        f45_arg0.clipFinished( f45_arg0.CrowdTitle )
+                  end,
+                  crowd_no_love = function ( f46_arg0, f46_arg1 )
+                        f46_arg0:__resetProperties()
+                        f46_arg0:setupElementClipCounter( 2 )
+                        local f46_local0 = function ( f47_arg0 )
+                              f46_arg0.CrowdImage:beginAnimation( 1000 )
+                              f46_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                              f46_arg0.CrowdImage:setZRot( 0 )
+                              f46_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f46_arg0.clipInterrupted )
+                              f46_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f46_arg0.clipFinished )
+                        end
+                        
+                        f46_arg0.CrowdImage:completeAnimation()
+                        f46_arg0.CrowdImage:setRGB( 0.75, 0.91, 0.8 )
+                        f46_arg0.CrowdImage:setZRot( -33 )
+                        f46_local0( f46_arg0.CrowdImage )
+                        local f46_local1 = function ( f48_arg0 )
+                              f46_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f46_arg0.CrowdTitle:setRGB( 1, 1, 1 )
+                              f46_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f46_arg0.clipInterrupted )
+                              f46_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f46_arg0.clipFinished )
+                        end
+                        
+                        f46_arg0.CrowdTitle:completeAnimation()
+                        f46_arg0.CrowdTitle:setRGB( 0.75, 0.91, 0.8 )
+                        f46_local1( f46_arg0.CrowdTitle )
+                  end,
+                  crowd_likes = function ( f49_arg0, f49_arg1 )
+                        f49_arg0:__resetProperties()
+                        f49_arg0:setupElementClipCounter( 3 )
+                        local f49_local0 = function ( f50_arg0 )
+                              f49_arg0.CrowdImageGlow:beginAnimation( 1000 )
+                              f49_arg0.CrowdImageGlow:setAlpha( 0.66 )
+                              f49_arg0.CrowdImageGlow:setZRot( -66 )
+                              f49_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f49_arg0.clipInterrupted )
+                              f49_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f49_arg0.clipFinished )
+                        end
+                        
+                        f49_arg0.CrowdImageGlow:completeAnimation()
+                        f49_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f49_arg0.CrowdImageGlow:setAlpha( 0.33 )
+                        f49_arg0.CrowdImageGlow:setZRot( -33 )
+                        f49_local0( f49_arg0.CrowdImageGlow )
+                        local f49_local1 = function ( f51_arg0 )
+                              f49_arg0.CrowdImage:beginAnimation( 1000 )
+                              f49_arg0.CrowdImage:setZRot( -66 )
+                              f49_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f49_arg0.clipInterrupted )
+                              f49_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f49_arg0.clipFinished )
+                        end
+                        
+                        f49_arg0.CrowdImage:completeAnimation()
+                        f49_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f49_arg0.CrowdImage:setZRot( -33 )
+                        f49_local1( f49_arg0.CrowdImage )
+                        local f49_local2 = function ( f52_arg0 )
+                              f49_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f49_arg0.CrowdTitle:setRGB( 0.3, 0.87, 0.34 )
+                              f49_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f49_arg0.clipInterrupted )
+                              f49_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f49_arg0.clipFinished )
+                        end
+                        
+                        f49_arg0.CrowdTitle:completeAnimation()
+                        f49_arg0.CrowdTitle:setRGB( 0.75, 0.91, 0.8 )
+                        f49_local2( f49_arg0.CrowdTitle )
+                  end
+            },
+            crowd_likes = {
+                  DefaultClip = function ( f53_arg0, f53_arg1 )
+                        f53_arg0:__resetProperties()
+                        f53_arg0:setupElementClipCounter( 3 )
+                        f53_arg0.CrowdImageGlow:completeAnimation()
+                        f53_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f53_arg0.CrowdImageGlow:setAlpha( 0.66 )
+                        f53_arg0.CrowdImageGlow:setZRot( -66 )
+                        f53_arg0.clipFinished( f53_arg0.CrowdImageGlow )
+                        f53_arg0.CrowdImage:completeAnimation()
+                        f53_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f53_arg0.CrowdImage:setZRot( -66 )
+                        f53_arg0.clipFinished( f53_arg0.CrowdImage )
+                        f53_arg0.CrowdTitle:completeAnimation()
+                        f53_arg0.CrowdTitle:setRGB( 0.3, 0.87, 0.34 )
+                        f53_arg0.clipFinished( f53_arg0.CrowdTitle )
+                  end,
+                  crowd_warm_up = function ( f54_arg0, f54_arg1 )
+                        f54_arg0:__resetProperties()
+                        f54_arg0:setupElementClipCounter( 3 )
+                        local f54_local0 = function ( f55_arg0 )
+                              f54_arg0.CrowdImageGlow:beginAnimation( 1000 )
+                              f54_arg0.CrowdImageGlow:setAlpha( 0.33 )
+                              f54_arg0.CrowdImageGlow:setZRot( -33 )
+                              f54_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f54_arg0.clipInterrupted )
+                              f54_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f54_arg0.clipFinished )
+                        end
+                        
+                        f54_arg0.CrowdImageGlow:completeAnimation()
+                        f54_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f54_arg0.CrowdImageGlow:setAlpha( 0.66 )
+                        f54_arg0.CrowdImageGlow:setZRot( -66 )
+                        f54_local0( f54_arg0.CrowdImageGlow )
+                        local f54_local1 = function ( f56_arg0 )
+                              f54_arg0.CrowdImage:beginAnimation( 1000 )
+                              f54_arg0.CrowdImage:setZRot( -33 )
+                              f54_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f54_arg0.clipInterrupted )
+                              f54_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f54_arg0.clipFinished )
+                        end
+                        
+                        f54_arg0.CrowdImage:completeAnimation()
+                        f54_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f54_arg0.CrowdImage:setZRot( -66 )
+                        f54_local1( f54_arg0.CrowdImage )
+                        local f54_local2 = function ( f57_arg0 )
+                              f54_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f54_arg0.CrowdTitle:setRGB( 0.75, 0.91, 0.8 )
+                              f54_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f54_arg0.clipInterrupted )
+                              f54_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f54_arg0.clipFinished )
+                        end
+                        
+                        f54_arg0.CrowdTitle:completeAnimation()
+                        f54_arg0.CrowdTitle:setRGB( 0.3, 0.87, 0.34 )
+                        f54_local2( f54_arg0.CrowdTitle )
+                  end,
+                  crowd_loves = function ( f58_arg0, f58_arg1 )
+                        f58_arg0:__resetProperties()
+                        f58_arg0:setupElementClipCounter( 3 )
+                        local f58_local0 = function ( f59_arg0 )
+                              f58_arg0.CrowdImageGlow:beginAnimation( 990 )
+                              f58_arg0.CrowdImageGlow:setAlpha( 1 )
+                              f58_arg0.CrowdImageGlow:setZRot( -97 )
+                              f58_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f58_arg0.clipInterrupted )
+                              f58_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f58_arg0.clipFinished )
+                        end
+                        
+                        f58_arg0.CrowdImageGlow:completeAnimation()
+                        f58_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f58_arg0.CrowdImageGlow:setAlpha( 0.66 )
+                        f58_arg0.CrowdImageGlow:setZRot( -66 )
+                        f58_local0( f58_arg0.CrowdImageGlow )
+                        local f58_local1 = function ( f60_arg0 )
+                              f58_arg0.CrowdImage:beginAnimation( 1000 )
+                              f58_arg0.CrowdImage:setZRot( -97 )
+                              f58_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f58_arg0.clipInterrupted )
+                              f58_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f58_arg0.clipFinished )
+                        end
+                        
+                        f58_arg0.CrowdImage:completeAnimation()
+                        f58_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f58_arg0.CrowdImage:setZRot( -66 )
+                        f58_local1( f58_arg0.CrowdImage )
+                        local f58_local2 = function ( f61_arg0 )
+                              f58_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f58_arg0.CrowdTitle:setRGB( 0, 0.84, 0.06 )
+                              f58_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f58_arg0.clipInterrupted )
+                              f58_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f58_arg0.clipFinished )
+                        end
+                        
+                        f58_arg0.CrowdTitle:completeAnimation()
+                        f58_arg0.CrowdTitle:setRGB( 0.3, 0.87, 0.34 )
+                        f58_local2( f58_arg0.CrowdTitle )
+                  end
+            },
+            crowd_loves = {
+                  DefaultClip = function ( f62_arg0, f62_arg1 )
+                        f62_arg0:__resetProperties()
+                        f62_arg0:setupElementClipCounter( 6 )
+                        f62_arg0.Image00:completeAnimation()
+                        f62_arg0.Image00:setAlpha( 0.81 )
+                        f62_arg0.clipFinished( f62_arg0.Image00 )
+                        f62_arg0.ZmAmmoParticleFX3right:completeAnimation()
+                        f62_arg0.ZmAmmoParticleFX3right:setLeftRight( 0, 0, 59 - 40, 274 - 40 )
+                        f62_arg0.ZmAmmoParticleFX3right:setTopBottom( 1, 1, -283 + 110 - 150, -171 + 110 - 150 )
+                        f62_arg0.ZmAmmoParticleFX3right:setAlpha( 1 )
+                        f62_arg0.clipFinished( f62_arg0.ZmAmmoParticleFX3right )
+                        f62_arg0.ZmAmmoParticleFX2right:completeAnimation()
+                        f62_arg0.ZmAmmoParticleFX2right:setLeftRight( 0, 0, 66 - 40, 281 - 40 )
+                        f62_arg0.ZmAmmoParticleFX2right:setTopBottom( 1, 1, -266 + 110 - 150, -154 + 110 - 150 )
+                        f62_arg0.ZmAmmoParticleFX2right:setAlpha( 1 )
+                        f62_arg0.clipFinished( f62_arg0.ZmAmmoParticleFX2right )
+                        f62_arg0.CrowdImageGlow:completeAnimation()
+                        f62_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f62_arg0.CrowdImageGlow:setAlpha( 1 )
+                        f62_arg0.CrowdImageGlow:setZRot( -97 )
+                        f62_arg0.clipFinished( f62_arg0.CrowdImageGlow )
+                        f62_arg0.CrowdImage:completeAnimation()
+                        f62_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f62_arg0.CrowdImage:setZRot( -97 )
+                        f62_arg0.clipFinished( f62_arg0.CrowdImage )
+                        f62_arg0.CrowdTitle:completeAnimation()
+                        f62_arg0.CrowdTitle:setRGB( 0, 0.84, 0.06 )
+                        f62_arg0.clipFinished( f62_arg0.CrowdTitle )
+                  end,
+                  crowd_likes = function ( f63_arg0, f63_arg1 )
+                        f63_arg0:__resetProperties()
+                        f63_arg0:setupElementClipCounter( 3 )
+                        local f63_local0 = function ( f64_arg0 )
+                              f63_arg0.CrowdImageGlow:beginAnimation( 1000 )
+                              f63_arg0.CrowdImageGlow:setAlpha( 0.66 )
+                              f63_arg0.CrowdImageGlow:setZRot( -66 )
+                              f63_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f63_arg0.clipInterrupted )
+                              f63_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f63_arg0.clipFinished )
+                        end
+                        
+                        f63_arg0.CrowdImageGlow:completeAnimation()
+                        f63_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f63_arg0.CrowdImageGlow:setAlpha( 1 )
+                        f63_arg0.CrowdImageGlow:setZRot( -97 )
+                        f63_local0( f63_arg0.CrowdImageGlow )
+                        local f63_local1 = function ( f65_arg0 )
+                              f63_arg0.CrowdImage:beginAnimation( 1000 )
+                              f63_arg0.CrowdImage:setZRot( -66 )
+                              f63_arg0.CrowdImage:registerEventHandler( "interrupted_keyframe", f63_arg0.clipInterrupted )
+                              f63_arg0.CrowdImage:registerEventHandler( "transition_complete_keyframe", f63_arg0.clipFinished )
+                        end
+                        
+                        f63_arg0.CrowdImage:completeAnimation()
+                        f63_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f63_arg0.CrowdImage:setZRot( -97 )
+                        f63_local1( f63_arg0.CrowdImage )
+                        local f63_local2 = function ( f66_arg0 )
+                              f63_arg0.CrowdTitle:beginAnimation( 1000 )
+                              f63_arg0.CrowdTitle:setRGB( 0.3, 0.87, 0.34 )
+                              f63_arg0.CrowdTitle:registerEventHandler( "interrupted_keyframe", f63_arg0.clipInterrupted )
+                              f63_arg0.CrowdTitle:registerEventHandler( "transition_complete_keyframe", f63_arg0.clipFinished )
+                        end
+                        
+                        f63_arg0.CrowdTitle:completeAnimation()
+                        f63_arg0.CrowdTitle:setRGB( 0, 0.84, 0.06 )
+                        f63_local2( f63_arg0.CrowdTitle )
+                  end
+            },
+            crowd_power_up_available_good = {
+                  DefaultClip = function ( f67_arg0, f67_arg1 )
+                        f67_arg0:__resetProperties()
+                        f67_arg0:setupElementClipCounter( 4 )
+                        local f67_local0 = function ( f68_arg0 )
+                              local f68_local0 = function ( f69_arg0 )
+                                    local f69_local0 = function ( f70_arg0 )
+                                          local f70_local0 = function ( f71_arg0 )
+                                                f71_arg0:beginAnimation( 409 )
+                                                f71_arg0:setAlpha( 0 )
+                                                f71_arg0:setScale( 0.7, 0.7 )
+                                                f71_arg0:registerEventHandler( "transition_complete_keyframe", f67_arg0.clipFinished )
+                                          end
+                                          
+                                          f70_arg0:beginAnimation( 390 )
+                                          f70_arg0:setAlpha( 1 )
+                                          f70_arg0:setScale( 0.8, 0.8 )
+                                          f70_arg0:registerEventHandler( "transition_complete_keyframe", f70_local0 )
+                                    end
+                                    
+                                    f69_arg0:beginAnimation( 400 )
+                                    f69_arg0:setAlpha( 0 )
+                                    f69_arg0:setScale( 0.7, 0.7 )
+                                    f69_arg0:registerEventHandler( "transition_complete_keyframe", f69_local0 )
+                              end
+                              
+                              f67_arg0.CrowdImageGlow:beginAnimation( 400 )
+                              f67_arg0.CrowdImageGlow:setAlpha( 1 )
+                              f67_arg0.CrowdImageGlow:setScale( 0.8, 0.8 )
+                              f67_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f67_arg0.clipInterrupted )
+                              f67_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f68_local0 )
+                        end
+                        
+                        f67_arg0.CrowdImageGlow:completeAnimation()
+                        f67_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f67_arg0.CrowdImageGlow:setAlpha( 0 )
+                        f67_arg0.CrowdImageGlow:setZRot( -97 )
+                        f67_arg0.CrowdImageGlow:setScale( 0.7, 0.7 )
+                        f67_local0( f67_arg0.CrowdImageGlow )
+                        f67_arg0.CrowdImage:completeAnimation()
+                        f67_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f67_arg0.CrowdImage:setAlpha( 1 )
+                        f67_arg0.CrowdImage:setZRot( -97 )
+                        f67_arg0.clipFinished( f67_arg0.CrowdImage )
+                        f67_arg0.CrowdItem:completeAnimation()
+                        f67_arg0.CrowdItem:setRGB( 0, 0.55, 0.09 )
+                        f67_arg0.CrowdItem:setAlpha( 1 )
+                        f67_arg0.clipFinished( f67_arg0.CrowdItem )
+                        f67_arg0.CrowdTitle:completeAnimation()
+                        f67_arg0.CrowdTitle:setRGB( 0, 0.55, 0.09 )
+                        f67_arg0.CrowdTitle:setAlpha( 1 )
+                        f67_arg0.clipFinished( f67_arg0.CrowdTitle )
+                        f67_arg0.nextClip = "DefaultClip"
+                  end
+            },
+            crowd_power_up_available_bad = {
+                  DefaultClip = function ( f72_arg0, f72_arg1 )
+                        f72_arg0:__resetProperties()
+                        f72_arg0:setupElementClipCounter( 4 )
+                        local f72_local0 = function ( f73_arg0 )
+                              local f73_local0 = function ( f74_arg0 )
+                                    local f74_local0 = function ( f75_arg0 )
+                                          local f75_local0 = function ( f76_arg0 )
+                                                f76_arg0:beginAnimation( 410 )
+                                                f76_arg0:setAlpha( 0 )
+                                                f76_arg0:setScale( 0.7, 0.7 )
+                                                f76_arg0:registerEventHandler( "transition_complete_keyframe", f72_arg0.clipFinished )
+                                          end
+                                          
+                                          f75_arg0:beginAnimation( 389 )
+                                          f75_arg0:setAlpha( 1 )
+                                          f75_arg0:setScale( 0.8, 0.8 )
+                                          f75_arg0:registerEventHandler( "transition_complete_keyframe", f75_local0 )
+                                    end
+                                    
+                                    f74_arg0:beginAnimation( 400 )
+                                    f74_arg0:setAlpha( 0 )
+                                    f74_arg0:setScale( 0.7, 0.7 )
+                                    f74_arg0:registerEventHandler( "transition_complete_keyframe", f74_local0 )
+                              end
+                              
+                              f72_arg0.CrowdImageGlow:beginAnimation( 390 )
+                              f72_arg0.CrowdImageGlow:setAlpha( 1 )
+                              f72_arg0.CrowdImageGlow:setScale( 0.8, 0.8 )
+                              f72_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f72_arg0.clipInterrupted )
+                              f72_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f73_local0 )
+                        end
+                        
+                        f72_arg0.CrowdImageGlow:completeAnimation()
+                        f72_arg0.CrowdImageGlow:setRGB( 1, 0, 0 )
+                        f72_arg0.CrowdImageGlow:setAlpha( 0 )
+                        f72_arg0.CrowdImageGlow:setZRot( 90 )
+                        f72_arg0.CrowdImageGlow:setScale( 0.7, 0.7 )
+                        f72_local0( f72_arg0.CrowdImageGlow )
+                        f72_arg0.CrowdImage:completeAnimation()
+                        f72_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f72_arg0.CrowdImage:setAlpha( 1 )
+                        f72_arg0.CrowdImage:setZRot( 90 )
+                        f72_arg0.clipFinished( f72_arg0.CrowdImage )
+                        f72_arg0.CrowdItem:completeAnimation()
+                        f72_arg0.CrowdItem:setRGB( 0.78, 0, 0 )
+                        f72_arg0.CrowdItem:setAlpha( 1 )
+                        f72_arg0.clipFinished( f72_arg0.CrowdItem )
+                        f72_arg0.CrowdTitle:completeAnimation()
+                        f72_arg0.CrowdTitle:setRGB( 0.78, 0, 0 )
+                        f72_arg0.CrowdTitle:setAlpha( 1 )
+                        f72_arg0.clipFinished( f72_arg0.CrowdTitle )
+                        f72_arg0.nextClip = "DefaultClip"
+                  end
+            },
+            crowd_power_up_available_good_partial = {
+                  DefaultClip = function ( f77_arg0, f77_arg1 )
+                        f77_arg0:__resetProperties()
+                        f77_arg0:setupElementClipCounter( 4 )
+                        local f77_local0 = function ( f78_arg0 )
+                              local f78_local0 = function ( f79_arg0 )
+                                    local f79_local0 = function ( f80_arg0 )
+                                          local f80_local0 = function ( f81_arg0 )
+                                                f81_arg0:beginAnimation( 440 )
+                                                f81_arg0:setAlpha( 0 )
+                                                f81_arg0:setScale( 0.7, 0.7 )
+                                                f81_arg0:registerEventHandler( "transition_complete_keyframe", f77_arg0.clipFinished )
+                                          end
+                                          
+                                          f80_arg0:beginAnimation( 390 )
+                                          f80_arg0:setAlpha( 1 )
+                                          f80_arg0:setScale( 0.8, 0.8 )
+                                          f80_arg0:registerEventHandler( "transition_complete_keyframe", f80_local0 )
+                                    end
+                                    
+                                    f79_arg0:beginAnimation( 390 )
+                                    f79_arg0:setAlpha( 0 )
+                                    f79_arg0:setScale( 0.7, 0.7 )
+                                    f79_arg0:registerEventHandler( "transition_complete_keyframe", f79_local0 )
+                              end
+                              
+                              f77_arg0.CrowdImageGlow:beginAnimation( 370 )
+                              f77_arg0.CrowdImageGlow:setAlpha( 1 )
+                              f77_arg0.CrowdImageGlow:setScale( 0.8, 0.8 )
+                              f77_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f77_arg0.clipInterrupted )
+                              f77_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f78_local0 )
+                        end
+                        
+                        f77_arg0.CrowdImageGlow:completeAnimation()
+                        f77_arg0.CrowdImageGlow:setRGB( 0, 1, 0.17 )
+                        f77_arg0.CrowdImageGlow:setAlpha( 0 )
+                        f77_arg0.CrowdImageGlow:setZRot( -33 )
+                        f77_arg0.CrowdImageGlow:setScale( 0.7, 0.7 )
+                        f77_local0( f77_arg0.CrowdImageGlow )
+                        f77_arg0.CrowdImage:completeAnimation()
+                        f77_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f77_arg0.CrowdImage:setAlpha( 1 )
+                        f77_arg0.CrowdImage:setZRot( -33 )
+                        f77_arg0.clipFinished( f77_arg0.CrowdImage )
+                        f77_arg0.CrowdItem:completeAnimation()
+                        f77_arg0.CrowdItem:setRGB( 0, 0.58, 0.08 )
+                        f77_arg0.CrowdItem:setAlpha( 1 )
+                        f77_arg0.clipFinished( f77_arg0.CrowdItem )
+                        f77_arg0.CrowdTitle:completeAnimation()
+                        f77_arg0.CrowdTitle:setRGB( 0, 0.58, 0.08 )
+                        f77_arg0.CrowdTitle:setAlpha( 1 )
+                        f77_arg0.clipFinished( f77_arg0.CrowdTitle )
+                        f77_arg0.nextClip = "DefaultClip"
+                  end
+            },
+            crowd_power_up_available_bad_partial = {
+                  DefaultClip = function ( f82_arg0, f82_arg1 )
+                        f82_arg0:__resetProperties()
+                        f82_arg0:setupElementClipCounter( 4 )
+                        local f82_local0 = function ( f83_arg0 )
+                              local f83_local0 = function ( f84_arg0 )
+                                    local f84_local0 = function ( f85_arg0 )
+                                          local f85_local0 = function ( f86_arg0 )
+                                                f86_arg0:beginAnimation( 430 )
+                                                f86_arg0:setAlpha( 0 )
+                                                f86_arg0:setScale( 0.7, 0.7 )
+                                                f86_arg0:registerEventHandler( "transition_complete_keyframe", f82_arg0.clipFinished )
+                                          end
+                                          
+                                          f85_arg0:beginAnimation( 390 )
+                                          f85_arg0:setAlpha( 1 )
+                                          f85_arg0:setScale( 0.8, 0.8 )
+                                          f85_arg0:registerEventHandler( "transition_complete_keyframe", f85_local0 )
+                                    end
+                                    
+                                    f84_arg0:beginAnimation( 409 )
+                                    f84_arg0:setAlpha( 0 )
+                                    f84_arg0:setScale( 0.7, 0.7 )
+                                    f84_arg0:registerEventHandler( "transition_complete_keyframe", f84_local0 )
+                              end
+                              
+                              f82_arg0.CrowdImageGlow:beginAnimation( 370 )
+                              f82_arg0.CrowdImageGlow:setAlpha( 1 )
+                              f82_arg0.CrowdImageGlow:setScale( 0.8, 0.8 )
+                              f82_arg0.CrowdImageGlow:registerEventHandler( "interrupted_keyframe", f82_arg0.clipInterrupted )
+                              f82_arg0.CrowdImageGlow:registerEventHandler( "transition_complete_keyframe", f83_local0 )
+                        end
+                        
+                        f82_arg0.CrowdImageGlow:completeAnimation()
+                        f82_arg0.CrowdImageGlow:setRGB( 1, 0, 0 )
+                        f82_arg0.CrowdImageGlow:setAlpha( 0 )
+                        f82_arg0.CrowdImageGlow:setZRot( 40 )
+                        f82_arg0.CrowdImageGlow:setScale( 0.7, 0.7 )
+                        f82_local0( f82_arg0.CrowdImageGlow )
+                        f82_arg0.CrowdImage:completeAnimation()
+                        f82_arg0.CrowdImage:setRGB( 1, 1, 1 )
+                        f82_arg0.CrowdImage:setAlpha( 1 )
+                        f82_arg0.CrowdImage:setZRot( 40 )
+                        f82_arg0.clipFinished( f82_arg0.CrowdImage )
+                        f82_arg0.CrowdItem:completeAnimation()
+                        f82_arg0.CrowdItem:setRGB( 0.78, 0, 0 )
+                        f82_arg0.CrowdItem:setAlpha( 1 )
+                        f82_arg0.clipFinished( f82_arg0.CrowdItem )
+                        f82_arg0.CrowdTitle:completeAnimation()
+                        f82_arg0.CrowdTitle:setRGB( 0.78, 0, 0 )
+                        f82_arg0.CrowdTitle:setAlpha( 1 )
+                        f82_arg0.clipFinished( f82_arg0.CrowdTitle )
+                        f82_arg0.nextClip = "DefaultClip"
+                  end
+            }
+      }
+
+      CoD.zm_towers_crowd_meter.__onClose = function ( f87_arg0 )
+            f87_arg0.smokewidget:close()
+            f87_arg0.smokewidget2:close()
+            f87_arg0.ZmAmmoParticleFX3right:close()
+            f87_arg0.ZmAmmoParticleFX2right:close()
+      end
+end

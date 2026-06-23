@@ -1,0 +1,75 @@
+// command: .\acts.exe fastfilelinker ShieldConfig\project-bo4\fastfile\enh_ff\enh_ff.zone -o 'C:\Program Files (x86)\Call of Duty Black Ops 4\project-bo4'
+// example and test file for the fastfile linker
+
+// fastfile options
+>game=bo4              // the game to use
+>name=enh        // fastfile name
+>compression=zlib      // compression type, by default no compression is used
+>compression.high=true // use high compression
+
+// images, the file will be searched in the images directory. the file extension will be removed
+image,loading_enh.png
+image,jugg_classic.png
+image,speed_classic.png
+image,double_classic.png
+image,vult_classic.png
+image,who_classic.png
+image,cranked_image.png
+image,enh_death.png
+image,cranked_image_draw.png
+image,revive_whos.png
+image,crafting_vulture.png
+image,cranked_image_draw_clock.png
+image,glow_classic.png
+image,double_classic_one.png
+image,score_bg.png
+image,boss_lock_b.png
+image,ping_icon.png
+image,tomb_classic.png
+image,elem_classic.png
+image,vulture_box.png
+image,vulture_pap.png
+image,vulture_weap.png
+image,vulture_perk.png
+image,variator_1hp.png
+image,variator_bleeding.png
+image,variator_damagerestartsspec.png
+image,variator_enragedzmbs.png
+image,variator_expensive.png
+image,variator_extended_elixirs.png
+image,variator_hard.png
+image,variator_limitedspec.png
+image,variator_no_elixirs.png
+image,variator_noclass.png
+image,variator_nonames.png
+image,variator_noselfres.png
+image,variator_nospecupgrades.png
+image,variator_rampagerounds.png
+image,variator_realistic.png
+image,variator_spec_extendedcooldown.png
+image,variator_stay_together.png
+image,variator_strongerzmbs.png
+image,variator_extrazmbs.png
+image,variator_nospec.png
+image,base_variator.png
+image,enh_blood_ammo.png
+image,enh_blood_ammo_small.png
+image,enh_ammo_alt.png
+image,boss_lock.png
+image,boss_lock_p.png
+image,rampage_inducer.png
+image,rampage_inducer_round.png
+image,directed_icon.png
+image,directed_image.png
+image,eye_prot.png
+
+// fonts
+ttf,fonts/shield_mom.otf
+ttf,fonts/shield_titan.ttf
+ttf,fonts/shield_damage2.otf
+ttf,fonts/shield_damage.ttf
+
+// objectives
+objective,scriptbundle/objective_zm_enh.json
+objective,scriptbundle/objective_zm_enh_healthbar.json
+objective,scriptbundle/objective_zm_enh_healthbar_y.json
