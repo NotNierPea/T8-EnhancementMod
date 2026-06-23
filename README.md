@@ -3,7 +3,7 @@
 
 # Installation
 - ### [Download](https://github.com/NotNierPea/shield-MM-mods/releases/download/release/EnhancementModT8.zip)
-- ### Client Needed to Run This Mod: [Shield Client Launcher](https://github.com/bodnjenie14/Project_-bo4_Launcher)
+- ### Client Needed to Run This Mod: [Shield Client Launcher](https://github.com/NotNierPea/shield-launcher)
 - ### To Load The Mod, Use Shield Client and Put The Mod in ``Call of Duty Black Ops 4\project-bo4`` (Extract The Mod First) or You can use the Mod Manager in the Client!
   #### (If its your first time installing the mod, you need to restart the game, otherwise click reload shield mods button in shield options)
 - ### You can customize almost everything in the Enhancement Mod Settings menu.
