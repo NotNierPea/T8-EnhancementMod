@@ -181,7 +181,7 @@ GetPerkModel(perk_type)
     if (perk_type == "jugg")
     {
         donor_idx = GetDvarInt("perk_donor_jugg", 0);
-        if (donor_idx == 1) return #"mp_donor_candidate_1"; // TODO: replace with dumped MP donor
+        if (donor_idx == 1) return #"p8_mp_bomb_crate_single"; // MP firing-range donor (extrazone)
         return #"p7_zm_vending_widows_wine";
     }
     // donor xmodels the client mesh-swaps for classic/chaos machines
