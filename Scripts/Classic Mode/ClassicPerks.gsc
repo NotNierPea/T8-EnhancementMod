@@ -176,6 +176,14 @@ GetPerkDataForMap()
 
 GetPerkModel(perk_type)
 {
+    // MP-donor prototype: perk_donor_jugg selects the jugg donor without recompiling.
+    // 0 = current (p7_zm_vending_widows_wine), 1+ = extra-zone MP candidates (fill in after the MP XModel dump).
+    if (perk_type == "jugg")
+    {
+        donor_idx = GetDvarInt("perk_donor_jugg", 0);
+        if (donor_idx == 1) return #"mp_donor_candidate_1"; // TODO: replace with dumped MP donor
+        return #"p7_zm_vending_widows_wine";
+    }
     // donor xmodels the client mesh-swaps for classic/chaos machines
     switch(perk_type)
     {
@@ -339,6 +347,10 @@ SpawnCustomPerk(perk_type, position, angles, model)
         return;
     }
     
+    // Extra-zone donors arrive after level init: make the already-loaded xmodel spawnable first.
+    if (!ShieldPrecacheModel(model))
+        ShieldLog("^1WARNING: ShieldPrecacheModel failed for perk type: " + perk_type);
+
     perk_machine = util::spawn_model(model, position, angles);
     perk_machine.classic_perk = perk_type;
 
