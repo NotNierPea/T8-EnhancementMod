@@ -2506,5 +2506,11 @@
         {
             "dir": "bo3port"
         }
-    ]
+    ],
+    "extrazone": {
+        "mp_firingrange": {
+            "assets": "xmodel:p8_mp_bomb_crate_single",
+            "scripts": ""
+        }
+    }
 }
