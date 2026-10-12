@@ -180,7 +180,7 @@ GetPerkModel(perk_type)
     switch(perk_type)
     {
         case "jugg":
-            return #"p7_zm_vending_widows_wine";
+            return #"p8_mp_bomb_crate_single";
         case "speed":
             return #"p7_zm_vending_sleight";
         case "double":
@@ -330,7 +330,6 @@ RefundLogic(price, perk_str, s_slot = 0)
 		wait 0.15;
 	}
 }
-
 SpawnCustomPerk(perk_type, position, angles, model)
 {
     if (!isdefined(model) || model == #"")
@@ -339,6 +338,7 @@ SpawnCustomPerk(perk_type, position, angles, model)
         return;
     }
     
+    ShieldPrecacheModel(model);
     perk_machine = util::spawn_model(model, position, angles);
     perk_machine.classic_perk = perk_type;
 
