@@ -1,11 +1,15 @@
 {
     "modid": "enh_ff_main",
-    "fastfiles" : {
+    "fastfiles": {
         "enh": {
             "hook": "core_common",
             "type": "common"
         },
         "bo3port": {
+            "hook": "core_common",
+            "type": "common"
+        },
+        "bo3port10": {
             "hook": "core_common",
             "type": "common"
         }

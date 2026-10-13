@@ -106,7 +106,6 @@
                 "x64:4ed0bcba9d999e0f"
             ]
         },
-        
         {
             "type": "luafile",
             "name": "ui/enh/game/Utils",
@@ -443,7 +442,6 @@
                 "x64:27cac000f20ef647"
             ]
         },
-
         {
             "type": "scriptparsetree",
             "name": "scripts/zm_common/Enhancement.gsc",
@@ -2506,5 +2504,12 @@
         {
             "dir": "bo3port"
         }
-    ]
+    ],
+    "extrazone": {
+        "mp_common": {
+            "assets": "xmodel:p8_care_package_03_a xmodel:p8_care_package_01_a xmodel:p8_care_package_02_a xmodel:p8_mphd_cargo_pallet_full_snow_02 xmodel:p8_mp_bomb_crate_open xmodel:p7_mou_barrel_metal_02_dmg_snow",
+            "scripts": ""
+        }
+    },
+    "autoloadImages": true
 }

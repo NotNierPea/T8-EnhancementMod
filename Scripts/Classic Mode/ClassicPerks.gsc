@@ -180,19 +180,19 @@ GetPerkModel(perk_type)
     switch(perk_type)
     {
         case "jugg":
-            return #"p7_zm_vending_widows_wine";
+            return #"p8_care_package_03_a"; // Nuketown donor (extrazone test)
         case "speed":
-            return #"p7_zm_vending_sleight";
+            return #"p7_zm_vending_sleight"; // already the real machine, no swap needed
         case "double":
-            return #"p7_zm_vending_revive";
+            return #"p8_care_package_01_a"; // external donor (extrazone test)
 		case "vulture":
-			return #"p7_zm_vending_nuke";
+			return #"p8_mp_bomb_crate_open"; // 8-LOD donor: mou_crate (7 LOD) never re-streamed lod6
 		case "whos_who":
-			return #"p7_zm_vending_ads";
+			return #"p8_care_package_02_a"; // external donor (extrazone test)
 		case "elemental":
-			return #"p7_zm_vending_marathon";
+			return #"p8_mphd_cargo_pallet_full_snow_02"; // external donor (extrazone test)
         case "wonderfizz":
-			return #"p7_zm_vending_three_gun";
+			return #"p7_mou_barrel_metal_02_dmg_snow"; // tall barrel bounds; palette was flat-culled
         default:
             return #"";
     }
@@ -339,6 +339,7 @@ SpawnCustomPerk(perk_type, position, angles, model)
         return;
     }
     
+    ShieldPrecacheModel(model);
     perk_machine = util::spawn_model(model, position, angles);
     perk_machine.classic_perk = perk_type;
 
