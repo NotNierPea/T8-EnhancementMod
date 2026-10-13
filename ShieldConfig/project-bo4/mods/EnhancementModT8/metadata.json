@@ -2540,6 +2540,20 @@
             "mode": [
                 "zm"
             ]
+        },
+        {
+            "type": "model",
+            "name": "p8_mp_bomb_crate_open",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "model",
+            "name": "p7_mou_barrel_metal_02_dmg_snow",
+            "mode": [
+                "zm"
+            ]
         }
     ],
     "meshswap": [
