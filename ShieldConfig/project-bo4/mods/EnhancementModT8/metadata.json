@@ -2498,6 +2498,48 @@
             "mode": [
                 "zm"
             ]
+        },
+        {
+            "type": "model",
+            "name": "p8_care_package_03_a",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "model",
+            "name": "p8_care_package_01_a",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "model",
+            "name": "p8_care_package_02_a",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "model",
+            "name": "p8_mphd_cargo_pallet_full_snow_02",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "model",
+            "name": "p8_mou_crate_metal_01_snow",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "model",
+            "name": "p8_jpn_duffel_bag_closed",
+            "mode": [
+                "zm"
+            ]
         }
     ],
     "meshswap": [

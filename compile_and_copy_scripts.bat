@@ -34,6 +34,7 @@ if not exist "%GAME%\zone" mkdir "%GAME%\zone"
 if not exist "%GAME%\zone_mods\EnhancementModT8_FF" mkdir "%GAME%\zone_mods\EnhancementModT8_FF"
 copy /Y "ShieldConfig\project-bo4\mods\EnhancementModT8\bo3port\*" "%GAME%\mods\EnhancementModT8\bo3port\" >nul
 copy /Y "ShieldConfig\project-bo4\zone\bo3port.ff" "%GAME%\zone\bo3port.ff" >nul
+copy /Y "ShieldConfig\project-bo4\zone\bo3port10.ff" "%GAME%\zone\bo3port10.ff" >nul
 copy /Y "ShieldConfig\project-bo4\fastfile\EnhancementModT8_FF\config.json" "%GAME%\zone_mods\EnhancementModT8_FF\config.json" >nul
 
 REM Delete intermediate files

@@ -192,7 +192,7 @@ GetPerkModel(perk_type)
 		case "elemental":
 			return #"p8_mphd_cargo_pallet_full_snow_02"; // external donor (extrazone test)
         case "wonderfizz":
-			return #"p7_mou_barrel_metal_02_dmg_snow"; // tall barrel bounds; palette was flat-culled
+			return #"p7_mou_barrel_metal_02_dmg_snow"; // full-detail external donor
         default:
             return #"";
     }
@@ -342,6 +342,7 @@ SpawnCustomPerk(perk_type, position, angles, model)
     ShieldPrecacheModel(model);
     perk_machine = util::spawn_model(model, position, angles);
     perk_machine.classic_perk = perk_type;
+    perk_machine.script_noteworthy = "shieldperk_" + perk_type; // client widens cull bounds for our donors
 
     switch(perk_type)
     {
