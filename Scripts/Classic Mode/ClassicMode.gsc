@@ -28,6 +28,7 @@ ClassicMode_Setup()
 	thread ClassicMode_PerksSystem_WeaponsSystem();
 	thread ClassicMode_CustomPerks();
 	thread Vulture_AddObjectives();
+	thread MachinePowerWatcher();
 	// 0 is normal Pack-a-Punch. 1 is Black Ops 1: one damage pack and no ammo type.
 	// 2 is Black Ops 3: one damage pack, and later packs only roll an ammo type.
 	pap_mode = GetDvarInt(#"shield_enh_ClassicMode_ClassicPaP", 0);
@@ -42,6 +43,34 @@ ClassicMode_Setup()
 	callback::on_ai_killed(&Bo3TurnedKilled);
 
 	//thread PrintTesting();
+}
+
+// Machine lamp on/off for meshswap _on manifests: mirrors map power so the
+// plugin can swap lamp materials (bo3port_machine_on 1 = lit). IsPaPOrPowerOn
+// is sanitized centrally (never returns teardown garbage), so a plain if here
+// cannot hit the "cannot cast to bool" crash. Sync fans the state out to every
+// client via clientfield (raw setdvar alone is host-only in coop).
+MachinePowerWatcher()
+{
+    level endon(#"end_game");
+    last = -1;
+    while (true)
+    {
+        on = 0;
+        if (IsPaPOrPowerOn())
+            on = 1;
+        if (on != last)
+        {
+            SyncBo3PortMachineOn(on);
+            ShieldLog("^5Machine lamps " + (on ? "on" : "off"));
+            last = on;
+            // Power came back: catch up any machine that spawned while it
+            // was off (guarded, powered machines never double up).
+            if (on)
+                ClassicPerkPowerReplay();
+        }
+        wait 2;
+    }
 }
 
 // classic PaP keeps the first pack boost and still rolls a new AAT

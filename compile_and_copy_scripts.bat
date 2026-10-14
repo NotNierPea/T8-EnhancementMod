@@ -36,6 +36,7 @@ copy /Y "ShieldConfig\project-bo4\mods\EnhancementModT8\bo3port\*" "%GAME%\mods\
 copy /Y "ShieldConfig\project-bo4\zone\bo3port.ff" "%GAME%\zone\bo3port.ff" >nul
 copy /Y "ShieldConfig\project-bo4\zone\bo3port10.ff" "%GAME%\zone\bo3port10.ff" >nul
 copy /Y "ShieldConfig\project-bo4\fastfile\EnhancementModT8_FF\config.json" "%GAME%\zone_mods\EnhancementModT8_FF\config.json" >nul
+copy /Y "ShieldConfig\project-bo4\mods\EnhancementModT8\metadata.json" "%GAME%\mods\EnhancementModT8\metadata.json" >nul
 
 REM Delete intermediate files
 del /Q "compiledclient.omap" 2>nul

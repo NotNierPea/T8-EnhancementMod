@@ -167,6 +167,7 @@ Init()
     // bo3port_drink needs 3 bits for labels 0-6; the rest are 0/1 or counters
     clientfield::register("toplayer", "bo3port_power", 1, 1, "int", &Bo3PortPower, 0, 0);
     clientfield::register("toplayer", "bo3port_drink", 1, 3, "int", &Bo3PortDrink, 0, 0);
+    clientfield::register("toplayer", "bo3port_machine_on", 1, 1, "int", &Bo3PortMachineOn, 0, 0);
     clientfield::register("actor", "bo3_aat_furnace_blast", 1, 1, "counter", &Bo3FurnaceBlast, 0, 0);
     clientfield::register("actor", "bo3_aat_furnace_burn", 1, 1, "int", &Bo3FurnaceBurnFx, 0, 0);
     clientfield::register("actor", "bo3_aat_thunder", 1, 1, "counter", &Bo3ThunderFx, 0, 0);
@@ -188,6 +189,11 @@ Bo3PortPower(localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, b
 Bo3PortDrink(localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, bwastimejump)
 {
     SetDvar(#"bo3port_drink", newval);
+}
+
+Bo3PortMachineOn(localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, bwastimejump)
+{
+    SetDvar(#"bo3port_machine_on", newval);
 }
 
 PostInit() 

@@ -168,6 +168,7 @@ autoexec InitSystem()
     // bo3port_drink needs 3 bits for labels 0-6; the rest are 0/1 or counters
     clientfield::register("toplayer", "bo3port_power", 1, 1, "int");
     clientfield::register("toplayer", "bo3port_drink", 1, 3, "int");
+    clientfield::register("toplayer", "bo3port_machine_on", 1, 1, "int");
     clientfield::register("actor", "bo3_aat_furnace_blast", 1, 1, "counter");
     clientfield::register("actor", "bo3_aat_furnace_burn", 1, 1, "int");
     clientfield::register("actor", "bo3_aat_thunder", 1, 1, "counter");

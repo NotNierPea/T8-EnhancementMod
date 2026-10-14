@@ -192,10 +192,26 @@ GetPerkModel(perk_type)
 		case "elemental":
 			return #"p8_mphd_cargo_pallet_full_snow_02"; // external donor (extrazone test)
         case "wonderfizz":
-			return #"p7_mou_h_beams_stack_snow"; // full-detail BO3 Origins donor (no decimation)
+			return #"p7_mp_suitcase_bomb"; // in-map, no-borrow fit (duffel borrowed staging never reached the GPU)
         default:
             return #"";
     }
+}
+
+ShieldWaitForDonor(model)
+{
+    // True once the spawn below would carry swapped geometry: models with no
+    // pack never wait, donors wait (yielding) up to 90s for extrazone streams.
+    waited = 0;
+    while (!ShieldMeshswapActive(model) && waited < 90000)
+    {
+        wait 0.5;
+        waited += 500;
+    }
+    ready = ShieldMeshswapActive(model);
+    if (!ready)
+        ShieldLog("^1Donor meshswap not active after 90s, spawning anyway");
+    return ready;
 }
 
 RemoveMainPerk(n_slot, perk)
@@ -344,7 +360,10 @@ SpawnCustomPerk(perk_type, position, angles, model)
         ShieldLog("^1ERROR: Invalid model for perk type: " + perk_type);
         return;
     }
-    
+
+    // Meshswap donors can stream in late (extra zones): yield here until the
+    // swap is live so the machine never spawns with donor geometry stuck on it.
+    ShieldWaitForDonor(model);
     ShieldPrecacheModel(model);
     perk_machine = util::spawn_model(model, position, angles);
     perk_machine.classic_perk = perk_type;
@@ -425,6 +444,11 @@ SpawnCustomPerk(perk_type, position, angles, model)
 
 	// for vulture..
 	level.CustomClassicPerks[level.CustomClassicPerks.size] = perk_machine;
+
+    // Late spawns while the power is already on miss the one-time power
+    // visuals: start this machine's stock light FX immediately.
+    if (IsPaPOrPowerOn())
+        StartClassicPerkVisuals(perk_machine);
 }
 
 CreateCollisionForPerk(position, angles)

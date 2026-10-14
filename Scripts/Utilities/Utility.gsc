@@ -911,12 +911,30 @@ SyncBo3PortDrink(value)
         player clientfield::set_to_player("bo3port_drink", value);
 }
 
+// Machine lamp state for the meshswap _on manifests. Mirrors SyncBo3PortPower:
+// dvar for the local plugin plus a per-player clientfield so every client
+// (not just host) mirrors it into their own dvar via the CSC callback.
+SyncBo3PortMachineOn(value)
+{
+    level.bo3port_machine_on = value;
+    SetDvar(#"bo3port_machine_on", value);
+    // MachinePowerWatcher runs during preinit before players exist:
+    // level.players is not an array yet and foreach would throw.
+    if (isdefined(level.players) && isarray(level.players))
+    {
+        foreach (player in level.players)
+            player clientfield::set_to_player("bo3port_machine_on", value);
+    }
+}
+
 ApplyBo3PortFields()
 {
     if (isdefined(level.bo3port_power))
         self clientfield::set_to_player("bo3port_power", level.bo3port_power);
     if (isdefined(level.bo3port_drink))
         self clientfield::set_to_player("bo3port_drink", level.bo3port_drink);
+    if (isdefined(level.bo3port_machine_on))
+        self clientfield::set_to_player("bo3port_machine_on", level.bo3port_machine_on);
 }
 
 PlayClassicPerkAnim(str_perk)
@@ -1005,19 +1023,37 @@ ClassicPerkPowerVisuals()
         return;
 
     foreach (machine in level.CustomClassicPerks)
-    {
-        if (!isdefined(machine))
-            continue;
+        StartClassicPerkVisuals(machine);
+}
 
-        if (machine.classic_perk === "wonderfizz")
-            StartWonderfizzElectricity(machine);
+StartClassicPerkVisuals(machine)
+{
+    // One machine's stock-style power visuals (same zombie/fx_perk_*_zmb
+    // light FX the base machines play on tag_origin). perk_fx guards against
+    // double-plays; the one-shot FX persists until the machine dies.
+    if (!isdefined(machine))
+        return;
 
-        if (isdefined(machine.perk_fx) && machine.perk_fx)
-            continue;
+    if (machine.classic_perk === "wonderfizz")
+        StartWonderfizzElectricity(machine);
 
-        playfxontag(ClassicPerkSteamFx(machine.classic_perk), machine, "tag_origin");
-        machine.perk_fx = 1;
-    }
+    if (isdefined(machine.perk_fx) && machine.perk_fx)
+        return;
+
+    playfxontag(ClassicPerkSteamFx(machine.classic_perk), machine, "tag_origin");
+    machine.perk_fx = 1;
+}
+
+ClassicPerkPowerReplay()
+{
+    // Power came back (or a machine spawned while it was off): start visuals
+    // only on machines that missed them. Never resets perk_fx, so powered
+    // machines never double up their FX.
+    if (!isdefined(level.CustomClassicPerks))
+        return;
+
+    foreach (machine in level.CustomClassicPerks)
+        StartClassicPerkVisuals(machine);
 }
 
 StartWonderfizzElectricity(machine)
@@ -1054,21 +1090,29 @@ WonderfizzElectricLoop()
 
 IsPaPOrPowerOn()
 {
+    // flag::get can return non-bool garbage (e.g. stale int 179749049)
+    // during teardown, and any bool-cast of that crashes the VM
+    // ("cannot cast to bool"). Sanitize centrally so every caller gets a
+    // clean bool: `v == 1` is a pure int compare (no bool cast), and a
+    // bool true/false against literal 1 converts safely either direction.
     switch(BO4GetMap())
     {
         case "IX":
-            return level flag::get(#"zm_towers_pap_quest_completed");
+            v = level flag::get(#"zm_towers_pap_quest_completed");
+            return (isdefined(v) && v == 1);
 
         case "Blood":
         case "AO":
         case "Dead":
         case "Tag":
-            return level flag::get(#"power_on1");
+            v = level flag::get(#"power_on1");
+            return (isdefined(v) && v == 1);
 
         case "AE":
         case "Classified":
         case "Voyage":
-            return level flag::get(#"power_on");
+            v = level flag::get(#"power_on");
+            return (isdefined(v) && v == 1);
     }
 
     return false;
