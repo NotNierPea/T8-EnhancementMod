@@ -271,6 +271,12 @@ RefundLogic(price, perk_str, s_slot = 0)
 
     while (true)
 	{
+        if (!GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+        {
+            wait 0.5;
+            continue;
+        }
+
         if (!isdefined(self) || !isdefined(self.origin))
             return;
         
@@ -1139,7 +1145,10 @@ CheckStringElemental(e_player)
 {
 	if (isDefined(e_player.HasElemental) && e_player.HasElemental)
 	{
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 2500);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 	
@@ -1175,6 +1184,14 @@ WaitTriggerElemental()
 
         if (e_player.perk_limit_classic >= 5)
         {
+            continue;
+        }
+
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && isDefined(e_player.HasElemental) && e_player.HasElemental)
+        {
+            e_player zm_score::add_to_player_score(2500);
+            e_player RemoveClassicPerk("HasElemental");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("HasElemental"));
             continue;
         }
 
@@ -1218,7 +1235,16 @@ WaitTriggerElemental()
 
 CheckStringWhosWho(e_player) 
 {
-	if (e_player hasperk(#"specialty_whoswho") || (isDefined(e_player.InWhosWhoLogic) && e_player.InWhosWhoLogic))
+	if (e_player hasperk(#"specialty_whoswho"))
+	{
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 2000);
+        else
+            self sethintstringforplayer(e_player, "");
+        return true;
+    }
+
+	if (isDefined(e_player.InWhosWhoLogic) && e_player.InWhosWhoLogic)
 	{
         self sethintstringforplayer(e_player, "");
         return true;
@@ -1256,6 +1282,14 @@ WaitTriggerWhosWho()
 
         if (e_player.perk_limit_classic >= 5)
         {
+            continue;
+        }
+
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && e_player hasperk(#"specialty_whoswho"))
+        {
+            e_player zm_score::add_to_player_score(2000);
+            e_player RemoveClassicPerk("specialty_whoswho");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("specialty_whoswho"));
             continue;
         }
 
@@ -1608,7 +1642,10 @@ CheckStringDoubleTab(e_player)
 {
 	if (e_player hasperk(#"specialty_doubletap2") || e_player hasperk(#"specialty_rof"))
 	{
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 2000);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 
@@ -1644,6 +1681,15 @@ WaitTriggerDoubleTab()
 
         if (e_player.perk_limit_classic >= 5)
         {
+            continue;
+        }
+
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && (e_player hasperk(#"specialty_doubletap2") || e_player hasperk(#"specialty_rof")))
+        {
+            double_str = GetDvarInt("shield_enh_ClassicMode_DoubleTab2", 0) ? "specialty_doubletap2" : "specialty_rof";
+            e_player zm_score::add_to_player_score(2000);
+            e_player RemoveClassicPerk(double_str);
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate(double_str));
             continue;
         }
 
@@ -1716,7 +1762,10 @@ CheckStringVulture(e_player)
 {
 	if (e_player hasperk(#"specialty_vultureaid"))
     {
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 3000);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 
@@ -1752,6 +1801,14 @@ WaitTriggerVulture()
 
         if (e_player.perk_limit_classic >= 5)
         {
+            continue;
+        }
+
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && e_player hasperk(#"specialty_vultureaid"))
+        {
+            e_player zm_score::add_to_player_score(3000);
+            e_player RemoveClassicPerk("specialty_vultureaid");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("specialty_vultureaid"));
             continue;
         }
 
@@ -1821,7 +1878,10 @@ CheckStringSpeedCola(e_player)
 {
 	if (e_player hasperk(#"specialty_fastreload"))
     {
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 3000);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 
@@ -1857,6 +1917,14 @@ WaitTriggerSpeedCola()
 
         if (e_player.perk_limit_classic >= 5)
         {
+            continue;
+        }
+
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && e_player hasperk(#"specialty_fastreload"))
+        {
+            e_player zm_score::add_to_player_score(3000);
+            e_player RemoveClassicPerk("specialty_fastreload");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("specialty_fastreload"));
             continue;
         }
 
@@ -1914,7 +1982,10 @@ CheckStringJugg(e_player)
 {
 	if (isDefined(e_player.HasJugg) && e_player.HasJugg)
     {
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 2500);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 
@@ -1949,6 +2020,14 @@ WaitTriggerJugg()
 
         if (e_player.perk_limit_classic >= 5)
         {
+            continue;
+        }
+
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && isDefined(e_player.HasJugg) && e_player.HasJugg)
+        {
+            e_player zm_score::add_to_player_score(2500);
+            e_player RemoveClassicPerk("HasJugg");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("HasJugg"));
             continue;
         }
 

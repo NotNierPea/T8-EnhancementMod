@@ -1218,6 +1218,11 @@
         },
         {
             "type": "localizeentry",
+            "name": "shield/perk_return",
+            "value": "Press [{+activate}] to Return Perk [+&&1]"
+        },
+        {
+            "type": "localizeentry",
             "name": "shield/vulture_buy",
             "value": "Press [{+activate}] to Buy Vulture Aid [Cost: &&1]"
         },
@@ -1565,6 +1570,16 @@
             "type": "localizeentry",
             "name": "shield/double_tab_toggle_desc",
             "value": "Changes Double Tap perk to be 2.0 instead of 1.0. (faster fire rate and double damage)"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_return_perks",
+            "value": "Return Perks"
+        },
+        {
+            "type": "localizeentry",
+            "name": "shield/classic_return_perks_desc",
+            "value": "Like IW, interact with a perk machine to return the perk and get your money back"
         },
         {
             "type": "localizeentry",
@@ -2404,6 +2419,13 @@
         {
             "type": "string",
             "name": "shield/refund_get",
+            "mode": [
+                "zm"
+            ]
+        },
+        {
+            "type": "string",
+            "name": "shield/perk_return",
             "mode": [
                 "zm"
             ]

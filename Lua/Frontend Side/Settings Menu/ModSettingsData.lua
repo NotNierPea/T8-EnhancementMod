@@ -174,6 +174,7 @@ local SETTINGS = {
         { name = @"shield/classicmode_gums",  desc = @"shield/classicmode_gums_desc",  dvar = "shield_enh_Gums",                   choices = "toggle" },
         { name = @"shield/classic_loadouts",  desc = @"shield/classic_loadouts_desc",  dvar = "shield_enh_ClassicMode_Loadouts",   choices = "toggle", json_default = true },
         { name = @"shield/double_tab_toggle", desc = @"shield/double_tab_toggle_desc", dvar = "shield_enh_ClassicMode_DoubleTab2", choices = "toggle" },
+        { name = @"shield/classic_return_perks", desc = @"shield/classic_return_perks_desc", dvar = "shield_enh_ClassicMode_ReturnPerks", choices = "toggle" },
         { name = @"shield/classic_pap", desc = @"shield/classic_pap_desc", dvar = "shield_enh_ClassicMode_ClassicPaP", json_type = "uint64_t", json_default = 0,
             choices = {
                 { option = Engine[@"hash_4F9F1239CFD921FE"]( @"shield/pap_off" ), value = 0, default = true },
