@@ -35,6 +35,18 @@ detour zm_perks<scripts\zm_common\zm_perks.gsc>::function_5296af32(player) {
             }
         }
         zm_unitrigger::function_d0676c62(self.stub, self, player);
+    } else if (isdefined(perk) && player hasperk(perk) && GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && self zm_perks::vending_trigger_can_player_use(player, 1) && !player zm_utility::in_revive_trigger()) {
+        cost = zombie_utility::get_zombie_var(#"zombie_perk_cost");
+        if (isdefined(level._custom_perks[perk]) && isdefined(level._custom_perks[perk].cost)) {
+            if (isint(level._custom_perks[perk].cost)) {
+                cost = level._custom_perks[perk].cost;
+            } else {
+                cost = [[ level._custom_perks[perk].cost ]]();
+            }
+        }
+        self.stub.hint_string = #"shield/perk_return";
+        self.stub.hint_parm1 = cost;
+        zm_unitrigger::function_d0676c62(self.stub, self, player);
     } else {
         b_is_invis = 1;
     }
@@ -52,7 +64,7 @@ detour zm_perks<scripts\zm_common\zm_perks.gsc>::vending_trigger_think() {
     n_slot = self.stub.script_int;
     self thread zm_audio::sndperksjingles_timer();
 
-    self thread RefundLogic(cost, perk);
+    self thread RefundLogic(cost, perk, n_slot);
 
     for (;;) {
         waitresult = self waittill(#"trigger");
@@ -67,6 +79,13 @@ detour zm_perks<scripts\zm_common\zm_perks.gsc>::vending_trigger_think() {
         }
         index = zm_utility::get_player_index(player);
         if (!zm_perks::vending_trigger_can_player_use(player, 1)) {
+            wait 0.1;
+            continue;
+        }
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && player hasperk(perk)) {
+            player zm_score::add_to_player_score(cost);
+            player RemoveMainPerk(n_slot, perk);
+            player iPrintLn(#"shield/refund_get", zm_perk_translate(perk));
             wait 0.1;
             continue;
         }
@@ -142,6 +161,12 @@ detour zm_perks<scripts\zm_common\zm_perks.gsc>::function_b7f2c635(player) {
     if (player.perk_limit_classic >= 5)
     {
         self sethintstringforplayer(player, #"shield/perk_limit");  
+        return true;
+    }
+
+    if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && isdefined(perk) && player hasperk(perk) && self zm_perks::vending_trigger_can_player_use(player, 1) && isdefined(level._custom_perks) && isdefined(level._custom_perks[perk]) && isdefined(level._custom_perks[perk].cost)) {
+        n_cost = level [[ @zm_perks<scripts\zm_common\zm_perks.gsc>::function_44915d1 ]](perk, n_slot);
+        self sethintstringforplayer(player, #"shield/perk_return", n_cost);
         return true;
     }
 
@@ -241,6 +266,18 @@ detour zm_perks<scripts\zm_common\zm_perks.gsc>::function_f5da744e() {
         }
         if (player.var_47654123[n_slot] && !isdefined(player zm_perks::function_5ea0c6cf())) {
             return;
+        }
+
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && player hasperk(perk)) {
+            return_cost = n_cost;
+            if (isdefined(level._custom_perks) && isdefined(level._custom_perks[perk]) && isdefined(level._custom_perks[perk].cost)) {
+                return_cost = level [[ @zm_perks<scripts\zm_common\zm_perks.gsc>::function_44915d1 ]](perk, n_slot);
+            }
+            player zm_score::add_to_player_score(return_cost);
+            player RemoveMainPerk(n_slot, perk);
+            player iPrintLn(#"shield/refund_get", zm_perk_translate(perk));
+            wait 0.1;
+            continue;
         }
         
         if (player hasperk(perk) || player zm_perks::has_perk_paused(perk) || player.perk_limit_classic >= 5) {
