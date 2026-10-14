@@ -2585,7 +2585,7 @@
     ],
     "extrazone": {
         "mp_common": {
-            "assets": "xmodel:p8_care_package_03_a xmodel:p8_care_package_01_a xmodel:p8_care_package_02_a xmodel:p8_mphd_cargo_pallet_full_snow_02 xmodel:p8_mp_bomb_crate_open xmodel:p7_mou_barrel_metal_02_dmg_snow",
+            "assets": "xmodel:p8_care_package_03_a xmodel:p8_care_package_01_a xmodel:p8_care_package_02_a xmodel:p8_mphd_cargo_pallet_full_snow_02 xmodel:p8_mp_bomb_crate_open xmodel:p7_mou_h_beams_stack_snow",
             "scripts": ""
         }
     },

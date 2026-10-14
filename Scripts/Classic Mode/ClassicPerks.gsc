@@ -192,7 +192,7 @@ GetPerkModel(perk_type)
 		case "elemental":
 			return #"p8_mphd_cargo_pallet_full_snow_02"; // external donor (extrazone test)
         case "wonderfizz":
-			return #"p7_mou_barrel_metal_02_dmg_snow"; // full-detail external donor
+			return #"p7_mou_h_beams_stack_snow"; // full-detail BO3 Origins donor (no decimation)
         default:
             return #"";
     }
