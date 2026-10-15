@@ -20,6 +20,8 @@ ClassicMode_CustomPerks()
     SpawnCustomPerk("elemental", perk_data.elemental_pos, perk_data.elemental_angles, GetPerkModel("elemental"));
 
     SpawnCustomPerk("wonderfizz", perk_data.wonderfizz_pos, perk_data.wonderfizz_angles, GetPerkModel("wonderfizz"));
+
+    level thread ClassicPerkPowerVisuals();
 }
 
 GetPerkDataForMap()
@@ -48,7 +50,7 @@ GetPerkDataForMap()
             
         case "Blood":
             data.jugg_pos = (7262, 10752, 319);
-            data.jugg_angles = (0, 70, 0);
+            data.jugg_angles = (0, 160, 0);
             data.speed_pos = (1650, 9134, 1336);
             data.speed_angles = (0, 90, 0);
             data.double_pos = (939, 8899, 1544);
@@ -82,7 +84,7 @@ GetPerkDataForMap()
             
         case "AO":
             data.jugg_pos = (-1637, -1114, -64);
-            data.jugg_angles = (0, 0, 0);
+            data.jugg_angles = (0, 90, 0);
             data.speed_pos = (-1183, -91, -62);
             data.speed_angles = (0, 160, 0);
             data.double_pos = (850, 373, 79);
@@ -116,7 +118,7 @@ GetPerkDataForMap()
             
         case "Tag":
             data.jugg_pos = (-338, 216, 7);
-            data.jugg_angles = (0, 53, 0);
+            data.jugg_angles = (0, 143, 0);
             data.speed_pos = (-2575, -74, 20);
             data.speed_angles = (0, 90, 0);
             data.double_pos = (636, -1090, 87);
@@ -133,7 +135,7 @@ GetPerkDataForMap()
             
         case "Classified":
             data.jugg_pos = (-62, 935, -511);
-            data.jugg_angles = (0, 55, 0);
+            data.jugg_angles = (0, 145, 0);
             data.speed_pos = (-1140, 1930, 16);
             data.speed_angles = (0, 180, 0);
             data.double_pos = (-865, 4997, -712);
@@ -174,27 +176,42 @@ GetPerkDataForMap()
 
 GetPerkModel(perk_type)
 {
-    is_chaos = BO4ChaosMap();
-    
+    // donor xmodels the client mesh-swaps for classic/chaos machines
     switch(perk_type)
     {
         case "jugg":
-            return is_chaos ? #"p7_zm_vending_widows_wine" : #"p8_zm_esc_perk_vending_cola";
+            return #"p8_care_package_03_a"; // Nuketown donor (extrazone test)
         case "speed":
-            return #"p7_zm_vending_sleight";
+            return #"p7_zm_vending_sleight"; // already the real machine, no swap needed
         case "double":
-            return #"p7_zm_vending_ads";
+            return #"p8_care_package_01_a"; // external donor (extrazone test)
 		case "vulture":
-			return #"p7_zm_vending_nuke";
+			return #"p8_mp_bomb_crate_open"; // 8-LOD donor: mou_crate (7 LOD) never re-streamed lod6
 		case "whos_who":
-			return #"p7_zm_vending_revive";
+			return #"p8_care_package_02_a"; // external donor (extrazone test)
 		case "elemental":
-			return #"p7_zm_vending_marathon";
+			return #"p8_mphd_cargo_pallet_full_snow_02"; // external donor (extrazone test)
         case "wonderfizz":
-			return #"hash_36a819a6d297514e";
+			return #"p7_mp_suitcase_bomb"; // in-map, no-borrow fit (duffel borrowed staging never reached the GPU)
         default:
             return #"";
     }
+}
+
+ShieldWaitForDonor(model)
+{
+    // True once the spawn below would carry swapped geometry: models with no
+    // pack never wait, donors wait (yielding) up to 90s for extrazone streams.
+    waited = 0;
+    while (!ShieldMeshswapActive(model) && waited < 90000)
+    {
+        wait 0.5;
+        waited += 500;
+    }
+    ready = ShieldMeshswapActive(model);
+    if (!ready)
+        ShieldLog("^1Donor meshswap not active after 90s, spawning anyway");
+    return ready;
 }
 
 RemoveMainPerk(n_slot, perk)
@@ -270,6 +287,12 @@ RefundLogic(price, perk_str, s_slot = 0)
 
     while (true)
 	{
+        if (!GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+        {
+            wait 0.5;
+            continue;
+        }
+
         if (!isdefined(self) || !isdefined(self.origin))
             return;
         
@@ -337,16 +360,20 @@ SpawnCustomPerk(perk_type, position, angles, model)
         ShieldLog("^1ERROR: Invalid model for perk type: " + perk_type);
         return;
     }
-    
+
+    // Meshswap donors can stream in late (extra zones): yield here until the
+    // swap is live so the machine never spawns with donor geometry stuck on it.
+    ShieldWaitForDonor(model);
+    ShieldPrecacheModel(model);
     perk_machine = util::spawn_model(model, position, angles);
-    
+    perk_machine.classic_perk = perk_type;
+    perk_machine.script_noteworthy = "shieldperk_" + perk_type; // client widens cull bounds for our donors
+
     switch(perk_type)
     {
         case "jugg":
             perk_machine zm_unitrigger::create(&CheckStringJugg, 110);
             perk_machine thread WaitTriggerJugg();
-			playfxontag(#"zombie/fx_perk_mule_kick_zmb", perk_machine, "tag_origin");
-            perk_machine.perk_fx = 1;
 
             perk_machine thread RefundLogic(2500, "HasJugg");
 
@@ -359,8 +386,6 @@ SpawnCustomPerk(perk_type, position, angles, model)
         case "speed":
             perk_machine zm_unitrigger::create(&CheckStringSpeedCola, 110);
             perk_machine thread WaitTriggerSpeedCola();
-			playfxontag(#"zombie/fx_perk_mule_kick_zmb", perk_machine, "tag_origin");
-            perk_machine.perk_fx = 1;
 
             perk_machine thread RefundLogic(3000, "specialty_fastreload");
 
@@ -370,8 +395,6 @@ SpawnCustomPerk(perk_type, position, angles, model)
         case "double":
             perk_machine zm_unitrigger::create(&CheckStringDoubleTab, 110);
             perk_machine thread WaitTriggerDoubleTab();
-			playfxontag(#"zombie/fx_perk_mule_kick_zmb", perk_machine, "tag_origin");
-            perk_machine.perk_fx = 1;
 
             perk_machine thread RefundLogic(2000, getDvarInt("shield_enh_ClassicMode_DoubleTab2", 0) ? "specialty_doubletap2" : "specialty_rof");
 
@@ -381,8 +404,6 @@ SpawnCustomPerk(perk_type, position, angles, model)
 		case "vulture":
 			perk_machine zm_unitrigger::create(&CheckStringVulture, 110);
             perk_machine thread WaitTriggerVulture();
-			playfxontag(#"zombie/fx_perk_mule_kick_zmb", perk_machine, "tag_origin");
-            perk_machine.perk_fx = 1;
 
             perk_machine thread RefundLogic(3000, "specialty_vultureaid");
 
@@ -392,8 +413,6 @@ SpawnCustomPerk(perk_type, position, angles, model)
 		case "whos_who":
 			perk_machine zm_unitrigger::create(&CheckStringWhosWho, 110);
             perk_machine thread WaitTriggerWhosWho();
-			playfxontag(#"zombie/fx_perk_mule_kick_zmb", perk_machine, "tag_origin");
-            perk_machine.perk_fx = 1;
             
             perk_machine thread RefundLogic(2000, "specialty_whoswho");
 
@@ -403,8 +422,6 @@ SpawnCustomPerk(perk_type, position, angles, model)
         case "elemental":
             perk_machine zm_unitrigger::create(&CheckStringElemental, 110);
             perk_machine thread WaitTriggerElemental();
-            playfxontag(#"zombie/fx_perk_mule_kick_zmb", perk_machine, "tag_origin");
-            perk_machine.perk_fx = 1;
 
             perk_machine thread RefundLogic(2500, "HasElemental");
 
@@ -416,11 +433,6 @@ SpawnCustomPerk(perk_type, position, angles, model)
         case "wonderfizz":
             perk_machine zm_unitrigger::create(&CheckStringWonderfizz, 110);
             perk_machine thread WaitTriggerWonderfizz();
-            perk_machine.angles += (0, -90, 0);
-            perk_machine.origin += (0, 0, 45);
-            perk_machine SetScale(100);
-            playfxontag(#"zombie/fx_perk_mule_kick_zmb", perk_machine, "tag_origin");
-            perk_machine.perk_fx = 1;
 
             CreateCollisionForPerk(position, angles);
 
@@ -432,6 +444,11 @@ SpawnCustomPerk(perk_type, position, angles, model)
 
 	// for vulture..
 	level.CustomClassicPerks[level.CustomClassicPerks.size] = perk_machine;
+
+    // Late spawns while the power is already on miss the one-time power
+    // visuals: start this machine's stock light FX immediately.
+    if (IsPaPOrPowerOn())
+        StartClassicPerkVisuals(perk_machine);
 }
 
 CreateCollisionForPerk(position, angles)
@@ -528,6 +545,103 @@ zm_perk_translate(hash_name) {
     }
 }
 
+WonderfizzDisplayModel(hash_name)
+{
+    if (BO4ChaosMap())
+    {
+        switch (hash_name)
+        {
+            case #"HasJugg":
+                return #"hash_281d001c8d958aa6";
+            case #"specialty_fastreload":
+                return #"hash_4fe70b2de9830ba1";
+            case #"specialty_doubletap2":
+            case #"specialty_rof":
+                return #"hash_566aa9d5261924d1";
+            case #"specialty_vultureaid":
+                return #"hash_6af9235d5ba511f7";
+            case #"specialty_whoswho":
+                return #"hash_5ab0c97c0495b86d";
+            case #"HasElemental":
+                return #"hash_7ec0e3d60c3ddf98";
+        }
+
+        return zm_perk_get_viewmodel(hash_name);
+    }
+
+    switch (hash_name)
+    {
+        case #"HasJugg":
+        case #"specialty_wolf_protector":
+            return #"wpn_t8_zm_perk_bottle_bloodwolf_view";
+        case #"specialty_fastreload":
+        case #"specialty_shield":
+            return #"wpn_t8_zm_perk_bottle_victorioustortoise_view";
+        case #"specialty_doubletap2":
+        case #"specialty_rof":
+        case #"specialty_camper":
+            return #"wpn_t8_zm_perk_bottle_stronghold_view";
+        case #"specialty_vultureaid":
+        case #"specialty_awareness":
+            return #"wpn_t8_zm_perk_bottle_deathperception_view";
+        case #"specialty_whoswho":
+        case #"specialty_quickrevive":
+            return #"wpn_t8_zm_perk_bottle_quickrevive_view";
+        case #"HasElemental":
+        case #"specialty_zombshell":
+            return #"wpn_t8_zm_perk_bottle_zombshell_view";
+        case #"specialty_widowswine":
+            return #"wpn_t8_zm_perk_bottle_winterswail_view";
+        case #"specialty_staminup":
+            return #"wpn_t8_zm_perk_bottle_staminup_view";
+        case #"specialty_phdflopper":
+            return #"wpn_t8_zm_perk_bottle_phdslider_view";
+        case #"specialty_extraammo":
+            return #"wpn_t8_zm_perk_bottle_bandolier_view";
+        case #"specialty_etherealrazor":
+            return #"wpn_t8_zm_perk_bottle_etherealrazor_view";
+        case #"specialty_electriccherry":
+            return #"wpn_t8_zm_perk_bottle_electricburst_view";
+        case #"specialty_death_dash":
+            return #"wpn_t8_zm_perk_bottle_blaze_view";
+        case #"specialty_deadshot":
+            return #"wpn_t8_zm_perk_bottle_deadshot_view";
+        case #"specialty_cooldown":
+            return #"wpn_t8_zm_perk_bottle_timeslip_view";
+        case #"specialty_berserker":
+            return #"wpn_t8_zm_perk_bottle_dyingwish_view";
+        case #"specialty_additionalprimaryweapon":
+            return #"wpn_t8_zm_perk_bottle_mulekick_view";
+        default:
+            return #"wpn_t8_zm_perk_bottle_secretsauce_view";
+    }
+}
+
+SetWonderfizzRewardModel(mdl_reward, hash_name)
+{
+    mdl_reward setModel(WonderfizzDisplayModel(hash_name));
+    if (BO4ChaosMap())
+        mdl_reward SetScale(1.15);
+    else
+        mdl_reward SetScale(2);
+
+    // preview only; icon swap waits for PlayClassicPerkAnim
+    level notify(#"bo3port_drink_clear");
+    SyncBo3PortDrink(0);
+}
+
+RotateWonderfizzReward()
+{
+    self endon(#"death", #"stop_bobbing");
+
+    while (true)
+    {
+        rotationSpeed = RandomFloatRange(5.5, 7.5);
+        self RotateYaw(360, rotationSpeed);
+        wait rotationSpeed;
+    }
+}
+
 zm_perk_get_viewmodel(hash_name) {
     if (BO4ChaosMap())
     {
@@ -604,7 +718,7 @@ GiveClassicPerk(name, e_player, no_anim = undefined)
 		// play anim
         if (!isDefined(no_anim))
         {
-            e_player PlayPerkAnim(#"specialty_wolf_protector");
+            e_player PlayClassicPerkAnim(#"specialty_wolf_protector");
 
             // some sound
             self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -631,7 +745,7 @@ GiveClassicPerk(name, e_player, no_anim = undefined)
 		// play anim
         if (!isDefined(no_anim))
         {
-            e_player PlayPerkAnim(#"specialty_camper");
+            e_player PlayClassicPerkAnim(#"specialty_camper");
 
             // some sound
             self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -652,7 +766,7 @@ GiveClassicPerk(name, e_player, no_anim = undefined)
 		// play anim
         if (!isDefined(no_anim))
         {
-            e_player PlayPerkAnim(#"specialty_quickrevive");
+            e_player PlayClassicPerkAnim(#"specialty_quickrevive");
 
             // some sound
             self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -669,7 +783,7 @@ GiveClassicPerk(name, e_player, no_anim = undefined)
 		// play anim
         if (!isDefined(no_anim))
         {
-            e_player PlayPerkAnim(#"specialty_zombshell");
+            e_player PlayClassicPerkAnim(#"specialty_zombshell");
 
             // some sound
             self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -687,7 +801,7 @@ GiveClassicPerk(name, e_player, no_anim = undefined)
 		// play anim
         if (!isDefined(no_anim))
         {
-            e_player PlayPerkAnim(#"specialty_awareness");
+            e_player PlayClassicPerkAnim(#"specialty_awareness");
 
             // some sound
             self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -707,7 +821,7 @@ GiveClassicPerk(name, e_player, no_anim = undefined)
 		// play anim
         if (!isDefined(no_anim))
         {
-            e_player PlayPerkAnim(#"specialty_shield");
+            e_player PlayClassicPerkAnim(#"specialty_shield");
 
             // some sound
             self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -849,29 +963,36 @@ WaitTriggerWonderfizz()
         random_perks_classic = array(#"HasJugg", #"specialty_doubletap2", #"specialty_whoswho", #"HasElemental", #"specialty_vultureaid", #"specialty_fastreload");
 
         level.Wonderfizz_IsBeingUsed = true;
+        playsoundatposition("zmb_rand_perk_vortex", self.origin);
 
-        forward = anglestoforward(self.angles);
+        spawn_pos = self.origin + (0, 0, 42);
 
-        // move 50 units up, 30 units forward
-        spawn_pos = self.origin + (0, 0, 5) + forward * 40;
-
-        mdl_reward = util::spawn_model(#"wpn_t8_zm_perk_bottle_bandolier_world", spawn_pos, self.angles);
-        mdl_reward SetScale(1.35);
+        if (BO4ChaosMap())
+        {
+            mdl_reward = util::spawn_model(#"hash_281d001c8d958aa6", spawn_pos, self.angles);
+            mdl_reward SetScale(1.15);
+        }
+        else
+        {
+            mdl_reward = util::spawn_model(#"wpn_t8_zm_perk_bottle_bandolier_world", spawn_pos, self.angles);
+            mdl_reward SetScale(2);
+        }
         mdl_reward clientfield::set("powerup_fx", 2);
 
-        mdl_reward thread RotateAndBobItem();
+        mdl_reward thread RotateWonderfizzReward();
         
         times_max = randomIntRange(10, 20);
         times = 0;
+        cycle_pool = arraycombine(random_perks, random_perks_classic, 0, 0);
 
         while(true)
         {
             if (times > times_max)
                 break;
 
-            perk_model_x = array::random(random_perks);
+            perk_model_x = array::random(cycle_pool);
 
-            mdl_reward setModel(zm_perk_get_viewmodel(perk_model_x));
+            SetWonderfizzRewardModel(mdl_reward, perk_model_x);
             
             if (e_player hasPerk(#"specialty_cooldown"))
                 wait 0.10;
@@ -912,6 +1033,7 @@ WaitTriggerWonderfizz()
             
             level.Wonderfizz_IsBeingUsed = undefined;
             
+            SyncBo3PortDrink(0);
             mdl_reward delete();
             continue;
         }
@@ -965,7 +1087,7 @@ WaitTriggerWonderfizz()
         e_player.wonder_hint_string = #"shield/wonderfizz_get";
         e_player.wonder_hint_string_param = zm_perk_translate(random_perks_get); // the random perk here
 
-        mdl_reward setModel(zm_perk_get_viewmodel(random_perks_get));
+        SetWonderfizzRewardModel(mdl_reward, random_perks_get);
         
         self thread TimeoutWonderfizz();
         timeout = false;
@@ -980,6 +1102,7 @@ WaitTriggerWonderfizz()
                 
                 level.Wonderfizz_IsBeingUsed = undefined;
 
+                SyncBo3PortDrink(0);
                 mdl_reward delete();
                 timeout = true;
 
@@ -1003,7 +1126,9 @@ WaitTriggerWonderfizz()
         {
             is_slot_perk = false;
 
-            // play anim
+            // Stock perk. Clear any classic label before the drink so the shared totem keeps its own icon.
+            level notify(#"bo3port_drink_clear");
+            SyncBo3PortDrink(0);
             e_player PlayPerkAnim(random_perks_get);
             mdl_reward delete();
 
@@ -1026,6 +1151,7 @@ WaitTriggerWonderfizz()
         }
         else if (use_classic_perk)
         {
+            SyncBo3PortDrink(0);
             mdl_reward delete();
             e_player GiveClassicPerk(random_perks_get, e_player);
         }
@@ -1043,7 +1169,10 @@ CheckStringElemental(e_player)
 {
 	if (isDefined(e_player.HasElemental) && e_player.HasElemental)
 	{
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 2500);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 	
@@ -1082,6 +1211,14 @@ WaitTriggerElemental()
             continue;
         }
 
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && isDefined(e_player.HasElemental) && e_player.HasElemental)
+        {
+            e_player zm_score::add_to_player_score(2500);
+            e_player RemoveClassicPerk("HasElemental");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("HasElemental"));
+            continue;
+        }
+
 		if (!e_player zm_score::can_player_purchase(2500) || isDefined(e_player.HasElemental) && e_player.HasElemental)
 		{
 			//e_player iPrintLnBold("no");
@@ -1110,7 +1247,7 @@ WaitTriggerElemental()
         e_player.HasElemental = true;
 
 		// play anim
-		e_player PlayPerkAnim(#"specialty_zombshell");
+		e_player PlayClassicPerkAnim(#"specialty_zombshell");
 
 		// some sound
 		self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -1122,7 +1259,16 @@ WaitTriggerElemental()
 
 CheckStringWhosWho(e_player) 
 {
-	if (e_player hasperk(#"specialty_whoswho") || (isDefined(e_player.InWhosWhoLogic) && e_player.InWhosWhoLogic))
+	if (e_player hasperk(#"specialty_whoswho"))
+	{
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 2000);
+        else
+            self sethintstringforplayer(e_player, "");
+        return true;
+    }
+
+	if (isDefined(e_player.InWhosWhoLogic) && e_player.InWhosWhoLogic)
 	{
         self sethintstringforplayer(e_player, "");
         return true;
@@ -1163,6 +1309,14 @@ WaitTriggerWhosWho()
             continue;
         }
 
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && e_player hasperk(#"specialty_whoswho"))
+        {
+            e_player zm_score::add_to_player_score(2000);
+            e_player RemoveClassicPerk("specialty_whoswho");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("specialty_whoswho"));
+            continue;
+        }
+
 		if (!e_player zm_score::can_player_purchase(2000) || e_player hasperk(#"specialty_whoswho") || (isDefined(e_player.InWhosWhoLogic) && e_player.InWhosWhoLogic))
 		{
 			//e_player iPrintLnBold("no");
@@ -1190,7 +1344,7 @@ WaitTriggerWhosWho()
         e_player perks::perk_setperk(#"specialty_whoswho");
 
 		// play anim
-		e_player PlayPerkAnim(#"specialty_quickrevive");
+		e_player PlayClassicPerkAnim(#"specialty_quickrevive");
 
 		// some sound
 		self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -1512,7 +1666,10 @@ CheckStringDoubleTab(e_player)
 {
 	if (e_player hasperk(#"specialty_doubletap2") || e_player hasperk(#"specialty_rof"))
 	{
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 2000);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 
@@ -1551,6 +1708,15 @@ WaitTriggerDoubleTab()
             continue;
         }
 
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && (e_player hasperk(#"specialty_doubletap2") || e_player hasperk(#"specialty_rof")))
+        {
+            double_str = GetDvarInt("shield_enh_ClassicMode_DoubleTab2", 0) ? "specialty_doubletap2" : "specialty_rof";
+            e_player zm_score::add_to_player_score(2000);
+            e_player RemoveClassicPerk(double_str);
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate(double_str));
+            continue;
+        }
+
 		if (!e_player zm_score::can_player_purchase(2000) || e_player hasperk(#"specialty_doubletap2") || e_player hasperk(#"specialty_rof"))
 		{
 			//e_player iPrintLnBold("no");
@@ -1586,7 +1752,7 @@ WaitTriggerDoubleTab()
 		e_player thread CheckPerkDownDouble();
 
 		// play anim
-		e_player PlayPerkAnim(#"specialty_camper");
+		e_player PlayClassicPerkAnim(#"specialty_camper");
 
 		// some sound
 		self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -1620,7 +1786,10 @@ CheckStringVulture(e_player)
 {
 	if (e_player hasperk(#"specialty_vultureaid"))
     {
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 3000);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 
@@ -1659,6 +1828,14 @@ WaitTriggerVulture()
             continue;
         }
 
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && e_player hasperk(#"specialty_vultureaid"))
+        {
+            e_player zm_score::add_to_player_score(3000);
+            e_player RemoveClassicPerk("specialty_vultureaid");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("specialty_vultureaid"));
+            continue;
+        }
+
 		if (!e_player zm_score::can_player_purchase(3000) || e_player hasperk(#"specialty_vultureaid"))
 		{
 			//e_player iPrintLnBold("no");
@@ -1688,7 +1865,7 @@ WaitTriggerVulture()
 		e_player thread CheckPerkDownVulture();
 
 		// play anim
-		e_player PlayPerkAnim(#"specialty_awareness");
+		e_player PlayClassicPerkAnim(#"specialty_awareness");
 
 		// some sound
 		self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -1725,7 +1902,10 @@ CheckStringSpeedCola(e_player)
 {
 	if (e_player hasperk(#"specialty_fastreload"))
     {
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 3000);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 
@@ -1764,6 +1944,14 @@ WaitTriggerSpeedCola()
             continue;
         }
 
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && e_player hasperk(#"specialty_fastreload"))
+        {
+            e_player zm_score::add_to_player_score(3000);
+            e_player RemoveClassicPerk("specialty_fastreload");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("specialty_fastreload"));
+            continue;
+        }
+
 		if (!e_player zm_score::can_player_purchase(3000) || e_player hasperk(#"specialty_fastreload"))
 		{
 			//e_player iPrintLnBold("no");
@@ -1793,7 +1981,7 @@ WaitTriggerSpeedCola()
 		e_player thread CheckPerkDownSpeed();
 
 		// play anim
-		e_player PlayPerkAnim(#"specialty_shield");
+		e_player PlayClassicPerkAnim(#"specialty_shield");
 
 		// some sound
 		self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");
@@ -1818,7 +2006,10 @@ CheckStringJugg(e_player)
 {
 	if (isDefined(e_player.HasJugg) && e_player.HasJugg)
     {
-        self sethintstringforplayer(e_player, "");
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0))
+            self sethintstringforplayer(e_player, #"shield/perk_return", 2500);
+        else
+            self sethintstringforplayer(e_player, "");
         return true;
     }
 
@@ -1853,6 +2044,14 @@ WaitTriggerJugg()
 
         if (e_player.perk_limit_classic >= 5)
         {
+            continue;
+        }
+
+        if (GetDvarInt("shield_enh_ClassicMode_ReturnPerks", 0) && isDefined(e_player.HasJugg) && e_player.HasJugg)
+        {
+            e_player zm_score::add_to_player_score(2500);
+            e_player RemoveClassicPerk("HasJugg");
+            e_player iPrintLn(#"shield/refund_get", zm_perk_translate("HasJugg"));
             continue;
         }
 
@@ -1893,7 +2092,7 @@ WaitTriggerJugg()
 		e_player thread CheckPerkDownJugg();
 
 		// play anim
-		e_player PlayPerkAnim(#"specialty_wolf_protector");
+		e_player PlayClassicPerkAnim(#"specialty_wolf_protector");
 
 		// some sound
 		self waittilltimeout(2.5, #"burp", #"player_downed", #"disconnect", #"end_game", #"perk_abort_drinking");

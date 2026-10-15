@@ -39,12 +39,15 @@ CoD.ClassicPerks.new = function ( f1_arg0, f1_arg1, f1_arg2, f1_arg3, f1_arg4, f
 			end)
 
 			-- reposition visible ones
-			for i, image in ipairs(visiblePerks) do
-					local spacing = 50
-					local xOffset = (spacing) * (i - 1)
+			local startX = 184
+			local startY = 305
+			local size = 42
+			local spacing = 50
 
-					image:setLeftRight(0, 0, 184 + xOffset, 184 + xOffset + 42)
-					image:setTopBottom(0, 0, 305, 347)
+			for i, image in ipairs(visiblePerks) do
+					local xOffset = spacing * (i - 1)
+					image:setLeftRight(0, 0, startX + xOffset, startX + xOffset + size)
+					image:setTopBottom(0, 0, startY, startY + size)
 			end
       end
 

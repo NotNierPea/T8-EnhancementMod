@@ -178,6 +178,10 @@ LUI.createMenu[ "T7Hud_" .. Engine[@"GetCurrentMap"]() ] = function ( controller
             
             ScorePCNon:addElement(ClassicPerks)
             ScorePCNon.ClassicPerks = ClassicPerks
+
+            local Bo3AatHit = CoD.Bo3AatHit.new(self, controller, 0, 1, 0, 0, 0, 1, 0, 0)
+            self:addElement(Bo3AatHit)
+            self.Bo3AatHit = Bo3AatHit
       end
 
       -- directed mode

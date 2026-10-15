@@ -16,8 +16,33 @@ detour zm_bgb_perkaholic<scripts\zm_common\bgbs\zm_bgb_perkaholic.gsc>::activati
                 self.var_1eba264f = 1;
                 continue;
             }
-            return;
+            break;
         }
+        if (GetDvarInt(#"shield_enh_ClassicMode", 0)) {
+            self GivePerkaholicClassicPerks();
+        }
+    }
+}
+
+GivePerkaholicClassicPerks()
+{
+    if (!isdefined(self.HasJugg) || !self.HasJugg) {
+        self GiveClassicPerk(#"HasJugg", self, true);
+    }
+    if (!self hasperk(#"specialty_doubletap2") && !self hasperk(#"specialty_rof")) {
+        self GiveClassicPerk(#"specialty_doubletap2", self, true);
+    }
+    if (!self hasperk(#"specialty_whoswho")) {
+        self GiveClassicPerk(#"specialty_whoswho", self, true);
+    }
+    if (!isdefined(self.HasElemental) || !self.HasElemental) {
+        self GiveClassicPerk(#"HasElemental", self, true);
+    }
+    if (!self hasperk(#"specialty_vultureaid")) {
+        self GiveClassicPerk(#"specialty_vultureaid", self, true);
+    }
+    if (!self hasperk(#"specialty_fastreload")) {
+        self GiveClassicPerk(#"specialty_fastreload", self, true);
     }
 }
 

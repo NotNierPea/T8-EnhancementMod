@@ -48,6 +48,7 @@
 #include scripts\core_common\struct;
 #include scripts/zm_common/zm_characters.gsc;
 #include scripts\core_common\callbacks_shared;
+#include scripts\zm_common\callbacks.gsc;
 #include scripts\core_common\clientfield_shared;
 #include scripts\core_common\math_shared;
 #include scripts\core_common\system_shared;
@@ -72,6 +73,9 @@
 #include scripts\core_common\perks;
 #include scripts\zm_common\zm_pack_a_punch.gsc;
 #include scripts\core_common\aat_shared.gsc;
+#include scripts\core_common\damagefeedback_shared.gsc;
+#include scripts\core_common\ai\systems\gib.gsc;
+#include scripts\zm\zm_lightning_chain.gsc;
 #include scripts\zm_common\zm_bgb_pack;
 #include scripts\zm_common\zm_ffotd;
 #include scripts/core_common/ai/zombie_utility.gsc;
@@ -161,6 +165,13 @@ autoexec InitSystem()
 
     // have to register it anyways
     clientfield::register("toplayer", "" + #"shield_paused_hud", 1, 1, "int");
+    // bo3port_drink needs 3 bits for labels 0-6; the rest are 0/1 or counters
+    clientfield::register("toplayer", "bo3port_power", 1, 1, "int");
+    clientfield::register("toplayer", "bo3port_drink", 1, 3, "int");
+    clientfield::register("toplayer", "bo3port_machine_on", 1, 1, "int");
+    clientfield::register("actor", "bo3_aat_furnace_blast", 1, 1, "counter");
+    clientfield::register("actor", "bo3_aat_furnace_burn", 1, 1, "int");
+    clientfield::register("actor", "bo3_aat_thunder", 1, 1, "counter");
 
     /*
     if(!GetDvarInt(#"shield_enh_ZombiesMods", 0))
@@ -187,6 +198,7 @@ Init()
     }
 
     ShieldLog("^1Enhancement Mod Loaded!");
+    Bo3AatServerInit();
     
     thread SaveGames();
     thread PracticeMode();

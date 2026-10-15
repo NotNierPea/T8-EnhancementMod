@@ -108,3 +108,10 @@ detour zm_powerups<scripts\zm_common\zm_powerups.csc>::function_9f7265fd(localcl
 
     playfx(localclientnum, str_fx, self.origin);
 }
+
+detour zm_aat_brain_decay<scripts\zm_common\aats\zm_aat_brain_decay.csc>::function_791e18ed(localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, bwastimejump)
+{
+    self [[ @zm_aat_brain_decay<scripts\zm_common\aats\zm_aat_brain_decay.csc>::function_791e18ed ]](localclientnum, oldval, newval, bnewent, binitialsnap, fieldname, bwastimejump);
+    if (newval && GetDvarInt(#"shield_enh_ClassicMode", 0) && GetDvarInt(#"shield_enh_ClassicMode_Bo3Aat", 1))
+        self setdrawname(#"shield/aat_turned", 1);
+}

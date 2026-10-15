@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.dll binary
+*.ff binary
+*.b3pk binary
+*.b3mt text

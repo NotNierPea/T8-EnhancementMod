@@ -1,0 +1,20 @@
+{
+    "name": "T8EnhancementLocalTest",
+    "enabled": true,
+    "data": [
+        {
+            "type": "scriptparsetree",
+            "name": "scripts/zm_common/EnhancementLocalTest.gsc",
+            "path": "compiled.gscc",
+            "hooks": [
+                "scripts/zm_common/load.gsc"
+            ]
+        },
+        {
+            "type": "hashes",
+            "path": "hashes.txt",
+            "format": "serious_compiler",
+            "ignore_error": true
+        }
+    ]
+}

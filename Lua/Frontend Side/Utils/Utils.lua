@@ -293,7 +293,7 @@ CoD.OnModDataChange = function( f137_arg0, f137_arg1, f137_arg2, f137_arg3, f137
 		Engine[@"setdvar"]( dvar_name, dvar_new_value )
 
 		-- number or bool dvar compare
-		if dvar_name == "shield_enh_RoundColor" or dvar_name == "shield_enh_Counter_TextColor" or dvar_name == "shield_enh_Counter_NumberColor" or dvar_name == "shield_enh_Counter_Position" or dvar_name == "shield_enh_Counter_FontStyle" or dvar_name == "shield_enh_Damage_FontStyle" or dvar_name == "shield_enh_Althud_Interaction_FontStyle" or dvar_name == "shield_enh_Subtitles_Color" or dvar_name == "shield_enh_Subtitles_FontStyle" then
+		if dvar_name == "shield_enh_RoundColor" or dvar_name == "shield_enh_Counter_TextColor" or dvar_name == "shield_enh_Counter_NumberColor" or dvar_name == "shield_enh_Counter_Position" or dvar_name == "shield_enh_Counter_FontStyle" or dvar_name == "shield_enh_Damage_FontStyle" or dvar_name == "shield_enh_Althud_Interaction_FontStyle" or dvar_name == "shield_enh_Subtitles_Color" or dvar_name == "shield_enh_Subtitles_FontStyle" or dvar_name == "shield_enh_ClassicMode_ClassicPaP" then
 			Engine[@"exec"](Engine[@"getprimarycontroller"](), 'writejson "" ' .. string.gsub(dvar_name, "shield_enh_", "") .. ' ' .. dvar_new_value .. ' uint64_t project-bo4/saved/server/EnhancementMain.json')
 		else
 			Engine[@"exec"](Engine[@"getprimarycontroller"](), 'writejson "" ' .. string.gsub(dvar_name, "shield_enh_", "") .. ' ' .. dvar_new_value .. ' bool project-bo4/saved/server/EnhancementMain.json')

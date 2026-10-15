@@ -16,6 +16,11 @@ local function SendClassOption(ID_Choice)
       CoD.BaseUtility.SendCustomMenuResponse(Engine[@"getprimarycontroller"](), "shield_enh_class_changes", "blah", ID_Choice)
 end
 
+local function PersistSpecialistChoice(ID_Choice)
+      Engine[@"setdvar"]("shield_enh_saved_special", ID_Choice)
+      Engine[@"exec"](Engine[@"getprimarycontroller"](), ('writejson "" saved_special %s uint64_t project-bo4/saved/server/EnhancementMain.json'):format(tostring(ID_Choice)))
+end
+
 ------------------------
 
 DataSources.ShieldSpecialWeaponsList = DataSourceHelpers.ListSetup( "ShieldSpecialWeaponsList", function ( f3_arg0, f3_arg1 )
@@ -69,7 +74,7 @@ DataSources.ShieldSpecialWeaponsList = DataSourceHelpers.ListSetup( "ShieldSpeci
                   name = Engine[@"hash_4F9F1239CFD921FE"](@"hash_5180997d24e0b10b"),
                   image = "ui_icon_equpiment_zm_swordcannon_lv1_dark",
                   request_id = 6,
-                  active = Engine[@"getdvarint"]("shield_enh_saved_special") == 5
+                  active = Engine[@"getdvarint"]("shield_enh_saved_special") == 6
             },
             properties = {}
       })
@@ -78,7 +83,7 @@ DataSources.ShieldSpecialWeaponsList = DataSourceHelpers.ListSetup( "ShieldSpeci
                   name = Engine[@"hash_4F9F1239CFD921FE"](@"zmweapon/hero_hammer"),
                   image = "ui_icon_equpiment_zm_meleehammer_lv1_dark",
                   request_id = 5,
-                  active = Engine[@"getdvarint"]("shield_enh_saved_special") == 6
+                  active = Engine[@"getdvarint"]("shield_enh_saved_special") == 5
             },
             properties = {}
       })
@@ -107,6 +112,13 @@ end, true )
 ------------------------
 
 CoD.SetupSubModelForSave_Specialist = function(hud, controller)
+      -- load remembered pick (survives game restart) and push it to the server for death machine
+      Engine[@"exec"](controller, 'readjson shield_enh_saved_special "" saved_special uint64_t 0 false project-bo4/saved/server/EnhancementMain.json')
+      local saved = Engine[@"getdvarint"]("shield_enh_saved_special")
+      if saved ~= nil and saved > 0 and Engine[@"getdvarint"]("shield_enh_ClassicMode") == 1 then
+            SendClassOption(saved)
+      end
+
       hud:subscribeToGlobalModel(controller, "PerController", "scriptNotify", function ( model )
             if CoD.ModelUtility.IsParamModelEqualToHashString( model, @"shield_enh_saved_special" ) then
                   local scriptData = CoD.GetScriptNotifyData(model)
@@ -159,7 +171,7 @@ LUI.createMenu.ShieldEnhClassOptions = function ( f1_arg0, f1_arg1 )
             local request_id = request_id_get:get()
 
             SendClassOption(request_id)
-            Engine[@"setdvar"]("shield_enh_saved_special", request_id)
+            PersistSpecialistChoice(request_id)
             GoBack( self, controller )
             return true
 	end, function ( element, menu, controller )

@@ -894,56 +894,228 @@ PlayPerkAnim(str_perk)
     self thread gestures::function_f3e2696f(self, weapon, undefined, 2.5, undefined, undefined, undefined);
 }
 
+// Classic drink label for the shared BO4 bottle/totem swap
+SyncBo3PortPower(value)
+{
+    level.bo3port_power = value;
+    SetDvar(#"bo3port_power", value);
+    foreach (player in level.players)
+        player clientfield::set_to_player("bo3port_power", value);
+}
+
+SyncBo3PortDrink(value)
+{
+    level.bo3port_drink = value;
+    SetDvar(#"bo3port_drink", value);
+    foreach (player in level.players)
+        player clientfield::set_to_player("bo3port_drink", value);
+}
+
+// Machine lamp state for the meshswap _on manifests. Mirrors SyncBo3PortPower:
+// dvar for the local plugin plus a per-player clientfield so every client
+// (not just host) mirrors it into their own dvar via the CSC callback.
+SyncBo3PortMachineOn(value)
+{
+    level.bo3port_machine_on = value;
+    SetDvar(#"bo3port_machine_on", value);
+    // MachinePowerWatcher runs during preinit before players exist:
+    // level.players is not an array yet and foreach would throw.
+    if (isdefined(level.players) && isarray(level.players))
+    {
+        foreach (player in level.players)
+            player clientfield::set_to_player("bo3port_machine_on", value);
+    }
+}
+
+ApplyBo3PortFields()
+{
+    if (isdefined(level.bo3port_power))
+        self clientfield::set_to_player("bo3port_power", level.bo3port_power);
+    if (isdefined(level.bo3port_drink))
+        self clientfield::set_to_player("bo3port_drink", level.bo3port_drink);
+    if (isdefined(level.bo3port_machine_on))
+        self clientfield::set_to_player("bo3port_machine_on", level.bo3port_machine_on);
+}
+
+PlayClassicPerkAnim(str_perk)
+{
+    switch (str_perk)
+    {
+        case #"specialty_wolf_protector": label = 1; break; // Jugger-Nog
+        case #"specialty_shield": label = 2; break;         // Speed Cola
+        case #"specialty_camper": label = 3; break;         // Double Tap
+        case #"specialty_awareness": label = 4; break;      // Vulture Aid
+        case #"specialty_quickrevive": label = 5; break;    // Who's Who
+        case #"specialty_zombshell": label = 6; break;      // Elemental Pop
+        default: label = 0; break;
+    }
+
+    SyncBo3PortDrink(label);
+    if (str_perk == #"specialty_awareness" && BO4ChaosMap())
+    {
+        // chaos maps may lack DP, so force its totem for the Vulture swap
+        self thread gestures::function_f3e2696f(self, getweapon(#"zombie_perk_totem_death_perception"), undefined, 2.5,
+            undefined, undefined, undefined);
+    }
+    else
+    {
+        self PlayPerkAnim(str_perk);
+    }
+    level thread ClearClassicPerkLabel();
+}
+
+ClearClassicPerkLabel()
+{
+    level notify(#"bo3port_drink_clear");
+    level endon(#"bo3port_drink_clear");
+
+    wait 3;
+    SyncBo3PortDrink(0);
+}
+
+WaitTillClassicPower()
+{
+    switch (BO4GetMap())
+    {
+        case "IX":
+            level flag::wait_till(#"zm_towers_pap_quest_completed");
+            break;
+
+        case "Blood":
+        case "AO":
+        case "Dead":
+        case "Tag":
+            level flag::wait_till(#"power_on1");
+            break;
+
+        case "AE":
+        case "Classified":
+        case "Voyage":
+            level flag::wait_till(#"power_on");
+            break;
+    }
+}
+
+ClassicPerkSteamFx(perk_type)
+{
+    switch (perk_type)
+    {
+        case "jugg":
+            return #"zombie/fx_perk_widows_wine_zmb";
+
+        case "double":
+            return #"zombie/fx_perk_quick_revive_zmb";
+
+        case "elemental":
+            return #"zombie/fx_perk_stamin_up_zmb";
+    }
+
+    return #"zombie/fx_perk_mule_kick_zmb";
+}
+
+ClassicPerkPowerVisuals()
+{
+    SyncBo3PortPower(0);
+    WaitTillClassicPower();
+    SyncBo3PortPower(1);
+
+    if (!isdefined(level.CustomClassicPerks))
+        return;
+
+    foreach (machine in level.CustomClassicPerks)
+        StartClassicPerkVisuals(machine);
+}
+
+StartClassicPerkVisuals(machine)
+{
+    // One machine's stock-style power visuals (same zombie/fx_perk_*_zmb
+    // light FX the base machines play on tag_origin). perk_fx guards against
+    // double-plays; the one-shot FX persists until the machine dies.
+    if (!isdefined(machine))
+        return;
+
+    if (machine.classic_perk === "wonderfizz")
+        StartWonderfizzElectricity(machine);
+
+    if (isdefined(machine.perk_fx) && machine.perk_fx)
+        return;
+
+    playfxontag(ClassicPerkSteamFx(machine.classic_perk), machine, "tag_origin");
+    machine.perk_fx = 1;
+}
+
+ClassicPerkPowerReplay()
+{
+    // Power came back (or a machine spawned while it was off): start visuals
+    // only on machines that missed them. Never resets perk_fx, so powered
+    // machines never double up their FX.
+    if (!isdefined(level.CustomClassicPerks))
+        return;
+
+    foreach (machine in level.CustomClassicPerks)
+        StartClassicPerkVisuals(machine);
+}
+
+StartWonderfizzElectricity(machine)
+{
+    if (!isdefined(machine) || (isdefined(machine.fizz_electric) && machine.fizz_electric))
+        return;
+
+    machine.fizz_electric = 1;
+    machine thread WonderfizzElectricLoop();
+}
+
+WonderfizzSparkOrigin()
+{
+    forward = anglestoforward(self.angles);
+    right = anglestoright(self.angles);
+    return self.origin + (forward * randomfloatrange(5, 9)) + (right * randomfloatrange(-5, 5)) + (0, 0, randomfloatrange(30, 46));
+}
+
+WonderfizzElectricLoop()
+{
+    self endon(#"death");
+
+    while (true)
+    {
+        used = isdefined(level.Wonderfizz_IsBeingUsed) && level.Wonderfizz_IsBeingUsed;
+        playfx(#"electric/fx_elec_sparks_burst_sm_omni_blue_os", WonderfizzSparkOrigin());
+
+        if (used)
+            wait 0.9;
+        else
+            wait 1.8;
+    }
+}
+
 IsPaPOrPowerOn()
 {
+    // flag::get can return non-bool garbage (e.g. stale int 179749049)
+    // during teardown, and any bool-cast of that crashes the VM
+    // ("cannot cast to bool"). Sanitize centrally so every caller gets a
+    // clean bool: `v == 1` is a pure int compare (no bool cast), and a
+    // bool true/false against literal 1 converts safely either direction.
     switch(BO4GetMap())
     {
         case "IX":
-        return level flag::get(#"zm_towers_pap_quest_completed");
-        break;
+            v = level flag::get(#"zm_towers_pap_quest_completed");
+            return (isdefined(v) && v == 1);
 
         case "Blood":
-        b_bool = level flag::get(#"power_on1");
-
-        return b_bool;
-        break;
+        case "AO":
+        case "Dead":
+        case "Tag":
+            v = level flag::get(#"power_on1");
+            return (isdefined(v) && v == 1);
 
         case "AE":
-        b_bool = level flag::get(#"power_on");
-
-        return true;
-        break;
-
-        case "AO":
-        b_bool = level flag::get(#"power_on1");
-
-        return b_bool;
-        break;
-
-        case "Dead":
-        b_bool = level flag::get(#"power_on1");
-
-        return true;
-        break;
-
-        case "Tag":
-        b_bool = level flag::get(#"power_on1");
-
-        return b_bool;
-        break;
-
         case "Classified":
-        b_bool = level flag::get(#"power_on");
-
-        return b_bool;
-        break;
-
         case "Voyage":
-        b_bool = level flag::get(#"power_on");
-
-        return true;
-        break;
+            v = level flag::get(#"power_on");
+            return (isdefined(v) && v == 1);
     }
+
+    return false;
 }
 
 Spawn_EnhTrigger(origin, hintstring, angles, model, func, waitseconds, delete = true)

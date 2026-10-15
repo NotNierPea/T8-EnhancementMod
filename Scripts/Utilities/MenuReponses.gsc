@@ -18,7 +18,7 @@ MenuResponseSystem()
 			player callback::function_d8abfc3d(#"menu_response", &TryMainQuestContinue);
 			player callback::function_d8abfc3d(#"menu_response", &TryBoxPatchResponse);
 
-			if(!GetDvarInt(#"shield_enh_ClassicMode", 0) || !getDvarInt(#"shield_enh_ClassicMode_Loadouts", 1))
+			if (!GetDvarInt(#"shield_enh_ClassicMode", 0))
 			{
 				// elixirs saved
 				for (i = 0; i < 4; i++)
@@ -30,6 +30,14 @@ MenuResponseSystem()
 				// specials save
 				player LUINotifyEvent(#"shield_enh_saved_special", 1, GetSpecialistWeaponFromString(player.var_b708af7b));
 				util::wait_network_frame(1);
+			}
+			else
+			{
+				// classic: keep death-machine specialist pick (don't overwrite with character default)
+				saved_id = GetDvarInt(#"shield_enh_saved_special", 0);
+				lv3 = GetSpecialistWeaponLv3FromInt(saved_id);
+				if (isdefined(lv3))
+					player.enh_deathmachine_special = lv3;
 			}
 
 			// character save
@@ -273,6 +281,22 @@ GetSpecialistWeaponFromInt(index)
 	return undefined;
 }
 
+GetSpecialistWeaponLv3FromInt(index)
+{
+	switch (index)
+	{
+		case 1: return #"hero_katana_t8_lv3";
+		case 2: return #"hero_gravityspikes_t8_lv3";
+		case 3: return #"hero_flamethrower_t8_lv3";
+		case 4: return #"hero_minigun_t8_lv3";
+		case 5: return #"hero_hammer_lv3";
+		case 6: return #"hero_sword_pistol_lv3";
+		case 7: return #"hero_chakram_lv3";
+		case 8: return #"hero_scepter_lv3";
+	}
+	return undefined;
+}
+
 GetBGBNameFromInt(index)
 {
 	switch(index)
@@ -312,9 +336,20 @@ TryClassChange(params) {
 
 	if (intpayload <= 8 && response === #"blah")
 	{
+		// classic mode: store pick for death machine powerup, don't grant a permanent specialist
 		if (GetDvarInt(#"shield_enh_ClassicMode", 0))
+		{
+			lv3 = GetSpecialistWeaponLv3FromInt(intpayload);
+			if (isdefined(lv3))
+			{
+				self.enh_deathmachine_special = lv3;
+				SetDvar(#"shield_enh_saved_special", intpayload);
+				self LUINotifyEvent(#"shield_enh_saved_special", 1, intpayload);
+				ShieldLog("^2Death Machine specialist set: " + intpayload);
+			}
 			return;
-		
+		}
+
 		// specialist
 		weapon_name = GetSpecialistWeaponFromInt(intpayload);
 		self.var_fd05e363 = getweapon(weapon_name);

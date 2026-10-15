@@ -78,10 +78,8 @@ CoD.SettingsModListData.new = function ( f1_arg0, f1_arg1, f1_arg2, f1_arg3, f1_
 		local f7_local0 = model:get()
 		if f7_local0 ~= nil then
 			SettingDescription:setText( Engine[@"hash_4F9F1239CFD921FE"]( f7_local0 ) )
-
-			--if Dvar[@"shield_enh_datasource_get"]:get() == "SearchSettingsData" then
-				self.SettingsList:updateDataSource()
-			--end
+			-- Do NOT call updateDataSource() here. Classic Mode opens a second
+			-- related list, and refreshing on every desc change freezes the menu.
 		end
 	end )
 
@@ -225,9 +223,40 @@ LUI.createMenu.Shield_EnhID_SettingsPopup = function ( f1_arg0, f1_arg1 )
 	self.SettingsListRelated:setAlpha(0)
 
 	if Dvar[@"shield_enh_datasource_get"]:get() == "ShieldClassicSettings" then
+		-- hide the in-list description (it sits on top of the buttons)
+		SettingsList.SettingDescription:setAlpha(0)
+
+		-- description lives bottom-left of the screen, outside the settings box
+		-- height ~22px matches the normal in-list desc size (was 60px and looked huge)
+		local ClassicSettingDescription = LUI.UIText.new( 0, 0, 48, 560, 1, 1, -168, -146 )
+		ClassicSettingDescription:setRGB( ColorSet.T8__OFF__WHITE.r, ColorSet.T8__OFF__WHITE.g, ColorSet.T8__OFF__WHITE.b )
+		ClassicSettingDescription:setTTF("notosans_bold")
+		ClassicSettingDescription:setBackingType( 2 )
+		ClassicSettingDescription:setBackingColor( 0.04, 0.81, 1 )
+		ClassicSettingDescription:setBackingAlpha( 0.01 )
+		ClassicSettingDescription:setBackingXPadding( 8 )
+		ClassicSettingDescription:setBackingYPadding( 3 )
+		ClassicSettingDescription:setAlignment( Enum[@"luialignment"][@"lui_alignment_left"] )
+		ClassicSettingDescription:setAlignment( Enum[@"luialignment"][@"lui_alignment_top"] )
+		self:addElement( ClassicSettingDescription )
+		self.ClassicSettingDescription = ClassicSettingDescription
+
+		local function UpdateClassicDesc( model )
+			local desc = model:get()
+			if desc ~= nil then
+				ClassicSettingDescription:setText( Engine[@"hash_4F9F1239CFD921FE"]( desc ) )
+			end
+		end
+		ClassicSettingDescription:linkToElementModel( SettingsList.SettingsList, "desc", true, UpdateClassicDesc )
+		ClassicSettingDescription:linkToElementModel( self.SettingsListRelated.SettingsList, "desc", true, UpdateClassicDesc )
+
+		-- related header aligned with the setting rows
 		self.SettingsListRelatedDesc:setAlpha(1)
 		self.SettingsListRelatedDesc:setText("Related Classic Mode Settings")
+		self.SettingsListRelatedDesc:setLeftRight( 0.5, 0.5, -275, 275 )
+		self.SettingsListRelatedDesc:setTopBottom( 0.5, 0.5, 50, 75 )
 		self.SettingsListRelated:setAlpha(1)
+		self.SettingsListRelated:setTopBottom( 0.5, 0.5, -310, 490 )
 		self.SettingsListRelated.SettingsList:setDataSource("ShieldClassicSettingsRelated")
 	end
 
@@ -301,4 +330,7 @@ CoD.Shield_EnhID_SettingsPopup.__onClose = function ( f16_arg0 )
 	f16_arg0.SettingsListRelated:close()
 	f16_arg0.SettingsListRelatedDesc:close()
 	f16_arg0.SettingsSearchNoRes:close()
+	if f16_arg0.ClassicSettingDescription then
+		f16_arg0.ClassicSettingDescription:close()
+	end
 end

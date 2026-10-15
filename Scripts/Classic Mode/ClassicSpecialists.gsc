@@ -48,7 +48,28 @@ func_should_drop_custom()
 	return 1;
 }
 
-CheckDownedWeapon()
+GetDeathMachineSpecial(player)
+{
+	if (isdefined(player) && isdefined(player.enh_deathmachine_special))
+		return player.enh_deathmachine_special;
+
+	// pause-menu pick is also kept on this dvar
+	saved_id = GetDvarInt(#"shield_enh_saved_special", 0);
+	if (saved_id > 0)
+	{
+		lv3 = GetSpecialistWeaponLv3FromInt(saved_id);
+		if (isdefined(lv3))
+		{
+			if (isdefined(player))
+				player.enh_deathmachine_special = lv3;
+			return lv3;
+		}
+	}
+
+	return level.RandomClassicSpecials;
+}
+
+CheckDownedWeapon(str_weapon)
 {
     self endon(#"death", #"replace_weapon_powerup", #"custom_random_specialists_stopped");
 
@@ -56,7 +77,8 @@ CheckDownedWeapon()
 
     wait 0.5;
 
-    self takeWeapon(GetWeapon(level.RandomClassicSpecials));
+	if (isdefined(str_weapon))
+		self takeWeapon(GetWeapon(str_weapon));
     self.zombie_vars[#"custom_random_specialists_on"] = false;
 	self notify(#"custom_random_specialists_stopped");
 }
@@ -68,20 +90,19 @@ CustomRandomSpecialists(player)
 		PlayCrankedPowerUp("full_power");
 	}
 
+	str_weapon = GetDeathMachineSpecial(player);
+
     // bug fix
-    player thread CheckDownedWeapon();
+    player thread CheckDownedWeapon(str_weapon);
 
 	player endon(#"death", #"player_downed");
 
 	if (player.zombie_vars[#"custom_random_specialists_on"])
 	{
-		//player iPrintLnBold("i didn't poop");
 		return;
 	}
 
-	//player iPrintLnBold("i pooped");
-
-	player thread GiveWeaponTimer(player, 45, level.RandomClassicSpecials);
+	player thread GiveWeaponTimer(player, 45, str_weapon);
 	player thread zm_powerups::powerup_vo("minigun");
 }
 

@@ -164,6 +164,309 @@ ANoclipBind() {
 	}
 }
 
+Debug_OpenDoors()
+{
+	player = getplayers()[0];
+	if (!isdefined(player))
+		return;
+
+	doors = getentarray("zombie_door", "targetname");
+	doors = arraycombine(doors, getentarray("zombie_debris", "targetname"), 0, 0);
+	doors = arraycombine(doors, getentarray("zombie_airlock_buy", "targetname"), 0, 0);
+	foreach (door in doors)
+		door notify(#"trigger", {#activator:player, #is_forced:1});
+
+	ShieldLog("^2Debug: opened doors");
+	player iPrintLnBold("^2Doors opened");
+}
+
+Debug_PowerOn()
+{
+	level flag::set("power_on");
+	level flag::set("power_on1");
+	level flag::set("power_on2");
+	level flag::set("power_on3");
+	level flag::set("pap_machine_active");
+	level flag::set("pap_power_ready");
+	level flag::set(#"pap_quest_completed");
+	level flag::set(#"zm_towers_pap_quest_completed");
+	ShieldLog("^2Debug: power/PAP flags set");
+	if (isdefined(getplayers()[0]))
+		getplayers()[0] iPrintLnBold("^2Power on");
+}
+
+Debug_FreeSkipClean(b_skipped, ended_early)
+{
+	level notify(#"free_skip_clean");
+	return;
+}
+
+Debug_OverrideQuest(quest_name, step_name, setup_func, cleanup_func = undefined)
+{
+	while (!IsDefined(level._ee))
+		waitframe(1);
+	while (!isdefined(level._ee[quest_name]))
+		waitframe(1);
+
+	ee = level._ee[quest_name];
+	foreach (step in ee.steps)
+	{
+		if (step.name == step_name)
+		{
+			ee_step = step;
+			break;
+		}
+	}
+
+	if (!IsDefined(ee_step))
+		return;
+
+	ee_step.setup_func = setup_func;
+	if (isdefined(cleanup_func))
+		ee_step.cleanup_func = cleanup_func;
+}
+
+Debug_BOTDPaP(power_on)
+{
+	level flag::wait_till("start_zombie_round_logic");
+	switch (zm_custom::function_901b751c(#"zmpapenabled"))
+	{
+		case 1:
+			self zm_pack_a_punch::set_state_hidden();
+			if (self.script_string == "roof")
+			{
+				level flag::wait_till("power_on1");
+				var_a8d69fbd = getent("pap_shock_box", "script_string");
+				var_a8d69fbd playsound(#"hash_3a18ced95ae72103");
+				var_a8d69fbd playloopsound(#"hash_3a1bb2d95ae92746");
+				var_a8d69fbd notify(#"hash_7f8e7011812dff48");
+				wait 2;
+				e_player = zm_utility::get_closest_player(var_a8d69fbd.origin);
+				e_player thread zm_audio::create_and_play_dialog(#"pap", #"build", undefined, 1);
+				scene::play(#"aib_vign_zm_mob_pap_ghosts");
+				self zm_pack_a_punch::function_bb629351(1);
+				self thread [[ @pap_quest<scripts\zm\zm_escape_pap_quest.gsc>::function_c0bc0375 ]]();
+				level zm_ui_inventory::function_7df6bb60(#"zm_escape_paschal", 1);
+				level flag::set(#"pap_quest_completed");
+				link = @pap_quest<scripts\zm\zm_escape_pap_quest.gsc>::function_3357bedc;
+				util::delay(30, "game_over", link);
+			}
+			break;
+	}
+}
+
+Debug_ActivatePAP()
+{
+	SetGametypeSetting(#"zmpowerstate", 2);
+	ShieldLog("^2Debug: Activating PAP");
+
+	switch (BO4GetMap())
+	{
+		case "IX":
+			level flag::wait_till("all_players_spawned");
+			level flag::wait_till("initial_blackscreen_passed");
+			wait 3;
+			level thread [[ @zm_towers_pap_quest<scripts\zm\zm_towers_pap_quest.gsc>::function_a7faeaaf ]]();
+			break;
+
+		case "Blood":
+			SetGametypeSetting(#"zmpowerstate", 1);
+			while (!isDefined(level.pack_a_punch.custom_power_think))
+				waitFrame(1);
+			level.pack_a_punch.custom_power_think = &Debug_BOTDPaP;
+
+			level flag::wait_till("all_players_spawned");
+			level flag::wait_till("initial_blackscreen_passed");
+
+			zm_zonemgr::enable_zone("zone_cellblock_jail_1");
+			zm_zonemgr::enable_zone("zone_cellblock_jail_2");
+			zm_zonemgr::enable_zone("zone_cellblock_jail_3");
+			zm_zonemgr::enable_zone("zone_cellblock_jail_4");
+			zm_zonemgr::enable_zone("zone_cellblock_west_barber");
+			zm_zonemgr::enable_zone("zone_broadway_floor_2");
+			zm_zonemgr::enable_zone("zone_cellblock_west");
+			zm_zonemgr::enable_zone("zone_start");
+			zm_zonemgr::enable_zone("zone_library");
+
+			level flag::set("pap_machine_active");
+			level flag::set(#"hash_3e80d503318a5674");
+			level flag::set(#"hash_537cc10c9deca9da");
+			level flag::set("power_on");
+			level flag::set("power_on1");
+			level flag::set("power_on2");
+			level flag::set("power_on3");
+			level flag::set("pap_power_ready");
+			level flag::set(#"pap_quest_completed");
+			level flag::set("fasttravel_enabled");
+			level flag::set(#"mq_computer_activated");
+			level flag::set(#"catwalk_event_completed");
+			level flag::set("activate_catwalk");
+			level notify(#"hash_7a04a7fb98fa4e4d");
+
+			wait 5;
+
+			var_40762d8a = getent("t_catwalk_door_open", "targetname");
+			t_catwalk_door = getent("door_model_west_side_exterior_to_catwalk", "target");
+			if (isdefined(var_40762d8a))
+			{
+				var_40762d8a sethintstring(#"");
+				var_40762d8a setinvisibletoall();
+			}
+			if (isdefined(t_catwalk_door))
+			{
+				t_catwalk_door sethintstring(#"");
+				t_catwalk_door setinvisibletoall();
+			}
+			if (isdefined(level.var_2ea46461))
+				level.var_2ea46461 delete();
+
+			foreach (trig_elec_switch in getentarray("use_elec_switch", "targetname"))
+				trig_elec_switch trigger::use();
+			break;
+
+		case "AE":
+			SetGametypeSetting(#"zmpapenabled", 2);
+			level flag::wait_till("all_players_spawned");
+			level flag::wait_till("initial_blackscreen_passed");
+			wait 1;
+			level flag::set("pap_machine_active");
+			level flag::set(#"hash_3e80d503318a5674");
+			level flag::set(#"hash_537cc10c9deca9da");
+			level flag::set("power_on");
+			level flag::set("power_on1");
+			level flag::set("power_on2");
+			level flag::set("power_on3");
+			level flag::set("pap_power_ready");
+			level flag::set(#"pap_quest_completed");
+			level flag::set("fasttravel_enabled");
+			level flag::set(#"mq_computer_activated");
+			level flag::set(#"zm_red_fasttravel_open");
+			level flag::set(#"hash_3764b0cb106568ec");
+			level flag::set(#"hash_3dba794053dea40e");
+			level flag::set(#"hash_32ff7a456732ef09");
+			level flag::set(#"hash_4083e9da0ba41dec");
+			level flag::set(#"cage_dropped");
+			level flag::set(#"hash_67695ee69c57c0b2");
+			level flag::set(#"hash_61de3b8fe6f6a35");
+			level flag::set(#"hash_7943879f3be8ccc6");
+			level flag::set(#"eagle_attack");
+			level flag::set(#"egg_free");
+			level flag::set(#"fl_oracle_unlocked");
+			level flag::set(#"hash_1b6616e730b1235b");
+			break;
+
+		case "AO":
+			SetGametypeSetting(#"zmpapenabled", 2);
+			level flag::wait_till("all_players_spawned");
+			level flag::wait_till("initial_blackscreen_passed");
+			wait 3;
+			zm_sq::start(#"zm_white_main_quest");
+			break;
+
+		case "Dead":
+			level flag::wait_till("all_players_spawned");
+			level flag::wait_till("initial_blackscreen_passed");
+			wait 3;
+			s_scene = struct::get(#"p8_fxanim_zm_man_ooze_clump_bundle", "scriptbundlename");
+			if (isdefined(s_scene))
+			{
+				s_scene thread scene::play(#"p8_fxanim_zm_man_ooze_clump_bundle", "clump01_rise");
+				s_scene thread scene::play(#"p8_fxanim_zm_man_ooze_clump_bundle", "clump02_rise");
+				s_scene thread scene::play(#"p8_fxanim_zm_man_ooze_clump_bundle", "clump03_rise");
+			}
+			wait 5;
+			level flag::set("crystal_main_hall");
+			level flag::set("crystal_library");
+			level flag::set("crystal_greenhouse");
+			level flag::set("crystal_main_hall_key");
+			level flag::set("crystal_library_key");
+			level flag::set("crystal_greenhouse_key");
+			level flag::set("power_on666");
+			level flag::set("unlock_pap_gate");
+			level flag::set("open_pap");
+			zm_power::turn_power_on_and_open_doors(666);
+			break;
+
+		case "Tag":
+			level thread Debug_OverrideQuest(#"pap_rock", #"step_1", &Debug_FreeSkipClean);
+			level thread Debug_OverrideQuest(#"pap_rock", #"step_2", &Debug_FreeSkipClean);
+			level flag::wait_till("all_players_spawned");
+			level flag::wait_till("initial_blackscreen_passed");
+			wait 3;
+			level flag::set(#"hash_3310bb35ce396e49");
+			level flag::set(#"hash_5a3d0402a5557739");
+			level flag::set(#"hash_3028604821838259");
+			level flag::set(#"hash_78cf83ad057b4f1f");
+			break;
+
+		case "Classified":
+			SetGametypeSetting(#"zmpapenabled", 2);
+			level flag::wait_till("all_players_spawned");
+			level flag::set("pap_machine_active");
+			level flag::set(#"hash_3e80d503318a5674");
+			level flag::set(#"hash_537cc10c9deca9da");
+			level flag::set("power_on");
+			level flag::set("power_on1");
+			level flag::set("power_on2");
+			level flag::set("power_on3");
+			level flag::set("pap_power_ready");
+			level flag::set(#"pap_quest_completed");
+			level flag::set("fasttravel_enabled");
+			level flag::set(#"mq_computer_activated");
+			level flag::wait_till("initial_blackscreen_passed");
+			level notify(#"modifier_acquired");
+			wait 3;
+			if (isdefined(level.var_2de08508))
+				level.var_2de08508 notify(#"trigger", {#activator:getplayers()[0]});
+			wait 5;
+			think = @zm_office_teleporters<scripts\zm\zm_office_teleporters.gsc>::portal_think;
+			if (isdefined(level.s_cage_portal))
+				level.s_cage_portal zm_unitrigger::create("", 32, think, 0, 0);
+			[[ @zm_office_teleporters<scripts\zm\zm_office_teleporters.gsc>::function_60abbae4 ]](1);
+			if (isdefined(level.var_a23b5c5))
+			{
+				level.var_a23b5c5 playsound(#"hash_123af2d6dc30025a");
+				level.var_a23b5c5 movez(150, 1);
+			}
+			break;
+
+		case "Voyage":
+			level flag::wait_till("all_players_spawned");
+			level flag::wait_till("initial_blackscreen_passed");
+			wait 5;
+			function_5c299a0f = @zodt8_pap_quest<scripts\zm\zm_zodt8_pap_quest.gsc>::function_5c299a0f;
+			if (isdefined(level.s_pap_quest) && isdefined(level.s_pap_quest.a_s_locations))
+			{
+				foreach (s_loc in level.s_pap_quest.a_s_locations)
+				{
+					s_loc.unitrigger_stub thread [[ function_5c299a0f ]]();
+					wait 0.5;
+				}
+			}
+			break;
+	}
+
+	if (isdefined(getplayers()[0]))
+		getplayers()[0] iPrintLnBold("^2PAP activated");
+}
+
+Debug_OpenMapSetup()
+{
+	level thread Debug_ActivatePAP();
+	Debug_OpenDoors();
+	Debug_PowerOn();
+
+	foreach (guy in getplayers())
+	{
+		guy zm_score::add_to_player_score(50000);
+		setDvar(#"enh_godmode", 1);
+	}
+
+	ShieldLog("^2Debug: open map setup (doors/power/PAP/50k/god)");
+	if (isdefined(getplayers()[0]))
+		getplayers()[0] iPrintLnBold("^2Map setup ready");
+}
+
 RegisterDebugCmds()
 {
 	// for achivs
@@ -186,6 +489,7 @@ RegisterDebugCmds()
 
 	adddebugcommand("devgui_cmd \"enh_dev_gsc/player/score/+500\" \"set enh_score_player 500\"\n");
 	adddebugcommand("devgui_cmd \"enh_dev_gsc/player/score/-500\" \"set enh_score_player -500\"\n");
+	adddebugcommand("devgui_cmd \"enh_dev_gsc/player/score/+50000\" \"set enh_score_player 50000\"\n");
 
 	adddebugcommand("devgui_cmd \"enh_dev_gsc/player/test_func/on\" \"set enh_test 1\"\n");
 	adddebugcommand("devgui_cmd \"enh_dev_gsc/player/test_func/off\" \"set enh_test 0\"\n");
@@ -195,6 +499,14 @@ RegisterDebugCmds()
 	adddebugcommand("devgui_cmd \"enh_dev_gsc/game/timescale_speed/5x\" \"set enh_timescale_speed 5\"\n");
 	adddebugcommand("devgui_cmd \"enh_dev_gsc/game/timescale_speed/10x\" \"set enh_timescale_speed 10\"\n");
 	adddebugcommand("devgui_cmd \"enh_dev_gsc/game/timescale_speed/0x\" \"set enh_timescale_speed 0\"\n");
+
+	// LocalTest map helpers (were a separate mod; F9 menu only now)
+	adddebugcommand("devgui_cmd \"enh_dev_gsc/map/open_doors\" \"set enh_open_doors 1\"\n");
+	adddebugcommand("devgui_cmd \"enh_dev_gsc/map/power_on\" \"set enh_power_on 1\"\n");
+	adddebugcommand("devgui_cmd \"enh_dev_gsc/map/activate_pap\" \"set enh_activate_pap 1\"\n");
+	adddebugcommand("devgui_cmd \"enh_dev_gsc/map/open_map_setup\" \"set enh_open_map_setup 1\"\n");
+	adddebugcommand("devgui_cmd \"enh_dev_gsc/game/aat_always_proc/on\" \"set shield_enh_LocalTest 1\"\n");
+	adddebugcommand("devgui_cmd \"enh_dev_gsc/game/aat_always_proc/off\" \"set shield_enh_LocalTest 0\"\n");
 
 	thread LoopDvars();
 }
@@ -304,6 +616,30 @@ LoopDvars()
 				foreach(player in level.players) player zm_score::add_to_player_score(score_player);
 
 				setDvar(#"enh_score_player", 0);
+			}
+
+			if (getDvarInt(#"enh_open_doors", 0))
+			{
+				setDvar(#"enh_open_doors", 0);
+				level thread Debug_OpenDoors();
+			}
+
+			if (getDvarInt(#"enh_power_on", 0))
+			{
+				setDvar(#"enh_power_on", 0);
+				Debug_PowerOn();
+			}
+
+			if (getDvarInt(#"enh_activate_pap", 0))
+			{
+				setDvar(#"enh_activate_pap", 0);
+				level thread Debug_ActivatePAP();
+			}
+
+			if (getDvarInt(#"enh_open_map_setup", 0))
+			{
+				setDvar(#"enh_open_map_setup", 0);
+				level thread Debug_OpenMapSetup();
 			}
 		}
 
