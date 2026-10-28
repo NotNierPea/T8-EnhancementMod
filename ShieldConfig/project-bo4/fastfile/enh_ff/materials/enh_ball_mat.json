@@ -1,0 +1,27 @@
+{
+    "name": "enh_ball_mat",
+    "template": "../templates/material_model.json",
+    "textures": {
+        "colorMap": "#enh_cube_teddy",
+        "glossMap": "#hash_903dd7f6bd2ee1ed",
+        "normalMap": "#hash_8c3c2dcaa1919434",
+        "aoMap": "#hash_bfd1eb9d1e41b805"
+    },
+    "values": {
+        "colorTint": [
+            1,
+            0.35,
+            0.35
+        ],
+        "glossRange": [
+            0,
+            4
+        ]
+    },
+    "samplerStates": {
+        "colorSampler": {
+            "filter": "nearest",
+            "mipmap": "disabled"
+        }
+    }
+}

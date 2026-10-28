@@ -1,0 +1,11 @@
+{
+    "name": "enh_wiggle_loop",
+    "gltf": "../models/enh_wiggle.gltf",
+    "animation": "enh_wiggle_loop",
+    "framerate": 30,
+    "loop": true,
+    "notifies": [
+        { "name": "wiggle_half", "time": 0.5 },
+        { "sound": "enh_test_3d", "tag": "j_seg3", "time": 0.25 }
+    ]
+}

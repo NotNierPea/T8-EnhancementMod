@@ -1,0 +1,12 @@
+{
+    "name": "enh_floor",
+    "templateModel": "../templates/xmodel_rigid.json",
+    "templateMesh": "../templates/xmodelmesh_rigid.json",
+    "obj": "../models/enh_floor.obj",
+    "upAxis": "z",
+    "scale": 1.0,
+    "bone": "tag_origin",
+    "material": "#enh_cube_mat",
+    "stream": false,
+    "collision": "none"
+}

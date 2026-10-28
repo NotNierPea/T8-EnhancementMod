@@ -5,6 +5,7 @@
 		}
 	],
 	"settings": {
-		"FSharp.suggestGitignore": false
+		"FSharp.suggestGitignore": false,
+		"git.ignoreLimitWarning": true
 	}
 }

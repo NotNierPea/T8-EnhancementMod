@@ -1,0 +1,169 @@
+{
+    "name": "enh.all",
+    "templates": "../templates/sound_aliases.json",
+    "aliases": [
+        { "name": "enh_test_2d", "file": "enh_test_2d.wav", "type": "2d", "volume": 1.0 },
+        {
+            "name": "enh_test_3d", "file": "enh_test_3d.wav", "type": "3d", "volume": 1.0,
+            "minDist": 100, "maxDist": 2000, "PitchMin": -300, "PitchMax": 300, "RandomizeType": "pitch"
+        },
+        {
+            "name": "enh_test_loop", "file": "enh_test_loop.wav", "type": "3d_loop", "volume": 0.8,
+            "minDist": 50, "maxDist": 800, "FadeIn": 1000, "FadeOut": 1000
+        },
+        {
+            "name": "enh_test_variant", "type": "3d", "volume": 1.0, "minDist": 100, "maxDist": 2000,
+            "variants": [
+                { "file": "enh_test_variant1.wav" },
+                { "file": "enh_test_variant2.wav", "volume": 0.6 },
+                { "file": "enh_test_variant3.wav" }
+            ]
+        },
+        { "name": "enh_test_flac", "file": "enh_test_flac.wav", "type": "2d", "volume": 1.0, "format": "flac" },
+        {
+            "name": "enh_test_asr", "type": "3d", "volume": 0.9, "minDist": 100, "maxDist": 1500,
+            "file": "enh_test_asr_intro.wav", "sustain": "enh_test_asr_loop.wav", "release": "enh_test_asr_outro.wav"
+        },
+        {
+            "name": "enh_test_asr_cut", "type": "3d", "volume": 0.9, "minDist": 100, "maxDist": 1500,
+            "file": "enh_test_asr_cut.wav", "loopStart": 0.5, "loopEnd": 2.0
+        },
+        { "name": "enh_test_music_song", "file": "enh_test_music.wav", "type": "music", "format": "flac", "Storage": "streamed" },
+        {
+            "name": "hash_7c88df6e3f506817", "type": "zm_copy", "cullDistance": 2500, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/486df89823834251.flac", "VolMin": 85, "VolMax": 85, "PitchMin": -88, "PitchMax": 0, "DistMin": 300, "DistMaxDry": 2500, "DistMaxWet": 2500, "EnvelopMin": 50, "EnvelopMax": 150, "EnvelopPercent": 90, "ReverbSend": 10, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "EntityLimitCount": 8, "DuckGroup": 13, "Bus": "bus_hdrfx", "VolumeGroup": 9, "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "Secondary": "hash_12667100d6109334"}
+            ]
+        },
+        {
+            "name": "hash_ea8306e49ce6672", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"file": "zm_towers/1f89258d5846dfc1.flac", "VolMin": 92, "VolMax": 92, "PitchMin": -88, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "CenterSend": 93, "ReverbSend": 10, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "EntityLimitCount": 8, "Pan": 2, "DuckGroup": 12, "Bus": "bus_hdrfx", "VolumeGroup": 9, "PanType": "2d", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "IsBig": "true", "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_1797140090110175"}
+            ]
+        },
+        {
+            "name": "hash_16c30790b38cd2c5", "type": "zm_copy", "cullDistance": 4000, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/2a1b6b6f60fea265.flac", "Secondary": "hash_32bf188d5b92adf", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/38914afcad160630.flac", "Secondary": "hash_32bf188d5b92adf", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/46f174fc668af497.flac", "Secondary": "hash_32bf188d5b92adf", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/69da8a6e73c0bbba.flac", "Secondary": "hash_32bf188d5b92adf", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"}
+            ]
+        },
+        {
+            "name": "hash_40317c908287dc4c", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"file": "zm_towers/27edfb602e2fb7bf.flac", "VolMin": 95, "VolMax": 95, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_64996f5bf572e15a", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/66951eae42352ac2.flac", "VolMin": 95, "VolMax": 95, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_64996f5bf572e15a", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/67847297821b16cd.flac", "VolMin": 95, "VolMax": 95, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_64996f5bf572e15a", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/523be2b081a262f8.flac", "VolMin": 95, "VolMax": 95, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_64996f5bf572e15a", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"}
+            ]
+        },
+        {
+            "name": "hash_6fd0739f355c5220", "type": "zm_copy", "cullDistance": 4000, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/59bc693ea6371a15.flac", "Secondary": "hash_16c30790b38cd2c5", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/7baa2f9c1cb00860.flac", "Secondary": "hash_16c30790b38cd2c5", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/358cbfeb5c046707.flac", "Secondary": "hash_16c30790b38cd2c5", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/423dfb67f04dccea.flac", "Secondary": "hash_16c30790b38cd2c5", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"}
+            ]
+        },
+        {
+            "name": "hash_30e00e9ec91a7461", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"file": "zm_towers/7b88f4de4a25669f.flac", "VolMin": 94, "VolMax": 94, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_40317c908287dc4c", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/4631a6e4afbd3022.flac", "VolMin": 94, "VolMax": 94, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_40317c908287dc4c", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/3cf0d239eee3fb2d.flac", "VolMin": 94, "VolMax": 94, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_40317c908287dc4c", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"},
+                {"file": "zm_towers/78675df045a93658.flac", "VolMin": 94, "VolMax": 94, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_40317c908287dc4c", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"}
+            ]
+        },
+        {
+            "name": "hash_7799f8b5d78f5f3", "type": "zm_copy", "cullDistance": 4000, "spatial": true,
+            "variants": [
+                {"Secondary": "hash_6fd0739f355c5220", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"}
+            ]
+        },
+        {
+            "name": "hash_67ade88bdc2d836e", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"VolMin": 97, "VolMax": 97, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 70, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "Pan": 9, "DuckGroup": 37, "VolumeGroup": 25, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_30e00e9ec91a7461", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"}
+            ]
+        },
+        {
+            "name": "hash_18a7a691819573df", "type": "zm_copy", "cullDistance": 1000, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/1a5e98152a5ea045.flac", "VolMin": 82, "VolMax": 82, "PitchMin": -88, "PitchMax": 0, "DistMin": 300, "DistMaxDry": 1000, "DistMaxWet": 1000, "EnvelopMin": 50, "EnvelopMax": 150, "EnvelopPercent": 90, "ReverbSend": 10, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "EntityLimitCount": 1, "DuckGroup": 13, "Bus": "bus_hdrfx", "VolumeGroup": 9, "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2}
+            ]
+        },
+        {
+            "name": "hash_33e1a791d94f57da", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"file": "zm_towers/3dd99a447ae55602.flac", "VolMin": 88, "VolMax": 88, "PitchMin": -88, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "CenterSend": 93, "ReverbSend": 10, "SosDelay": 0, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "EntityLimitCount": 1, "Pan": 9, "DuckGroup": 12, "Bus": "bus_hdrfx", "VolumeGroup": 9, "PanType": "2d", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "IsBig": "true", "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false"}
+            ]
+        },
+        {
+            "name": "hash_12667100d6109334", "type": "zm_copy", "cullDistance": 1000, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/7279d4556347a7a1.flac", "VolMin": 87, "VolMax": 87, "PitchMin": -88, "PitchMax": 0, "DistMin": 300, "DistMaxDry": 1000, "DistMaxWet": 1000, "EnvelopMin": 50, "EnvelopMax": 150, "EnvelopPercent": 90, "ReverbSend": 10, "SosDelay": 0, "StartDelay": 1300, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "EntityLimitCount": 8, "DuckGroup": 13, "Bus": "bus_hdrfx", "VolumeGroup": 9, "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "ContextType": "hash_1f7fb6af8fd92cb5", "ContextValue": "hash_20f8d119253bcc70"}
+            ]
+        },
+        {
+            "name": "hash_1797140090110175", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"file": "zm_towers/13c5e1217ab3dd19.flac", "VolMin": 94, "VolMax": 94, "PitchMin": -88, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "CenterSend": 93, "ReverbSend": 10, "SosDelay": 0, "StartDelay": 1300, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "EntityLimitCount": 8, "Pan": 2, "DuckGroup": 12, "Bus": "bus_hdrfx", "VolumeGroup": 9, "PanType": "2d", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "IsBig": "true", "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false"}
+            ]
+        },
+        {
+            "name": "hash_32bf188d5b92adf", "type": "zm_copy", "cullDistance": 574, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/2451234b73beff5a.flac", "VolMin": 80, "VolMax": 80, "PitchMin": 0, "PitchMax": 0, "DistMin": 100, "DistMaxDry": 574, "DistMaxWet": 574, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 0, "FadeOut": 64, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "OcclusionLevel": 0.5, "LimitCount": 1, "EntityLimitCount": 1, "Pan": 17, "Bus": "bus_hdrfx", "VolumeGroup": 29, "DistanceLpf": "false", "RandomizeType": "", "Secondary": "hash_10bb2d2daccaf4c2", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"}
+            ]
+        },
+        {
+            "name": "hash_64996f5bf572e15a", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"file": "zm_towers/2451234b73beff5a.flac", "VolMin": 95, "VolMax": 95, "PitchMin": 0, "PitchMax": 0, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 0, "SosDelay": 0, "StartDelay": 25, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 90, "LimitCount": 8, "EntityLimitCount": 1, "Pan": 17, "DuckGroup": 35, "Bus": "bus_hdrfx", "VolumeGroup": 29, "PanType": "2d", "DistanceLpf": "false", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_725d12571ae33763", "ContextType": "hash_53cacd4c82e5be70", "ContextValue": "hash_42a38db44454a06f"}
+            ]
+        },
+        {
+            "name": "hash_10bb2d2daccaf4c2", "type": "zm_copy", "cullDistance": 8000, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/1cb1459caa672ee8.flac", "VolMin": 88, "VolMax": 88, "PitchMin": -100.05, "PitchMax": 99.98, "DistMin": 1500, "DistMaxDry": 8000, "DistMaxWet": 8000, "EnvelopMin": 100, "EnvelopMax": 600, "EnvelopPercent": 60, "ReverbSend": 0, "StartDelay": 140, "FadeIn": 250, "FadeOut": 150, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMin": 0.15, "PriorityThresholdMax": 1, "OcclusionLevel": 0.5, "PriorityMin": 20, "PriorityMax": 70, "LimitCount": 3, "EntityLimitCount": 2, "VolumeGroup": 27, "DistanceLpf": "false", "LimitType": "oldest", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "WetMinCurve": 3, "Secondary": "hash_7453dd63420b0c93", "ContextType": "hash_730721b0b6373e1", "ContextValue": "hash_8f631787d4aaf77"},
+                {"file": "zm_towers/64134c1b076d6967.flac", "VolMin": 75, "VolMax": 75, "PitchMin": -100.05, "PitchMax": 99.98, "DistMin": 500, "DistMaxDry": 1200, "DistMaxWet": 1200, "EnvelopMin": 100, "EnvelopMax": 300, "EnvelopPercent": 75, "StartDelay": 140, "FadeIn": 150, "DistanceLpfMin": 800, "DistanceLpfMax": 1500, "PriorityThresholdMax": 1, "PriorityMin": 20, "PriorityMax": 70, "EntityLimitCount": 2, "VolumeGroup": 27, "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "WetMinCurve": 3, "ContextType": "hash_730721b0b6373e1", "ContextValue": "hash_249092f25acbb312"}
+            ]
+        },
+        {
+            "name": "hash_725d12571ae33763", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"file": "zm_towers/1cb1459caa672ee8.flac", "VolMin": 98, "VolMax": 98, "PitchMin": -25.01, "PitchMax": 24.97, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 50, "SosDelay": 0, "StartDelay": 140, "FadeIn": 250, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 60, "PriorityMax": 80, "LimitCount": 8, "Pan": 18, "DuckGroup": 34, "VolumeGroup": 25, "PanType": "2d", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_44c835eba9a5b2c4", "ContextType": "hash_730721b0b6373e1", "ContextValue": "hash_8f631787d4aaf77"},
+                {"file": "zm_towers/64134c1b076d6967.flac", "VolMin": 83, "VolMax": 83, "PitchMin": -25.01, "PitchMax": 24.97, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 50, "SosDelay": 0, "StartDelay": 140, "FadeIn": 150, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 60, "PriorityMax": 80, "LimitCount": 8, "EntityLimitCount": 2, "Pan": 18, "DuckGroup": 34, "VolumeGroup": 25, "PanType": "2d", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "ContextType": "hash_730721b0b6373e1", "ContextValue": "hash_249092f25acbb312"}
+            ]
+        },
+        {
+            "name": "hash_44c835eba9a5b2c4", "type": "zm_copy", "cullDistance": 10000, "spatial": false,
+            "variants": [
+                {"file": "zm_towers/486aa8ac656e1e7b.flac", "VolMin": 84, "VolMax": 84, "PitchMin": -25.01, "PitchMax": 24.97, "DistMin": 0, "DistMaxDry": 10000, "DistMaxWet": 10000, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 50, "SosDelay": 0, "FadeIn": 125, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.25, "PriorityMin": 60, "PriorityMax": 80, "LimitCount": 3, "Pan": 18, "DuckGroup": 34, "VolumeGroup": 25, "PanType": "2d", "LimitType": "oldest", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_c690fb2d6bd6203", "ContextType": "hash_730721b0b6373e1", "ContextValue": "hash_8f631787d4aaf77"}
+            ]
+        },
+        {
+            "name": "hash_c690fb2d6bd6203", "type": "zm_copy", "cullDistance": 4500, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/53100d505786b872.flac", "VolMin": 95, "VolMax": 95, "PitchMin": 0, "PitchMax": 299.97, "DistMin": 100, "DistMaxWet": 4500, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 60, "FluxTime": 4000, "FadeIn": 200, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.5, "PriorityMin": 85, "LimitCount": 8, "EntityLimitCount": 2, "VolumeGroup": 25, "DistanceLpf": "false", "FluxType": "left_shot", "LimitType": "oldest", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false", "Secondary": "hash_c690db2d6bd5e9d"}
+            ]
+        },
+        {
+            "name": "hash_c690db2d6bd5e9d", "type": "zm_copy", "cullDistance": 4500, "spatial": true,
+            "variants": [
+                {"file": "zm_towers/32fef0f5aa66b5c4.flac", "VolMin": 95, "VolMax": 95, "PitchMin": 0, "PitchMax": 299.97, "DistMin": 100, "DistMaxWet": 4500, "EnvelopMin": 0, "EnvelopMax": 0, "ReverbSend": 60, "FluxTime": 4000, "FadeIn": 200, "DistanceLpfMin": 800, "DistanceLpfMax": 3000, "PriorityThresholdMax": 1, "OcclusionLevel": 0.5, "PriorityMin": 85, "LimitCount": 8, "EntityLimitCount": 2, "VolumeGroup": 25, "DistanceLpf": "false", "FluxType": "right_shot", "LimitType": "oldest", "RandomizeType": "", "DryMaxCurve": 0, "WetMaxCurve": 0, "DryMinCurve": 2, "WetMinCurve": 2, "UseAmbRoomOcclusion": "false", "UseAmbRoomVerbAtten": "false"}
+            ]
+        }
+    ],
+    "music": [
+        {
+            "name": "enh_music",
+            "states": [
+                { "name": "enh_test_music", "intro": { "alias": "enh_test_music_song", "stopFadeBeats": 4 } }
+            ]
+        }
+    ]
+}

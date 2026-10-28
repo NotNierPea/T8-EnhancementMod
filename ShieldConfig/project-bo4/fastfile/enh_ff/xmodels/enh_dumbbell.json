@@ -1,0 +1,11 @@
+{
+    "name": "enh_dumbbell",
+    "templateModel": "../templates/xmodel_rigid.json",
+    "templateMesh": "../templates/xmodelmesh_rigid.json",
+    "obj": "../models/enh_dumbbell.obj",
+    "material": "#enh_truss_mat",
+    "normals": "smooth",
+    "collision": "hull",
+    "collisionObj": "../models/enh_dumbbell.obj",
+    "physics": "physics/enh_prop_phys.json"
+}

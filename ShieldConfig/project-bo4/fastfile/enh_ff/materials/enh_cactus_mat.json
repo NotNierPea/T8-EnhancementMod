@@ -1,0 +1,10 @@
+{
+    "name": "enh_cactus_mat",
+    "template": "../templates/material_model.json",
+    "textures": {
+        "colorMap": "enh_cactus_green.png,stream",
+        "glossMap": "#hash_903dd7f6bd2ee1ed",
+        "normalMap": "#hash_8c3c2dcaa1919434",
+        "aoMap": "#hash_bfd1eb9d1e41b805"
+    }
+}

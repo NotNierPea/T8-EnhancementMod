@@ -1,0 +1,9 @@
+{
+    "name": "enh_wiggle",
+    "templateModel": "../templates/xmodel_rigid.json",
+    "templateMesh": "../templates/xmodelmesh_rigid.json",
+    "gltf": "../models/enh_wiggle.gltf",
+    "material": "#enh_truss_mat",
+    "normals": "smooth",
+    "collision": "hull"
+}

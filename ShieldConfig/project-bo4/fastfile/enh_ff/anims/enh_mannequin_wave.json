@@ -1,0 +1,10 @@
+{
+    "name": "enh_mannequin_wave",
+    "gltf": "../models/enh_mannequin_wave.gltf",
+    "skeleton": "../skeletons/zm_body.json",
+    "framerate": 30,
+    "loop": true,
+    "notifies": [
+        { "name": "wave_half", "time": 0.5 }
+    ]
+}

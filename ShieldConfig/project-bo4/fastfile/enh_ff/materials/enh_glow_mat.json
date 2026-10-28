@@ -1,0 +1,20 @@
+{
+    "name": "enh_glow_mat",
+    "template": "../templates/material_glow.json",
+    "textures": {
+        "colorMap": "#enh_cube_teddy",
+        "emissiveMap": "#enh_cube_teddy"
+    },
+    "values": {
+        "colorTint": [
+            1,
+            0.6,
+            0.2
+        ],
+        "emissiveTint1": [
+            2,
+            1.2,
+            0.4
+        ]
+    }
+}

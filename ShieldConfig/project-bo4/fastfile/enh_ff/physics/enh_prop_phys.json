@@ -1,0 +1,9 @@
+{
+    "name": "enh_prop_phys",
+    "mass": 0.003,
+    "bounce": 0.5,
+    "friction": 0.8,
+    "bulletForceScale": 6,
+    "explosiveForceScale": 1,
+    "impactSounds": "#hash_51bb5e55b97a23ce"
+}

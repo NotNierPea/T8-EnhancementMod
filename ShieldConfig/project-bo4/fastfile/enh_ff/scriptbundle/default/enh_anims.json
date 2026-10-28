@@ -1,0 +1,9 @@
+{
+    "anim_wiggle": "anim#enh_wiggle_loop",
+    "anim_wiggle_long": "anim#enh_wiggle_long",
+    "anim_wiggle_walk": "anim#enh_wiggle_walk",
+    "anim_stock_walk": "anim#hash_446d13b87621a4b5",
+    "anim_stock_loop": "anim#hash_48aae5cdff0a155f",
+    "anim_stock_action": "anim#hash_18ae694c332864f",
+    "anim_mannequin_wave": "anim#enh_mannequin_wave"
+}

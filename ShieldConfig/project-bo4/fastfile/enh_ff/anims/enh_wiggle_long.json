@@ -1,0 +1,8 @@
+{
+    "name": "enh_wiggle_long",
+    "gltf": "../models/enh_wiggle.gltf",
+    "animation": "enh_wiggle_loop",
+    "framerate": 300,
+    "loop": true,
+    "notifies": [ { "name": "long_half", "time": 0.5 } ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "enh_truss",
+    "templateModel": "../templates/xmodel_rigid.json",
+    "templateMesh": "../templates/xmodelmesh_rigid.json",
+    "obj": "../models/enh_truss.obj",
+    "upAxis": "z",
+    "scale": 1.0,
+    "bone": "tag_origin",
+    "material": "materials/enh_truss_mat.json",
+    "stream": false,
+    "collision": "mesh"
+}

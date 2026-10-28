@@ -1,0 +1,8 @@
+{
+    "name": "enh_wiggle_walk",
+    "gltf": "../models/enh_wiggle.gltf",
+    "animation": "enh_wiggle_walk",
+    "framerate": 30,
+    "rootMotion": "tag_origin",
+    "notifies": [ { "name": "walk_half", "time": 0.5 } ]
+}

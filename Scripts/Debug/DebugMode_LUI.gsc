@@ -46,7 +46,305 @@ CustomObjectiveTest()
 
 TestShit()
 {
-	e_powerup = zm_powerups::specific_powerup_drop("bonfire_sale", self.origin, undefined, 0.1, self, 0, 1, 1);
+	//e_powerup = zm_powerups::specific_powerup_drop("bonfire_sale", self.origin, undefined, 0.1, self, 0, 1, 1);
+
+	//SpawnTestCube(self);
+	//SpawnTestTruss(self);
+	//SpawnTestCactus(self);
+	//SpawnTestLodSphere(self);
+	//level thread SpawnTestCrate(self);
+	//level thread SpawnTestBall(self);
+	//level thread SpawnTestDumbbell(self);
+	//SpawnTestMaterials(self);
+	//SpawnTestWiggle(self);
+	SpawnTestMannequin(self);
+	level thread TestAsrSounds(self);
+}
+
+/*
+    Intro, loop and outro sounds (enh_sounds.json): the intro plays once, the loop until the sound is stopped, then the
+    outro. enh_test_asr (3 files: a rising chirp, a 600 Hz hum, a falling chirp) with playsound / stopsounds,
+    enh_test_asr_cut (one file cut at loopStart / loopEnd) with playloopsound / stoploopsound. 150 units ahead.
+*/
+TestAsrSounds(player)
+{
+    yaw = (0, player.angles[1], 0);
+    speaker = spawn("script_origin", player.origin + AnglesToForward(yaw) * 150 + (0, 0, 40));
+    speaker endon(#"death");
+    for (i = 0; i < 3; i++)
+    {
+        wait 3;
+        speaker playsound(#"enh_test_asr");
+        ShieldLog("^6enh_test_asr started (intro, then the loop)");
+        wait 2 + i;
+        speaker stopsounds();
+        ShieldLog("^6enh_test_asr stopped (the outro)");
+    }
+    for (i = 0; i < 2; i++)
+    {
+        wait 3;
+        speaker playloopsound(#"enh_test_asr_cut");
+        ShieldLog("^6enh_test_asr_cut started (intro, then the loop)");
+        wait 4;
+        speaker stoploopsound();
+        ShieldLog("^6enh_test_asr_cut stopped (the outro)");
+    }
+}
+
+/*
+    A model on a game skeleton (enh_mannequin: the bones of a zm_common body, skeletons/zm_body.json) plays the game's
+    anims. Three mannequins in front of the player on zm_common anims (enh_anims.json): a walk loop with root motion and
+    footsteps, a short loop, an action; each loop restarts at its spot. Then the zombies wear it (dvar
+    enh_mannequin_zombies, 1 by default) and should walk and attack as usual.
+*/
+SpawnTestMannequin(player)
+{
+    yaw = (0, player.angles[1], 0);
+    names = array(#"hash_446d13b87621a4b5", #"hash_48aae5cdff0a155f", #"hash_18ae694c332864f");
+    labels = array("stock walk", "stock loop", "stock action");
+    for (i = 0; i < 3; i++)
+    {
+        home = player.origin + AnglesToForward(yaw) * 120 + AnglesToRight(yaw) * (i - 1) * 60;
+        man = spawn("script_model", home);
+        man.angles = yaw;
+        man setmodel(#"enh_mannequin");
+        man useanimtree("generic");
+        ShieldLog("^6enh_mannequin spawned at " + man.origin + " for " + labels[i]);
+        man thread PlayMannequin(names[i], labels[i], home, yaw);
+        man thread LogWiggleNotetracks(names[i], labels[i]);
+    }
+    // behind them, our anim made in blender on the same skeleton (enh_mannequin_wave: the left arm waves, the head nods)
+    home = player.origin + AnglesToForward(yaw) * 200;
+    man = spawn("script_model", home);
+    man.angles = yaw;
+    man setmodel(#"enh_mannequin");
+    man useanimtree("generic");
+    man thread PlayMannequin(#"enh_mannequin_wave", "custom wave", home, yaw);
+    man thread LogWiggleNotetracks(#"enh_mannequin_wave", "custom wave");
+    level thread MannequinZombies();
+}
+
+// the anim from its spot each time (root motion walks it away), its bones once posed
+PlayMannequin(xanim, label, home, yaw)
+{
+    self endon(#"death");
+    for (loops = 0; loops < 1000; loops++)
+    {
+        self.origin = home;
+        self.angles = yaw;
+        self animscripted(xanim, home, yaw, xanim, "normal", undefined, 1, 0.2);
+        if (loops == 0)
+        {
+            wait 0.5;
+            foreach(bone in array("j_mainroot", "j_spine4", "j_head", "j_wrist_le", "j_ankle_ri"))
+            {
+                ShieldLog("^6" + label + " " + bone + " at " + (self gettagorigin(bone) - self.origin));
+            }
+        }
+        self waittillmatch({#notetrack:"end"}, xanim);
+        if (loops < 2)
+        {
+            ShieldLog("^6" + label + " ended, the entity at " + self.origin);
+        }
+    }
+}
+
+// the zombies wear the mannequin: their own animtree and anims on its bones
+MannequinZombies()
+{
+    level endon(#"end_game");
+    if (getdvarint(#"enh_mannequin_zombies", 1) == 0)
+    {
+        return;
+    }
+    count = 0;
+    for (;;)
+    {
+        foreach(zombie in getaiteamarray(level.zombie_team))
+        {
+            if (isdefined(zombie.enh_mannequin) || !isalive(zombie))
+            {
+                continue;
+            }
+            zombie.enh_mannequin = 1;
+            zombie detachall();
+            zombie setmodel(#"enh_mannequin");
+            if (count < 3)
+            {
+                ShieldLog("^6zombie " + zombie getentitynumber() + " wears enh_mannequin");
+            }
+            count++;
+        }
+        wait 0.5;
+    }
+}
+
+/*
+    Skinned models and xanims (enh.ff, models/enh_wiggle.gltf), three columns in front of the player: the loop (a sound
+    notetrack enh_test_3d on j_seg3 at 0.25, wiggle_half), the same loop in 301 frames (enh_wiggle_long) and a walk with
+    root motion (enh_wiggle_walk: tag_origin moves 100 forward, turns 90 degrees, the entity should follow). The bullets
+    hit each segment where it is, the players the column at rest.
+*/
+SpawnTestWiggle(player)
+{
+    yaw = (0, player.angles[1], 0);
+    names = array(#"enh_wiggle_loop", #"enh_wiggle_long", #"enh_wiggle_walk");
+    labels = array("enh_wiggle_loop", "enh_wiggle_long", "enh_wiggle_walk");
+    for (i = 0; i < 3; i++)
+    {
+        wiggle = spawn("script_model", player.origin + AnglesToForward(yaw) * 100 + AnglesToRight(yaw) * (i - 1) * 60);
+        wiggle.angles = yaw;
+        wiggle setmodel(#"enh_wiggle");
+        wiggle useanimtree("generic");
+        ShieldLog("^6enh_wiggle spawned at " + wiggle.origin + " for " + labels[i]);
+        wiggle thread PlayWiggle(names[i], labels[i]);
+        wiggle thread LogWiggleNotetracks(names[i], labels[i]);
+    }
+}
+
+/*
+    The anims of an animtree are the ones the scripts and the loaded scriptbundles name (enh.ff's
+    scriptbundle/default/enh_anims.json). The bones at rest first: j_seg1 0, j_seg2 20, j_seg3 40 up.
+*/
+PlayWiggle(xanim, label)
+{
+    self endon(#"death");
+    wait 0.5;
+    foreach(bone in array("tag_origin", "j_seg1", "j_seg2", "j_seg3"))
+    {
+        ShieldLog("^6" + label + " " + bone + " at " + (self gettagorigin(bone) - self.origin));
+    }
+    for (loops = 0; loops < 1000; loops++)
+    {
+        self animscripted(xanim, self.origin, self.angles, xanim, "normal", undefined, 1, 0);
+        self waittillmatch({#notetrack:"end"}, xanim);
+        if (loops < 3)
+        {
+            ShieldLog("^6" + label + " ended, the entity at " + self.origin + " angles " + self.angles);
+        }
+    }
+}
+
+// the notetracks as they fire (the first loops); anim is the global anim struct in gsc, not a usable name
+LogWiggleNotetracks(xanim, label)
+{
+    self endon(#"death");
+    for (i = 0; i < 12; i++)
+    {
+        s_result = self waittill(xanim);
+        ShieldLog("^6" + label + " notetrack " + s_result.notetrack);
+    }
+}
+
+// material options (enh.ff): a glowing cube on the left, a see-through one on the right, behind the test cube
+SpawnTestMaterials(player)
+{
+    yaw = (0, player.angles[1], 0);
+    glow = spawn("script_model", player.origin + AnglesToForward(yaw) * 160 - AnglesToRight(yaw) * 60);
+    glow.angles = yaw;
+    glow setmodel(#"enh_cube_glow");
+    glass = spawn("script_model", player.origin + AnglesToForward(yaw) * 160 + AnglesToRight(yaw) * 60);
+    glass.angles = yaw;
+    glass setmodel(#"enh_cube_glass");
+    ShieldLog("^6enh_cube_glow and enh_cube_glass spawned");
+}
+
+// lods (enh.ff): teddy close, rust further, green far, walk away from it to see them switch
+SpawnTestLodSphere(player)
+{
+    yaw = (0, player.angles[1], 0);
+    sphere = spawn("script_model", player.origin + AnglesToForward(yaw) * 220);
+    sphere.angles = yaw;
+    sphere setmodel(#"enh_lodsphere");
+    sphere disconnectpaths();
+
+    ShieldLog("^6enh_lodsphere spawned at " + sphere.origin);
+}
+
+// two materials and a physics prop (enh.ff): the crate drops in front of the player, then gets thrown up
+SpawnTestCrate(player)
+{
+    yaw = (0, player.angles[1], 0);
+    crate = spawn("script_model", player.origin + AnglesToForward(yaw) * 150 + AnglesToRight(yaw) * 200 + (0, 0, 60));
+    crate.angles = yaw;
+    crate setmodel(#"enh_crate");
+    ShieldLog("^6enh_crate spawned at " + crate.origin);
+
+    wait 1;
+    crate physicslaunch(crate.origin, (0, 0, 1));
+    ShieldLog("^6enh_crate physicslaunch");
+    wait 6;
+    crate physicslaunch(crate.origin + (5, 0, 20), (0, 0, 250));
+    ShieldLog("^6enh_crate thrown");
+}
+
+/*
+    Physics props: the first physicslaunch makes the physics object, on the server and the client each (an impulse at
+    the point). A later one goes through the client's bullet impact (force * bulletForceScale of the preset, 0 for the
+    game's default one). So one launch at spawn, the force from dvars (the game's scripts use 1 to wake a prop, 3 to 13
+    for a hop), and PushOnShots after.
+*/
+
+// the ground under a point
+GroundBelow(pos)
+{
+    return bullettrace(pos + (0, 0, 64), pos - (0, 0, 256), false, undefined)["position"];
+}
+
+// convex hull collision (enh.ff): the ball on the ground on the player's left, pushed at its top so it rolls away
+SpawnTestBall(player)
+{
+    yaw = (0, player.angles[1], 0);
+    ball = spawn("script_model", GroundBelow(player.origin + AnglesToForward(yaw) * 150 - AnglesToRight(yaw) * 200) + (0, 0, 2));
+    ball.angles = yaw;
+    ball setmodel(#"enh_ball");
+    ShieldLog("^6enh_ball spawned at " + ball.origin);
+
+    wait 0.5;
+    // the model's origin is its bottom, 40 up is above its center
+    force = getdvarfloat(#"enh_ball_force", 10);
+    ball physicslaunch(ball.origin + (0, 0, 40), AnglesToForward(yaw) * force);
+    ShieldLog("^6enh_ball launched, force " + force);
+    ball thread PushOnShots("enh_ball");
+}
+
+/*
+    Shots: once a prop comes to rest the server destroys its physics object and makes it stationary again (trType 0,
+    the "stationary" notify, its origin where it stopped), so the game's bullet push (the client's physics object
+    only) has nothing to push. physicsexplosionsphere only pushes the map's dynents. A new physicslaunch at the hit
+    point makes the physics object again, its impulse there.
+*/
+PushOnShots(name)
+{
+    self endon(#"death");
+    self setcandamage(1);
+    self.health = 1000000;
+
+    while(true)
+    {
+        s_result = self waittill(#"damage");
+        self.health = 1000000;
+        force = getdvarfloat(#"enh_shot_force", 6);
+        self physicslaunch(s_result.position, vectornormalize(s_result.direction) * force);
+        ShieldLog("^6" + name + " hit at " + s_result.position + ", launched with " + force);
+    }
+}
+
+// a convex piece per object (enh.ff collisionObj): the dumbbell on its two balls across the view, rolled away
+SpawnTestDumbbell(player)
+{
+    yaw = (0, player.angles[1], 0);
+    bell = spawn("script_model", GroundBelow(player.origin + AnglesToForward(yaw) * 320) + (0, 0, 2));
+    bell.angles = yaw + (0, 90, 0);
+    bell setmodel(#"enh_dumbbell");
+    ShieldLog("^6enh_dumbbell spawned at " + bell.origin);
+
+    wait 0.5;
+    // the tops of its balls are 20 up
+    force = getdvarfloat(#"enh_dumbbell_force", 10);
+    bell physicslaunch(bell.origin + (0, 0, 18), AnglesToForward(yaw) * force);
+    ShieldLog("^6enh_dumbbell launched, force " + force);
+    bell thread PushOnShots("enh_dumbbell");
 }
 
 RocketGun()
@@ -311,6 +609,92 @@ LoopDvars()
 	}
 }
 
+// custom xmodel test (enh.ff): enh_cube is in the zone's bgcache, the server only sets models that are
+SpawnTestCube(player)
+{
+    yaw = (0, player.angles[1], 0);
+    cube = spawn("script_model", player.origin + AnglesToForward(yaw) * 96);
+    cube.angles = yaw;
+    cube setmodel(#"enh_cube");
+
+    // zombies follow the navmesh, not collision: cut it around the model (its collmap brush)
+    cube disconnectpaths();
+
+    ShieldLog("^6enh_cube spawned at " + cube.origin);
+
+    cube thread TestCubeSounds(player);
+}
+
+// custom sound test (enh.ff sound bank enh.all): a 2d chime to the player, 3d beeps of random pitch, then a loop on the cube
+TestCubeSounds(player)
+{
+    self endon(#"death");
+
+    player playlocalsound(#"enh_test_2d");
+    ShieldLog("^6enh_test_2d played");
+
+    for(i = 0; i < 5; i++)
+    {
+        wait 3;
+        self playsound(#"enh_test_3d");
+        ShieldLog("^6enh_test_3d played on the cube");
+    }
+
+    // fades in over 1s (its FadeIn), out over 1s
+    wait 3;
+    self playloopsound(#"enh_test_loop");
+    ShieldLog("^6enh_test_loop started on the cube");
+    wait 8;
+    self stoploopsound(1);
+    ShieldLog("^6enh_test_loop stopped");
+
+    // one of 3 sounds each time (thud, ping, chirp), never the same twice in a row
+    wait 2;
+    for(i = 0; i < 8; i++)
+    {
+        self playsound(#"enh_test_variant");
+        ShieldLog("^6enh_test_variant played on the cube");
+        wait 1.5;
+    }
+
+    // a stereo melody stored as flac
+    wait 1;
+    player playlocalsound(#"enh_test_flac");
+    ShieldLog("^6enh_test_flac played");
+
+    // a music state of the bank, 16s of chords, faded out over 4 beats when it changes
+    wait 6;
+    music::setmusicstate("enh_test_music");
+    ShieldLog("^6music state enh_test_music");
+    wait 10;
+    music::setmusicstate("none");
+    ShieldLog("^6music state none");
+}
+
+// imported xmodel test (enh.ff): the game's truss from a wraith obj, to the right of the cube
+SpawnTestTruss(player)
+{
+    yaw = (0, player.angles[1], 0);
+    truss = spawn("script_model", player.origin + AnglesToForward(yaw) * 96 + AnglesToRight(yaw) * 96);
+    truss.angles = yaw;
+    truss setmodel(#"enh_truss");
+    truss disconnectpaths();
+
+    ShieldLog("^6enh_truss spawned at " + truss.origin);
+}
+
+// model from another game (enh.ff): a frostbite fbx through blender, to the left of the cube, facing the player
+SpawnTestCactus(player)
+{
+    yaw = (0, player.angles[1], 0);
+    cactus = spawn("script_model", player.origin + AnglesToForward(yaw) * 96 - AnglesToRight(yaw) * 96);
+    cactus.angles = (0, player.angles[1] + 180, 0);
+    cactus setmodel(#"enh_cactus");
+    cactus disconnectpaths();
+
+    ShieldLog("^6enh_cactus spawned at " + cactus.origin);
+}
+
 DebugMode()
 {
     level endon(#"end_game", #"game_ended");
@@ -328,7 +712,6 @@ DebugMode()
     wait 10;
 
 	Host_Player = GetPlayers()[0];
-
 	Host_Player endon(#"death");
 
     while(true)

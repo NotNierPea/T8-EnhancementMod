@@ -1,0 +1,14 @@
+{
+    "name": "enh_lodsphere",
+    "templateModel": "../templates/xmodel_rigid.json",
+    "templateMesh": "../templates/xmodelmesh_rigid.json",
+    "obj": "../models/enh_lodsphere_lod0.obj",
+    "material": "#enh_cube_mat",
+    "normals": "smooth",
+    "stream": false,
+    "lods": [
+        { "obj": "../models/enh_lodsphere_lod1.obj", "material": "#enh_truss_mat", "stream": false },
+        { "obj": "../models/enh_lodsphere_lod2.obj", "material": "#enh_cactus_mat", "stream": false }
+    ],
+    "collision": "box"
+}

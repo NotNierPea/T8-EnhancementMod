@@ -63,6 +63,68 @@ image,directed_icon.png
 image,directed_image.png
 image,eye_prot.png
 
+// streamed images: the mips go in zone/enh.xpak, the fastfile only has the header
+// (shown by the debug hud, shield_enh_lui_debug 1)
+image,stream_test.png,stream
+
+// materials, from a template dumped with: acts ff -C <game> -r bo4 -p -a material zone\core_ui.ff
+// enh_stream_mat is a ui image material with its colormap swapped for a streamed image
+// (forced to stream by EnhancementMain.csc, shown by the debug hud)
+material,materials/enh_stream_mat.json
+
+// xmodels, from an obj on the templates of a one bone game model (templates/, dumped with -a xmodel,xmodelmesh)
+// enh_cube: a 32 units cube, its material and streamed texture linked with it (spawned by DebugMode_LUI.gsc)
+xmodel,xmodels/enh_cube.json
+// enh_truss: the game's p7_zm_moo_truss_metal exported by wraith (obj), one rust material for all of it
+xmodel,xmodels/enh_truss.json
+// enh_cactus: a frostbite fbx (pvz gw cactus) made into an obj by blender (lod0, rest pose, 72 units, facing +x)
+xmodel,xmodels/enh_cactus.json
+// enh_lodsphere: 3 lods of another material each (teddy, rust, green), its lod 0 of 69k vertices in 2 surfaces, streamed
+xmodel,xmodels/enh_lodsphere.json
+// enh_crate: a crate of two materials (usemtl), colored corners, flat normals, a physics prop (physicslaunch)
+xmodel,xmodels/enh_crate.json
+// enh_ball: the low sphere as a physics prop, its convex hull for the players and the physics (rolls)
+xmodel,xmodels/enh_ball.json
+// enh_dumbbell: two balls on a bar, a convex hull per object of its obj (collisionObj), a physics prop
+xmodel,xmodels/enh_dumbbell.json
+// material options (templates/material_*.json, dumped game materials): enh_cube_glow on the glow template
+// (emissiveMap, emissiveTint1), enh_cube_glass on the see-through one (enh_glass.png has alpha)
+xmodel,xmodels/enh_cube_glow.json
+xmodel,xmodels/enh_cube_glass.json
+// enh_skybox: an 8192 box inside out in small quads (models/enh_skybox.obj; a single lod model with big triangles culls a
+// short way off) on a sky gradient (enh_sky.png) on the lit model template without gloss (the lit emissive ones drew black)
+// (templates/material_emissive_lit.json; the glow template is additive and covers nothing). A map without a world draws
+// nothing behind, the frames pile up
+xmodel,xmodels/enh_skybox.json
+// enh_floor: a 4096 slab (models/enh_floor.obj, z -64 to 0) on the cube's material, no collision (no "collision" is a
+// hull): a map's floor over its own brush. enh_skybox has none either (its hull was a solid block). Both at their size,
+// setscale doesn't scale about the origin (the 4096 cube was drawn far below)
+xmodel,xmodels/enh_floor.json
+// enh_wiggle: a glTF (models/make_wiggle.py) of 4 bones, skinned, its loop enh_wiggle_loop
+xmodel,xmodels/enh_wiggle.json
+xanim,anims/enh_wiggle_loop.json
+// 301 frames (the u16 frame indices), root motion (tag_origin moves the entity)
+xanim,anims/enh_wiggle_long.json
+xanim,anims/enh_wiggle_walk.json
+// enh_mannequin: on the bones of a game body (skeletons/zm_body.json, a zm_common model dumped by acts with its glTF),
+// models/enh_mannequin.gltf is that glTF's mannequin through blender: the game's animations play on it
+xmodel,xmodels/enh_mannequin.json
+// enh_mannequin_wave: an anim made in blender on that glTF (models/make_mannequin_wave.py), in the game bones' frames
+xanim,anims/enh_mannequin_wave.json
+// the game adds the anims of every loaded scriptbundle to the generic animtree (BG_ScriptBundleAddSceneAnimsToAnimTree):
+// setanim / animscripted only find the anims of the tree
+scriptbundle,default/enh_anims
+
+// sounds: a bank of 16 bits pcm wav files, the aliases on 2d/3d templates of core_ui (templates/sound_aliases.json)
+// enh_test_2d: a ui chime (playlocalsound / lua playSound), enh_test_3d: beeps played on the cube (playsound)
+// the #hash_ aliases: the fire sounds of three zm_common weapon families (the ICR-7's among them) that only
+// zm_towers.all has, with their secondaries, copied (their flacs in sounds/zm_towers, the zm_copy template) so they
+// play on maps without zm_towers' bank
+sound,sounds/enh_sounds.json
+
+// bgcache: what the server may use, a model has to be in it before a script can set it
+bgcache,bgcache/enh_bgcache.csv
+
 // fonts
 ttf,fonts/shield_mom.otf
 ttf,fonts/shield_titan.ttf

@@ -1,0 +1,10 @@
+{
+    "name": "enh_crate",
+    "templateModel": "../templates/xmodel_rigid.json",
+    "templateMesh": "../templates/xmodelmesh_rigid.json",
+    "obj": "../models/enh_crate.obj",
+    "materials": { "crate_top": "#enh_cube_mat", "crate_side": "#enh_truss_mat" },
+    "normals": "flat",
+    "collision": "hull",
+    "physics": true
+}

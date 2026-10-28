@@ -45,6 +45,20 @@ CoD.AddDebugWidgets = function(hud, controller)
       line_elements[i + 1] = line
       end
 
+      -- streamed image test (enh.xpak): blurry first, sharp once the streamer has the top mips
+      local StreamTest = LUI.UIImage.new(1, 1, -517, -5, 0, 0, 5, 517)
+      StreamTest:setupUIStreamedImage(0)
+      StreamTest:setImage(RegisterImage(@"stream_test"))
+      hud:addElement(StreamTest)
+
+      -- streamed material test: a material of the fastfile, its image is in enh.xpak too
+      local StreamMaterialTest = LUI.UIImage.new(1, 1, -517, -5, 0, 0, 522, 1034)
+      StreamMaterialTest:setMaterial(LUI.UIImage.GetCachedMaterial(@"enh_stream_mat"))
+      hud:addElement(StreamMaterialTest)
+
+      -- custom sound test: a 2d alias of the enh.all sound bank
+      Engine[@"playsound"]("enh_test_2d", controller)
+
       local function update_display()
       -- header is line_elements[1], no change needed here
 

@@ -1,0 +1,10 @@
+{
+    "name": "enh_ball",
+    "templateModel": "../templates/xmodel_rigid.json",
+    "templateMesh": "../templates/xmodelmesh_rigid.json",
+    "obj": "../models/enh_lodsphere_lod2.obj",
+    "material": "materials/enh_ball_mat.json",
+    "normals": "smooth",
+    "collision": "hull",
+    "physics": "physics/enh_prop_phys.json"
+}

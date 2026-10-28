@@ -52,4 +52,8 @@ Setup()
 
     // Debug
     //thread Eye_Change_Camera();
+
+    // streamed material test (enh.xpak): the ui does not stream a material's images on its own
+    if (GetDvarInt(#"shield_enh_lui_debug", 0))
+        forcestreammaterial("enh_stream_mat");
 }

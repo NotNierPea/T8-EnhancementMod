@@ -1,0 +1,12 @@
+{
+    "name": "enh_skybox",
+    "templateModel": "../templates/xmodel_rigid.json",
+    "templateMesh": "../templates/xmodelmesh_rigid.json",
+    "obj": "../models/enh_skybox.obj",
+    "upAxis": "z",
+    "scale": 1.0,
+    "bone": "tag_origin",
+    "material": "materials/enh_sky_mat.json",
+    "stream": false,
+    "collision": "none"
+}

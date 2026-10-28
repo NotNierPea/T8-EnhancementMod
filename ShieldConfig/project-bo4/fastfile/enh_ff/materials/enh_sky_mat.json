@@ -1,0 +1,21 @@
+{
+    "name": "enh_sky_mat",
+    "template": "../templates/material_model.json",
+    "textures": {
+        "colorMap": "enh_sky.png",
+        "glossMap": "#hash_903dd7f6bd2ee1ed",
+        "normalMap": "#hash_8c3c2dcaa1919434",
+        "aoMap": "#hash_bfd1eb9d1e41b805"
+    },
+    "values": {
+        "colorTint": [
+            1,
+            1,
+            1
+        ],
+        "glossRange": [
+            0,
+            0
+        ]
+    }
+}
