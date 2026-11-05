@@ -1,9 +1,29 @@
 {
     "modid": "enh_ff_main",
-    "fastfiles" : {
+    "fastfiles": {
         "enh": {
             "hook": "core_common",
             "type": "common"
+        },
+        "enh_wwcamo_zm_escape": {
+            "hook": "zm_escape",
+            "type": "level",
+            "override": true
+        },
+        "enh_wwcamo_zm_office": {
+            "hook": "zm_office",
+            "type": "level",
+            "override": true
+        },
+        "enh_wwcamo_zm_white": {
+            "hook": "zm_white",
+            "type": "level",
+            "override": true
+        },
+        "enh_wwcamo_zm_orange": {
+            "hook": "zm_orange",
+            "type": "level",
+            "override": true
         }
     }
 }

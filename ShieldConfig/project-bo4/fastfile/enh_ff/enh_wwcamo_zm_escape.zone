@@ -1,0 +1,26 @@
+// camo-ready wonder weapon models for the Ray Gun Mk2 and the Blundergat: the stock view and world models (all lods) relinked with the camo
+// vertex layout (acts' lossless xmodel "camoUv": 24-byte vertices with a uv1 set, shared flags 0x40), under their
+// stock names. Hooked on zm_escape as a level zone with "override": true, they take the place of the map's own models.
+// Dumped from zm_escape with: acts fastfile -C <game> -r bo4 -p -a xmodel,xmodelmesh --only <names> 'zone\zm_escape.ff'
+// command: .\acts.exe fastfilelinker ShieldConfig\project-bo4\fastfile\enh_ff\enh_wwcamo_zm_escape.zone -o 'C:\Program Files (x86)\Call of Duty Black Ops 4\project-bo4'
+
+>game=bo4
+>name=enh_wwcamo_zm_escape
+>compression=zlib
+>compression.high=true
+
+// ray_gun_mk2_zm: view, world
+xmodel,wwcamo/xmodel/hash_f56284dd510e20d.json
+xmodel,wwcamo/xmodel/hash_4c985b72e71fbaa0.json
+// ray_gun_mk2_upgraded_zm: view, world
+xmodel,wwcamo/xmodel/hash_602d163b681c4789.json
+xmodel,wwcamo/xmodel/hash_50baa4a77b74afe0.json
+// ww_blundergat_t8_zm (+ upgraded): view, world
+xmodel,wwcamo/xmodel/hash_3ad89dfb977acf24.json
+xmodel,wwcamo/xmodel/hash_137ba68fbf437e3f.json
+// ww_blundergat_acid_t8_zm (+ upgraded): view, world
+xmodel,wwcamo/xmodel/hash_465d95d3ded39ddc.json
+xmodel,wwcamo/xmodel/hash_7f722310fb596037.json
+// ww_blundergat_fire_t8_zm (+ upgraded): view, world
+xmodel,wwcamo/xmodel/hash_2bea83fe082dcc07.json
+xmodel,wwcamo/xmodel/hash_6b4ca813f07fe17a.json

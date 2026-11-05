@@ -1,0 +1,442 @@
+{
+    "name": "#hash_6b4ca813f07fe17a",
+    "header": "7ae17ff013a84c6b00000000000000007ccd3b88820200005cce3b88820200001cd03b888202000058d03b888202000010d23b888202000080d53b8882020000c0d53b888202000090df3b8882020000000000000000000000000000000000000000000000000000000000000000000000000000000000009067cf8e820200001046c08e8202000060a5eea182020000a0a0dca182020000309cc58e820200000066d5a182020000304fcf8e82020000907dc68e820200008829b98882020000d09c75848202000008000000e301a43ee301243ece954c3d41b41f3dc3b9e23cc57c9a3c21df5c3c5d491d3cfd44d73e000080400000803f0000803e000080400000803f000000400000003faef02ac15b1f6ec041f73fc05a11cb41b9227340702f8d40c800000000000000000000000800000000000000000000005457d04100000000000020020707003801000000",
+    "boneNames": [
+        "tag_weapon",
+        "tag_acid",
+        "tag_brake_action_animate",
+        "tag_clip",
+        "tag_hammer_animate",
+        "tag_ik_loc_le",
+        "tag_ik_loc_ri",
+        "tag_swivel_animate",
+        "tag_ammo_le_bottom_acid_animate",
+        "tag_ammo_le_bottom_animate",
+        "tag_ammo_le_upper_acid_animate",
+        "tag_ammo_le_upper_animate",
+        "tag_ammo_ri_bottom_acid_animate",
+        "tag_ammo_ri_bottom_animate",
+        "tag_ammo_ri_upper_acid_animate",
+        "tag_ammo_ri_upper_animate",
+        "tag_armor",
+        "tag_barrel_le",
+        "tag_barrel_ri",
+        "tag_cap_le_animate",
+        "tag_cap_ri_animate",
+        "tag_flash",
+        "tag_loader_animate",
+        "tag_muzzle",
+        "tag_muzzle_acid",
+        "tag_sights",
+        "tag_armor_lift",
+        "tag_barrel_le_acid",
+        "tag_barrel_le_in",
+        "tag_barrel_ri_acid",
+        "tag_barrel_ri_in",
+        "tag_bolt",
+        "tag_chain_le_back_1_pba",
+        "tag_chain_le_front_1_pba",
+        "tag_chain_ri_back_1_pba",
+        "tag_chain_ri_front_1_pba",
+        "tag_armor_acid",
+        "tag_chain_armor_back_1",
+        "tag_chain_armor_front_1",
+        "tag_chain_le_back_2_pba",
+        "tag_chain_le_front_2_pba",
+        "tag_chain_ri_back_2_pba",
+        "tag_chain_ri_front_2_pba",
+        "tag_chain_armor_back_2",
+        "tag_chain_le_back_3_pba",
+        "tag_chain_le_front_3_pba",
+        "tag_chain_ri_back_3_pba",
+        "tag_chain_ri_front_3_pba",
+        "tag_chain_le_back_4_pba",
+        "tag_chain_le_front_4_pba",
+        "tag_chain_ri_back_4_pba",
+        "tag_chain_ri_front_4_pba",
+        "tag_chain_le_back_5_pba",
+        "tag_chain_le_front_5_pba",
+        "tag_chain_ri_back_5_pba",
+        "tag_chain_ri_front_5_pba"
+    ],
+    "boneNameIndices": [
+        {
+            "name": "tag_weapon",
+            "index": 0
+        },
+        {
+            "name": "tag_flash",
+            "index": 21
+        },
+        {
+            "name": "tag_ik_loc_le",
+            "index": 5
+        },
+        {
+            "name": "tag_ik_loc_ri",
+            "index": 6
+        },
+        {
+            "name": "tag_muzzle",
+            "index": 23
+        },
+        {
+            "name": "tag_clip",
+            "index": 3
+        },
+        {
+            "name": "tag_acid",
+            "index": 1
+        },
+        {
+            "name": "tag_brake_action_animate",
+            "index": 2
+        },
+        {
+            "name": "tag_swivel_animate",
+            "index": 7
+        },
+        {
+            "name": "tag_ammo_le_bottom_acid_animate",
+            "index": 8
+        },
+        {
+            "name": "tag_ammo_le_bottom_animate",
+            "index": 9
+        },
+        {
+            "name": "tag_ammo_le_upper_acid_animate",
+            "index": 10
+        },
+        {
+            "name": "tag_ammo_le_upper_animate",
+            "index": 11
+        },
+        {
+            "name": "tag_ammo_ri_bottom_acid_animate",
+            "index": 12
+        },
+        {
+            "name": "tag_ammo_ri_bottom_animate",
+            "index": 13
+        },
+        {
+            "name": "tag_ammo_ri_upper_acid_animate",
+            "index": 14
+        },
+        {
+            "name": "tag_ammo_ri_upper_animate",
+            "index": 15
+        },
+        {
+            "name": "tag_armor",
+            "index": 16
+        },
+        {
+            "name": "tag_barrel_le",
+            "index": 17
+        },
+        {
+            "name": "tag_barrel_ri",
+            "index": 18
+        },
+        {
+            "name": "tag_cap_le_animate",
+            "index": 19
+        },
+        {
+            "name": "tag_cap_ri_animate",
+            "index": 20
+        },
+        {
+            "name": "tag_muzzle_acid",
+            "index": 24
+        },
+        {
+            "name": "tag_sights",
+            "index": 25
+        },
+        {
+            "name": "tag_armor_lift",
+            "index": 26
+        },
+        {
+            "name": "tag_barrel_le_acid",
+            "index": 27
+        },
+        {
+            "name": "tag_barrel_le_in",
+            "index": 28
+        },
+        {
+            "name": "tag_barrel_ri_acid",
+            "index": 29
+        },
+        {
+            "name": "tag_barrel_ri_in",
+            "index": 30
+        },
+        {
+            "name": "tag_bolt",
+            "index": 31
+        },
+        {
+            "name": "tag_armor_acid",
+            "index": 36
+        },
+        {
+            "name": "tag_chain_armor_back_1",
+            "index": 37
+        },
+        {
+            "name": "tag_chain_ri_back_1_pba",
+            "index": 34
+        },
+        {
+            "name": "tag_hammer_animate",
+            "index": 4
+        },
+        {
+            "name": "tag_loader_animate",
+            "index": 22
+        },
+        {
+            "name": "tag_chain_le_back_1_pba",
+            "index": 32
+        },
+        {
+            "name": "tag_chain_le_front_1_pba",
+            "index": 33
+        },
+        {
+            "name": "tag_chain_ri_front_1_pba",
+            "index": 35
+        },
+        {
+            "name": "tag_chain_armor_front_1",
+            "index": 38
+        },
+        {
+            "name": "tag_chain_le_back_2_pba",
+            "index": 39
+        },
+        {
+            "name": "tag_chain_le_front_2_pba",
+            "index": 40
+        },
+        {
+            "name": "tag_chain_ri_back_2_pba",
+            "index": 41
+        },
+        {
+            "name": "tag_chain_ri_front_2_pba",
+            "index": 42
+        },
+        {
+            "name": "tag_chain_armor_back_2",
+            "index": 43
+        },
+        {
+            "name": "tag_chain_le_back_3_pba",
+            "index": 44
+        },
+        {
+            "name": "tag_chain_le_front_3_pba",
+            "index": 45
+        },
+        {
+            "name": "tag_chain_ri_back_3_pba",
+            "index": 46
+        },
+        {
+            "name": "tag_chain_ri_front_3_pba",
+            "index": 47
+        },
+        {
+            "name": "tag_chain_le_back_4_pba",
+            "index": 48
+        },
+        {
+            "name": "tag_chain_le_front_4_pba",
+            "index": 49
+        },
+        {
+            "name": "tag_chain_ri_back_4_pba",
+            "index": 50
+        },
+        {
+            "name": "tag_chain_ri_front_4_pba",
+            "index": 51
+        },
+        {
+            "name": "tag_chain_le_back_5_pba",
+            "index": 52
+        },
+        {
+            "name": "tag_chain_le_front_5_pba",
+            "index": 53
+        },
+        {
+            "name": "tag_chain_ri_back_5_pba",
+            "index": 54
+        },
+        {
+            "name": "tag_chain_ri_front_5_pba",
+            "index": 55
+        }
+    ],
+    "parentList": "0102030405060705060708090a0b0c0e0f10101113131516170a0a0b0b0c0f0f1010110a06070707070706050505050404040404040404",
+    "quats": "0100000000000000010000000000000001000000000000000100000000000000146f4d2abac3c294ce2cc2220274541d010000000000000001000000000000000100000000000000010000000000000001000000000000000100000000000000010000000000000001000000000000000100000000000000010000000000000001000000000000000100000000000000010000000000000001000000000000000100000000000000010000000000000001000000000000000100000000000000010000000000000001000000000000000100000000000000010000000000000001000000000000000100000000000000010000000000000081167d07eeffdd1f161d1c76ed776b3e81e98207ee0f2220161d5c8a12706bbe010000000000000001000000000000000100c07af8000000d9d5bba9ff1fdc33f9c3f4ebe0f7cb04252a84a9ffef230c0d3ccbebe00f343b0100402ea2030000259e020756ec833a1589c66f80f73410e5613d0756147c05f576b96f800fcb2f419bb7ec31e0562f8577740ae0bb8704c964c8ec3128a91075884b0ae04b783b719744290b744d3f192fbe071024bf3f8968bb290b84b200e5d0810710d44000",
+    "trans": "5d3fd3bec26030a508a1ec3fed8ecb40000000009059c93f317ce1400000000094ee2f4044ed3340000000000480ea3f11310b41df5d11402f1794bf854830c0413b95bf570605bfbce0654000000000de044b408c9eaf3fe075cc3f60edc3be8c9eaf3fe075cc3f60edc3be9c9eaf3f85c9613f20f5c33e9c9eaf3f85c9613f20f5c33e849eaf3fe075ccbf60edc3be849eaf3fe075ccbf60edc3be9c9eaf3f85c961bf20f5c33e9c9eaf3f85c961bf20f5c33eabadb54000000000bc2e0d40d02d03bf3ebab93f98faae3fd02d03bf3cbab9bf98faae3f0cbdafbff69d9b3f80a29bbd0cbdafbfc643a1bfe01da4bd76f497410000000068029a3fce71a2c1000000002da98fc094c95f413ad88f3898faae3f94c95f413ad88f3898faae3f567c7341b57a8f382cab0d4010732fbf000000000000000082d75240000000000000000082d75240000000000000000082d75240000000000000000082d752400000000000000000a00dfb3f0000000020dae03d68db513f5435d13e601bb53dfbeaa8408c5dd03ec0bbb83d68db513f5c35d1be601bb53dfbeaa840945dd0bec0bbb83d364f5cc000000000000000009ec6e4c000000000000000002435f840000000000000000038f82c3f00f82b3d009ede3c2397263f00f42c3c8008d0bc32f82c3f00fe2bbd809fde3c2597263f00f82cbc8008d0bc80661bbf000000006021b8bd10cf223f0096b83c008040baa6e2323f80fe9dbd00b9d7bc08cf223f00aab8bc00a83fbaaee2323f00ff9d3d80b8d7bcf8c4203f80b4a3bc006aaabca0a5263f800911bd2079023d08c5203f00a1a33c0064aabcb0a5263f800b113da07d023da80a233f807daa3c0067883cf02b1f3f007de93c00000000a00a233f4096aabc0077883c002c1f3f0073e9bc0000883600000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "partClassification": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "baseMat": "0000000000000000000000000000803f000000000000000000000000000000400000000000000000000000000000803f5d3fd3bec26030a508a1ec3f000000400000000000000000000000000000803fed8ecb40000000009059c93f000000400000000000000000000000000000803f317ce1400000000094ee2f40000000400000000000000000000000000000803f44ed3340000000000480ea3f00000040fff954bfcdfc973e0386c5bda6e1ea3e11310b41df5d11402f1794bf00000040424e413b4eea253f1091423f99db443d854830c0413b95bf570605bf000000400000000000000000000000000000803fbce0654000000000de044b40000000400000000000000000000000000000803feab10641e075cc3fe8701740000000400000000000000000000000000000803feab10641e075cc3fe8701740000000400000000000000000000000000000803fecb1064185c9613f386d4840000000400000000000000000000000000000803fecb1064185c9613f386d4840000000400000000000000000000000000000803fe9b10641e075ccbfe8701740000000400000000000000000000000000000803fe9b10641e075ccbfe8701740000000400000000000000000000000000000803fecb1064185c961bf386d4840000000400000000000000000000000000000803fecb1064185c961bf386d4840000000400000000000000000000000000000803f4c9e40410000000084db7140000000400000000000000000000000000000803f3329bb403ebab93f142a3c40000000400000000000000000000000000000803f3329bb403cbab9bf142a3c40000000400000000000000000000000000000803fee8cb540f69d9b3f80112b40000000400000000000000000000000000000803fee8cb540c643a1bfa5cd2a40000000400000000000000000000000000000803f31d8ca4100000000fcad3140000000400000000000000000000000000000803f842554c1000000008cc7debf000000400000000000000000000000000000803f85c8a2413ad88f38142a3c40000000400000000000000000000000000000803f85c8a2413ad88f38142a3c40000000400000000000000000000000000000803fe6a1ac41b57a8f38f4577240000000400000000000000000000000000000803f1ba735410000000084db7140000000400000000000000000000000000000803f7a4a12413ebab93f142a3c40000000400000000000000000000000000000803f7a4a12413ebab93f142a3c40000000400000000000000000000000000000803f7a4a12413cbab9bf142a3c40000000400000000000000000000000000000803f7a4a12413cbab9bf142a3c40000000400000000000000000000000000000803f000060410000000055e27840000000408bc983bda553cbbc9e44343f70e8343fa064d5409307ee3fefd2414000000040f7bed1bc79070fbd6d4d483fe6081f3f170a3241a1d1ed3ff2ef4140000000408bc9833dd150cbbc714434bf9ee8343fa064d5409307eebfefd2414000000040cbc1d13ce3080fbd6c4d48bfe6081f3f170a3241a1d1edbff2ef4140000000400000000000000000000000000000803f9b26fd400000000084db7140000000400000000000000000000000000000803f6239db400000000055e278400000004000000000aeb3af3e000000004574703f490dae410000000055e27840000000402c41f5bd827dd9bd2884f73ef8515c3f781ad440684922406dce404002000040ab8a18be33e980be1c984f3fd1bc013f328c2f41145b1f40e065404001000040f040f53d4a7cd9bd7183f7be34525c3f771ad440684922c069ce4040fcffff3f448b183e7ce980be11984fbfc7bc013f318c2f41145b1fc0df65404000000040000000004bae04be000000008ad77d3f92ccc740000000004a217340010000409698e6bdb2eb373c30f6b93e7bc06c3f97e8dd408ee94540330b434000000040407a13bc1e5316bef0747a3fe21d153edcbc2b4148ad4940f05e4240010000404799e63d78f0373c63f5b9bea2c06c3f93e8dd4090e945c02b0b4340feffff3f4088133c2d5416bee9747abf9e1d153edbbc2b414cad49c0ef5e424000000040da219bbe52c40ebd40a684bc88c4733f5c2bed40539d5f4069e13d4001000040e27d8dbc72b3cabe49e36a3fa6fc073d17e521416f26574092064640000000406e229b3e72c20ebd50ba843c70c4733f572bed405b9d5fc060e13d400000004022848d3c8eb3cabe44e36abfbafa073d15e52141732657c096064640feffff3f51da50beb976d7bc9fb802bd23657a3f36bf0041dceb60402116414001000040203f16bd7f02ddbebd6c663f0af13d3df6f31741d2de5840b17b4440feffff3fcdda503ee270d7bc78c0023d1b657a3f33bf0041edeb60c01b164140feffff3f3b43163d7302ddbec16c66bf72ec3d3df3f31741d5de58c0bd7b4440feffff3f",
+    "boneInfo": "aef02ac1ca15e6bf42f73fc08271ee40ca15e63f06fb6040a225dfbf00000000789e6a3e152cbb4200000000e0b92dbf6e9352bfc46d2dbf183f9a406e93523fc613d03fdc87044000000000ccb9f23e78fd184100000000cc4fe8bfab9a0fc04883eebf22037b41ab9a0f40aec3344028f9dd40000000002808f63e003dae420000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000006947e7bf9df2d6bfd8a545bf5cd0563fa0f2d63fc4d9a73f840f34bf00004034b435bc3ea4a39d400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d13b75c08ef5a9be071599bf0024013f8ef5a93ed00b553e3f7ddebf00000000700873bee2219640000000002e7d27c0cc4fe0be14f8e5be0000000030f0a03ee81fab3ea263a0bf40bd11bd807e80bc9051e83f00000000701322c01897fdbe68b5dcbe00000000fc57a13ee81fab3ea263a0bfb07e0ebd807e80bc9051e83f00000000de272ac0b71bdfbe886fe6be00000000060aa23e3067aa3eaa63a0bf70ee08bd800a8cbca451e83f00000000a64822c0fd69ccbed00a08bf0010993ba6e5993e3067aa3eaa63a0bf5c114abd400a8cbca551e83f00000000ce622cc030f0a0be2029d5be0000000088f7ea3e0850ad3e9e63a0bf40bd113d807e80bc8651e83f000000005cb421c0fc57a1be5478edbe0000000024a8f13ee81fab3e9e63a0bfb07e0e3dc07e80bc8751e83f0000000090cc28c0eeb3aabee0f3e1be00000000a79ee33e3067aa3eaa63a0bf80ee083d800a8cbca451e83f000000006ee722c0a6e599be308cffbe00e81f3ccfafce3e3067aa3eaa63a0bf5c114a3d400a8cbca551e83f000000007907f8c040ea19c05b4389c066f91a4106c60f40700d223f4cad773f000000005a03eabfc83aae42000000000092d3bc496cacbf809aa2bfc920b0409c5f4a3f8873533f78f52f40486576be10a874bee8a61941000000000013d5bcb0614abf809aa2bfc920b0402ee9ab3fd89c5a3f78f52f403865763e10a874bee8a6194100000000402361be034598bf542c83bf401d583e18e2783fe214863f0062cbbc0084823a90f6943dbca4f23f00000000402361beb0876fbf964083bf40954e3e51c4a13f989c863f8061cbbcf07aae3c3846983d8c56f43f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005044dbbfa38e0dc00fd49fbfec7aa140638c0d40e00d543f54232140000090b8ec7350be2cbc4441000000005044dbbf13d626c0fcacd2bf20479f40d3d3264084f49e3f20471f40000090b8e0e14ebe7a2d7141000000008cbe7cc1fffdc5bed0405ebf80c10d3e0fecc53eb01b203f8687fac000808fb8a099a6bd6842804200000000fa880ec15cf37cbfb8dd55bf0076c83d23647d3f10531e3f0ef88cc0008e613a70409cbdcde9ad410000000046c704c0b56391bf096490bfc088d13f1068273f78a3373f00340bbcb4be76be344952be96838b4000000000daf308c0156990bf46e590bf6862d13f5cc7243fec1a343f0015acbc9c1578be9c6554be53838b40000000008eac04c0146827bf096490bfc088d13fb363913f78a3373f00340bbca4be763e344952be96838b400000000044220cc060c724bf7e8d90bf6862d13f1369903fec1a343f0015acbc8c15783e9c6554be53838b400000000092a11ec1d40d3ebe88b696c0749c034101103e3e90de663ef02858bf00408b36947f0fc092c7b0420000000084af07bef07d8dbeeea8c5bd73e2523f7389863e30ed0f3e09f6b03e60dddebbe462b43c589ba03e000000004f1b44befd8f88be403abfbd42094a3fc46e9f3ecd71b83ddd19993ea8a4bf3c600ed9ba5bcba93e00000000978107bec8a091be10f7ccbdf9f7523f8894823e1d460c3e73feb03e80a669bc542a973c679ba03e00000000145795bd57e897bebd3dcfbd5751683f8bba8f3eb465bc3d62d2d53e20da1abc48c096bb229da03e0000000080d210bf0c071cc0d165edbf644fbd3fa2f40f4080dced3d88f9df3e000000002eb73cbfa717d94000000000084779bf4bad6ebe0cf505bf00c0823d4c07793e107b463e08efe8be0090da37009a2fbc87dbb03e0000000061f4e0bdcc093ebef21a8dbf9d15a43f2e093e3e6164573e5706163f00009eb5cf5ce4be4612733f000000009f29c8bd7d63d3bd96a799be1fd2613fe01cff3dee96933ed9edc73e8ce52e3c203fbebb08b0ac3e00000000a90b03be4121d7bdd64c86be0d4e563f936a083ee891923e5b46b33e94cf663c004e653b9b7ba03e000000003343d3bdaf0e36be040f94be3194603f3bbbf53d01ef8e3e4a52c93e46c4ecbc00750cba83c9a43e000000003c06e2bd57b71fbe26ec71be1acc593f5144063ee1d7963eadd4be3e30984bbc5a36113d04f3a13e000000003ea72bc063093ebee211e5bf00000000370f3e3e53fe833e3ea7abbf00803a374d1244bf225f384000000000eeeec0bc928b9ebe21f6ffbde3f7743fae26873eec6ecb3d63a8ee3e50d9c1bcd41c52bcdf16ab3e000000003fb0e7bd5c6d9ebeaa52d3bdded35d3ff396943ec284aa3d58bac03e708115bca03723bcd491ab3e0000000084749cbdcefe92be4495e1bdeffd603f5a3fb73e61d0d53dc04dcd3e9c350f3d304e3cbb9ca3a53e000000007a0bd4bd08edb3be7b5f23beaa10593fa496993e7093ac3db0f1bd3e78afaebc862b1abd0f52a63e000000007cd50ebd57bd2dbe600187befbb7713f046a053e56799a3e93c1e83e4c4da1bc90adb53c9900ae3e00000000b170d0bdc42b2fbdfaf4aabe146e603f0339163e8739833efd5fc63e24dc543dd8ed1ebd2640ab3e000000000000000092e1f3bd772484be9f487f3fd98dc23d1c9ba83e6178fa3ee44e45bcc2ea113d9f1ca73e00000000fe8587bdb614dabd0cc394be588b693f79fbbf3dce6b993eb1dcd73ee8c9d0bb402db03b2d15a23e00000000d86d48bdc6929bbe175229be637e6e3f747d943e30273f3dbebce23ef03a12bc961073bd9e9aac3e00000000263af1bd72ad9cbe1d4b25bea58e5b3fbc328d3e6a9be03d6fb4bd3e201077bca0f5d3bc95c4ad3e0000000000000000b78c9abe012904beadfa813f3084953edb20bc3d2b43003fa024adbb4e6298bc15b0af3e00000000ca6321be0a278fbee15b32bef484523fbdd0923ed4536b3df02baa3e006f6a3bd80d6fbd9b69aa3e00000000",
+    "unkC0": "fff9ffe900ffffff00000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "meshes": [
+        "#hash_7c2cd2d1c141c842",
+        "#hash_522a8a8b2eda4489",
+        "#hash_39f57ae503dd539a",
+        "#hash_1dd87ec4f16ab018",
+        "#hash_5698746a674a94e6",
+        "#hash_4d5eba6cd87679b",
+        "#hash_7bab552788418279",
+        "#hash_5b122ebba2f83d73"
+    ],
+    "meshMaterials": [
+        {
+            "entry": "0800000000000000482ab98882020000c0dd3b8882020000",
+            "materials": [
+                "#hash_16dca9bc3dabd958",
+                "#hash_6c31d4375813ebe1",
+                "#hash_693c300624593a27",
+                "#hash_6e6d56e2832a712d",
+                "#hash_11537fff0e04f531",
+                "#hash_412c2d61cb32b888",
+                "#hash_1ec90f728edeb8a3",
+                "#hash_58dd2a37ba4343b6"
+            ],
+            "himipInvSqRadii": "3a398e3e5031a13e34c0633ed244db3e1befe43df0aae13db3ad323e2c56343e"
+        },
+        {
+            "entry": "0900000000000000882ab9888202000028de3b8882020000",
+            "materials": [
+                "#hash_16dca9bc3dabd958",
+                "#hash_6c31d4375813ebe1",
+                "#hash_693c300624593a27",
+                "#hash_6e6d56e2832a712d",
+                "#hash_11537fff0e04f531",
+                "#hash_412c2d61cb32b888",
+                "#hash_1ec90f728edeb8a3",
+                "#hash_2216dace972cfd89",
+                "#hash_58dd2a37ba4343b6"
+            ],
+            "himipInvSqRadii": "084f8a3e79a4a63efe41853e9b38eb3e6b60163e5eeaf73dc7c7663e30aea23e555e223e"
+        },
+        {
+            "entry": "0a00000000000000d02ab98882020000202bb98882020000",
+            "materials": [
+                "#hash_16dca9bc3dabd958",
+                "#hash_6c31d4375813ebe1",
+                "#hash_693c300624593a27",
+                "#hash_6e6d56e2832a712d",
+                "#hash_11537fff0e04f531",
+                "#hash_412c2d61cb32b888",
+                "#hash_1ec90f728edeb8a3",
+                "#hash_6cd7ff5d0d6da5b4",
+                "#hash_2216dace972cfd89",
+                "#hash_58dd2a37ba4343b6"
+            ],
+            "himipInvSqRadii": "c7fe7e3e82f6a23e0350b13edaa4f43efd265d3ef7e5fa3d5210a53e77aa074119f0683e7607303e"
+        },
+        {
+            "entry": "0a00000000000000d02ab98882020000482bb98882020000",
+            "materials": [
+                "#hash_16dca9bc3dabd958",
+                "#hash_6c31d4375813ebe1",
+                "#hash_693c300624593a27",
+                "#hash_6e6d56e2832a712d",
+                "#hash_11537fff0e04f531",
+                "#hash_412c2d61cb32b888",
+                "#hash_1ec90f728edeb8a3",
+                "#hash_6cd7ff5d0d6da5b4",
+                "#hash_2216dace972cfd89",
+                "#hash_58dd2a37ba4343b6"
+            ],
+            "himipInvSqRadii": "bafe7e3e8a8fa93ed1f6b43e1908f53e7029b33e2096093e3209a33e77aa074115f0683ef8f1793e"
+        },
+        {
+            "entry": "0a00000000000000d02ab98882020000702bb98882020000",
+            "materials": [
+                "#hash_16dca9bc3dabd958",
+                "#hash_6c31d4375813ebe1",
+                "#hash_693c300624593a27",
+                "#hash_6e6d56e2832a712d",
+                "#hash_11537fff0e04f531",
+                "#hash_412c2d61cb32b888",
+                "#hash_1ec90f728edeb8a3",
+                "#hash_6cd7ff5d0d6da5b4",
+                "#hash_2216dace972cfd89",
+                "#hash_58dd2a37ba4343b6"
+            ],
+            "himipInvSqRadii": "b1968b3e34d1ac3e810fbd3eea06f63e8f29b33e419a0b3e9163a13e77aa074123ffbe3e04cb773e"
+        },
+        {
+            "entry": "0a00000000000000d02ab98882020000982bb98882020000",
+            "materials": [
+                "#hash_16dca9bc3dabd958",
+                "#hash_6c31d4375813ebe1",
+                "#hash_693c300624593a27",
+                "#hash_6e6d56e2832a712d",
+                "#hash_11537fff0e04f531",
+                "#hash_412c2d61cb32b888",
+                "#hash_1ec90f728edeb8a3",
+                "#hash_6cd7ff5d0d6da5b4",
+                "#hash_2216dace972cfd89",
+                "#hash_58dd2a37ba4343b6"
+            ],
+            "himipInvSqRadii": "34529d3e4a52b13eb29dbe3e1ed0f43ec438d73ee54b103e604a9a3eebd5d4401db6073fc23d783e"
+        },
+        {
+            "entry": "0a00000000000000d02ab98882020000c02bb98882020000",
+            "materials": [
+                "#hash_16dca9bc3dabd958",
+                "#hash_6c31d4375813ebe1",
+                "#hash_693c300624593a27",
+                "#hash_6e6d56e2832a712d",
+                "#hash_11537fff0e04f531",
+                "#hash_412c2d61cb32b888",
+                "#hash_1ec90f728edeb8a3",
+                "#hash_6cd7ff5d0d6da5b4",
+                "#hash_2216dace972cfd89",
+                "#hash_58dd2a37ba4343b6"
+            ],
+            "himipInvSqRadii": "02bbb13eef49b93ef4b0cb3e36faf33ec638d73ec6f0103eea5d8e3eedd5d440757a113fc2cc773e"
+        },
+        {
+            "entry": "0a00000000000000d02ab98882020000e82bb98882020000",
+            "materials": [
+                "#hash_16dca9bc3dabd958",
+                "#hash_6c31d4375813ebe1",
+                "#hash_693c300624593a27",
+                "#hash_6e6d56e2832a712d",
+                "#hash_11537fff0e04f531",
+                "#hash_412c2d61cb32b888",
+                "#hash_1ec90f728edeb8a3",
+                "#hash_6cd7ff5d0d6da5b4",
+                "#hash_2216dace972cfd89",
+                "#hash_58dd2a37ba4343b6"
+            ],
+            "himipInvSqRadii": "8120b63e965bc13efd81cc3ef6c5f23ec9e8d63e5479143eca3e8b3eebd5d440af82123f8775773e"
+        }
+    ],
+    "numCollSurfs": 0,
+    "numCollmaps": 0,
+    "collSurfs": [],
+    "collmaps": [],
+    "submodels": [],
+    "lossless": true,
+    "numSubmodels": 0,
+    "numLods": 8,
+    "numBones": 56,
+    "camoUv": true
+}

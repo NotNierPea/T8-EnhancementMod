@@ -1,0 +1,168 @@
+{
+    "name": "#hash_4c985b72e71fbaa0",
+    "header": "a0ba1fe7725b984c0000000000000000c0488e8882020000dc488e8882020000287621888202000018498e888202000048498e8882020000c076218882020000b0498e8882020000404c8e888202000000000000000000000000000000000000000000000000000000000000000000000000000000000000f083c68e820200003001dba1820200003083ce8e82020000500bf1a182020000d06fc78e8202000020ae90a18202000080a5e9a182020000b054c68e82020000904a8e888202000080016f8482020000080000004260e63d252ab43df884933dc271603d635d1d3d8297de3c02a7993c789d503cfd44d73e000080400000803f0000803e000080400000803f000000400000003ff892eec0ce88f4bfc5ba88c08bf88e41ce88f43f71d0c840c80000000000000000000000000000000000000000000000434c984100000000000020020707000701000000",
+    "boneNames": [
+        "tag_weapon",
+        "tag_brass",
+        "tag_clip",
+        "tag_clip_animate",
+        "tag_flash",
+        "tag_ik_loc_le",
+        "tag_ik_loc_ri"
+    ],
+    "boneNameIndices": [
+        {
+            "name": "tag_weapon",
+            "index": 0
+        },
+        {
+            "name": "tag_flash",
+            "index": 4
+        },
+        {
+            "name": "tag_ik_loc_le",
+            "index": 5
+        },
+        {
+            "name": "tag_ik_loc_ri",
+            "index": 6
+        },
+        {
+            "name": "tag_brass",
+            "index": 1
+        },
+        {
+            "name": "tag_clip",
+            "index": 2
+        },
+        {
+            "name": "tag_clip_animate",
+            "index": 3
+        }
+    ],
+    "parentList": "010203040506",
+    "quats": "0100000000000000010000000000000001000000000000000100000000000000ec6210b3d38fe3861fd31ef34b80d101",
+    "trans": "c9762ec03f7845a442d33f4097cdddc0ecb3923da0f82d4097cdddc0ecb3923da0f82d40386e7f413f7845a442d33f4081e3614099fbdf3f040187bfeaa1a5c03f2559bfbd32bebf000000000000000000000000000000000000000000000000",
+    "partClassification": "00000000000000",
+    "baseMat": "0000000000000000000000000000803f000000000000000000000000000000400000000000000000000000000000803fc9762ec03f7845a442d33f40000000400000000000000000000000000000803f97cdddc0ecb3923da0f82d40000000400000000000000000000000000000803f97cdddc0ecb3923da0f82d40000000400000000000000000000000000000803f386e7f413f7845a442d33f400000004040e76abf3764b93e829a7abd96e01b3e81e3614099fbdf3f040187bf000000405594243d9936393ff15e2e3f37d1d63deaa1a5c03f2559bfbd32bebf00000040",
+    "boneInfo": "96a4d6c0ce88f4bfc5ba88c08bf88e41ce88f43f71d0c840cb9eb24000000000582b803f4d7f36430000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000082b06bf5997b9bef109f4bfdd1aae407a7a603e3c5e273f7c551d4038b492bdd35a20bfc4e4294100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "unkC0": "000000900000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "meshes": [
+        "#hash_5bc842fb0738160d",
+        "#hash_825366bef4418d7",
+        "#hash_77ff5dccbd9cf83f",
+        "#hash_40d950f309c167c7",
+        "#hash_5ff9865867123ce3",
+        "#hash_f2b5b7cfe2a6f2",
+        "#hash_2fa5cb06b2aeddaa",
+        "#hash_5aacf849b0f02813"
+    ],
+    "meshMaterials": [
+        {
+            "entry": "0600000000000000504b8e8882020000804b8e8882020000",
+            "materials": [
+                "#hash_1316b0de3fa19a1f",
+                "#hash_1316adde3fa19506",
+                "#hash_1316aede3fa196b9",
+                "#hash_1316b2de3fa19d85",
+                "#hash_1316abde3fa191a0",
+                "#hash_2c0ea0680fd62e88"
+            ],
+            "himipInvSqRadii": "e4cd7f3e926c3d3e1a581a3e433fd23f30b5343e69271a3f"
+        },
+        {
+            "entry": "0600000000000000504b8e8882020000984b8e8882020000",
+            "materials": [
+                "#hash_1316b0de3fa19a1f",
+                "#hash_1316adde3fa19506",
+                "#hash_1316aede3fa196b9",
+                "#hash_1316b2de3fa19d85",
+                "#hash_1316abde3fa191a0",
+                "#hash_2c0ea0680fd62e88"
+            ],
+            "himipInvSqRadii": "ef74813e85993c3e19a4103e463fd23f2ece313e3da5143f"
+        },
+        {
+            "entry": "0600000000000000504b8e8882020000b04b8e8882020000",
+            "materials": [
+                "#hash_1316b0de3fa19a1f",
+                "#hash_1316adde3fa19506",
+                "#hash_1316aede3fa196b9",
+                "#hash_1316b2de3fa19d85",
+                "#hash_1316abde3fa191a0",
+                "#hash_2c0ea0680fd62e88"
+            ],
+            "himipInvSqRadii": "c1ad803e8705323e990c103e463fd23f5101383e3f16173f"
+        },
+        {
+            "entry": "0600000000000000504b8e8882020000c84b8e8882020000",
+            "materials": [
+                "#hash_1316b0de3fa19a1f",
+                "#hash_1316adde3fa19506",
+                "#hash_1316aede3fa196b9",
+                "#hash_1316b2de3fa19d85",
+                "#hash_1316abde3fa191a0",
+                "#hash_2c0ea0680fd62e88"
+            ],
+            "himipInvSqRadii": "6b21823e7e063c3e6ec6103e463fd23f9918323ed4a1123f"
+        },
+        {
+            "entry": "0600000000000000504b8e8882020000e04b8e8882020000",
+            "materials": [
+                "#hash_1316b0de3fa19a1f",
+                "#hash_1316adde3fa19506",
+                "#hash_1316aede3fa196b9",
+                "#hash_1316b2de3fa19d85",
+                "#hash_1316abde3fa191a0",
+                "#hash_2c0ea0680fd62e88"
+            ],
+            "himipInvSqRadii": "1de3803e30be3a3e21280d3e463fd23fb038363ec47d103f"
+        },
+        {
+            "entry": "0600000000000000504b8e8882020000f84b8e8882020000",
+            "materials": [
+                "#hash_1316b0de3fa19a1f",
+                "#hash_1316adde3fa19506",
+                "#hash_1316aede3fa196b9",
+                "#hash_1316b2de3fa19d85",
+                "#hash_1316abde3fa191a0",
+                "#hash_2c0ea0680fd62e88"
+            ],
+            "himipInvSqRadii": "524e783e994e3a3e1e670f3e463fd23fbe133d3eb79d123f"
+        },
+        {
+            "entry": "0600000000000000504b8e8882020000104c8e8882020000",
+            "materials": [
+                "#hash_1316b0de3fa19a1f",
+                "#hash_1316adde3fa19506",
+                "#hash_1316aede3fa196b9",
+                "#hash_1316b2de3fa19d85",
+                "#hash_1316abde3fa191a0",
+                "#hash_2c0ea0680fd62e88"
+            ],
+            "himipInvSqRadii": "ffaa7a3e56722d3e7fe00e3e463fd23fa97d373e4023193f"
+        },
+        {
+            "entry": "0600000000000000504b8e8882020000284c8e8882020000",
+            "materials": [
+                "#hash_1316b0de3fa19a1f",
+                "#hash_1316adde3fa19506",
+                "#hash_1316aede3fa196b9",
+                "#hash_1316b2de3fa19d85",
+                "#hash_1316abde3fa191a0",
+                "#hash_2c0ea0680fd62e88"
+            ],
+            "himipInvSqRadii": "7deb723e59e62d3e26f50e3e473fd23f24d1333e6d26103f"
+        }
+    ],
+    "numCollSurfs": 0,
+    "numCollmaps": 0,
+    "collSurfs": [],
+    "collmaps": [],
+    "submodels": [],
+    "lossless": true,
+    "numSubmodels": 0,
+    "numLods": 8,
+    "numBones": 7,
+    "camoUv": true
+}
